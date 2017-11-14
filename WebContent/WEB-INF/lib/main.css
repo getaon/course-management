@@ -1,0 +1,65 @@
+.page {
+	font-size: 12px;
+	text-align: center;
+	background-color: lightblue;
+	border-top: 1px soLid #000000;
+}
+
+.title {
+	border-style:black;
+	border-width: 1;
+	width: 100%;
+	padding-top: 0px;
+	margin-top:10px 10px 100px 100px;
+		background-color: lightblue;
+	
+}
+
+button {
+	float: left;
+	padding: 10px; margin : 0 0 10px 10px;
+	direction: rtl;
+	margin: 0 0 10px 10px;
+}
+
+.menu {
+	margin:   0 20px 20px;
+	padding: 10px;
+	direction: rtl;
+	text-align: center;
+}
+
+.content {
+	padding-bottom: 200px;
+	padding-top:100px;
+	direction: ltr;
+	
+	width:1024px;
+	text-align: right;
+}
+
+.formL {
+	
+	text-align:center;
+}
+
+.loginMenu {
+	font-size: 30px;
+	margin: 45px 280px;
+	background-color: lightblue;
+	position: absolute;
+}
+.container {
+    padding: 16px;
+    text-align: right;
+
+
+       
+}
+.psw {
+    float: right;
+    width:100%;
+
+  margin-top: 150px
+  
+}
