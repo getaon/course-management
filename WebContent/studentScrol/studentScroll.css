@@ -1,0 +1,31 @@
+body {
+      position: relative;
+  }
+  ul.nav-pills {
+      top: 150px;
+      position: fixed;
+  }
+  div.col-sm-9 div {
+      height-: 250px;
+      font-size: 28px;
+  }
+  #general {color: #fff; background-color: #1E88E5;}
+  #syllabus {color: #fff; background-color: #673ab7;}
+  #schedule {color: #fff; background-color: #ff9800;}
+  #presentations {color: #fff; background-color: #00bcd4;}
+  #resources {color: #fff; background-color: #009688;}
+  
+  @media screen and (max-width: 810px) {
+    #general, #syllabus, #schedule, #presentations, #resources  {
+        margin-left: 150px;
+    }
+  }
+  
+ #syllabus,#schedule,#presentations,#general{
+ 	min-height: 200px;
+ 	
+ } 
+ 
+ #studentCourse{
+ 	display: none;
+ }

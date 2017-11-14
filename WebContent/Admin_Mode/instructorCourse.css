@@ -1,0 +1,35 @@
+#button{
+	 color: black;
+	 float: right;
+}
+body {
+  margin: 40px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  grid-gap: 20px;
+  background-color: #fff;
+  color: #ff0000;
+}
+
+.student {
+  background-color: #00ff80;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+#div{
+	float: left;
+	padding-right: 25px;
+	margin-left: 300px;
+}
+#div1{
+	float: right;
+	padding-left: 25px;
+	margin-right: 500px;
+}
+
+

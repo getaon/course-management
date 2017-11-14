@@ -1,0 +1,53 @@
+
+
+
+
+<div id="strudentScheduale">
+
+	<div class="title"> 
+		<h1>{{course.name}}</h1>
+		<h4>{{course.instructor}}</h4>
+	</div>
+	
+	<div>
+		<h2>Schedule</h2>
+		<p>{{course.schedule.date + " "+course.schedule.starthour +" "+course.schedule.endhour }}</p>
+	</div>
+	
+</div>
+
+<div id="studentPresentation">
+
+	<div class="title"> 
+		<h1>{{course.name}}</h1>
+		<h4>{{course.instructor}}</h4>
+	</div>
+	
+	<div>
+		<h2>Presentation</h2>
+		<object data="../presentation/מלקולם אקס.pptx"></object>
+	</div>
+	
+</div>
+
+	<div id="studentDescription">
+
+	<div class="title"> 
+		<h1>{{course.name}}</h1>
+		<h4>{{course.instructor}}</h4>
+         
+         <div>
+			<p>{{course.description}}</p>
+	
+	    </div>
+		
+	</div>
+	
+	
+	<div>
+		<h2>Syllabus</h2>
+		<p>{{course.agenda}}</p>
+	</div>
+	
+</div>
+

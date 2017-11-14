@@ -1,0 +1,36 @@
+
+#headmenu{
+	height: 50px;
+	background-color: black;
+	color: white;
+	text-align: right;
+	border-left: white;
+	display: none;
+	position: inherit;
+}
+
+ #headmenu  span{
+	display: inline-block;
+  	position: relative;  
+  	
+}
+
+#headmenu > .glyphicon, .fa{
+	margin: 15px;
+	font-size: 24px;
+}
+
+#login{
+	margin-top: 300px;
+}
+
+.sidemenu{
+	float: left;
+	width: 10%;
+	margin-top: 100px;
+	display: none;
+}
+.sidemenu  a{
+	margin: 10px;	
+	margin-top: 200px;
+}
