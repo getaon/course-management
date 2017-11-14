@@ -1,5 +1,5 @@
 
-var app = angular.module("myApp", []);
+var app = angular.module("myApp", ["ngRoute"]);
 
 app.controller("instructorCourse",function($scope,$http){
 	$http. get("http://localhost:8080/coursemanagementsystem/rest/Course/getAllCourses")
