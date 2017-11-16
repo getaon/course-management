@@ -2,7 +2,15 @@
 		var userId;
 		var usertype;
 		var courseId;
-		var app = angular.module("myApp", []).controller("myCtrl",function($http,$scope,$location){
+		var app = angular.module("myApp", []).controller("myCtrl",function($http,$scope,$location,$anchorScroll){
+			
+			
+			$scope.gotoBottom = function(){
+				  $location.hash('syllabus');
+
+			      // call $anchorScroll()
+			      $anchorScroll();
+			}
 			
 			$scope.homeButton=function(){
 				$("#login").hide();
@@ -79,6 +87,7 @@
 			 						$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
 			 							.then(function(response){
 			 							$scope.studentCourses=response.data;
+			 							courseId = $scope.studentCourses.id;
 			 							console.log($scope.studentCourses);
 			 							
 			 						});
@@ -97,8 +106,10 @@
 				});	
 			};
 				
-			$scope.courseInfo =function(){
-				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?id="+courseId)
+			$scope.courseInfo =function(index){
+				console.log($scope.studentCourses[index].id);
+				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
+						+"id="+$scope.studentCourses[index].id)
 				.then(function(response){
 					$scope.courseSelected = response.data;
 					console.log($scope.courseSelected);
@@ -108,15 +119,7 @@
 				$("#studentCourse").show();
 				$(".sidemenu").hide();
 				
-				$http. get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id=1")
-				.then(function(response){
-					$scope.scheduleSelected = response.data;
-					console.log($scope.scheduleSelected);
-					console.log($scope.scheduleSelected.date);
-					console.log($scope.scheduleSelected.starthour);
-					console.log($scope.scheduleSelected.endhour);
-					
-				});
+	
 			}	
 				
 			$scope.createCourse = function(){
