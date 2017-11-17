@@ -1,20 +1,17 @@
-
-var app = angular.module("myApp", ["ngRoute"]);
-
-app.controller("instructorCourse",function($scope,$http){
-	$http. get("http://localhost:8080/coursemanagementsystem/rest/Course/getAllCourses")
-	.then(function(response){
-		$scope.course=response.data;
-		
-	});
+angular.module('myApp').controller("adminMode",function($http,$scope){
 	
-	
+	$http.get("http://localhost/coursemanagementsystem/rest/Instructor/getAllInstructors")
+		.then(function(response){
+			$scope.instructor = response.data;
+			console.log($scope.instructor);
+	});		
+			
 	$scope.remove=function(index){
 		var confirm1 =confirm('Are you sure?');
 		
 		if(confirm1==true){					
 			var course = $scope.course[index];
-			$http.get("http://localhost:8080/coursemanagementsystem/rest/Course/updateCourse?"
+			$http.get("http://localhost/coursemanagementsystem/rest/Course/updateCourse?"
 					+"id="+course.id
 					+"&name="+course.name
 					+"&instructor="+course.instructor
@@ -28,7 +25,7 @@ app.controller("instructorCourse",function($scope,$http){
 				console.log(response.data);
 					var response =response.data;
 				
-					$http.get("http://localhost:8080/coursemanagementsystem/rest/Course/getAllCourses")
+					$http.get("http://localhost/coursemanagementsystem/rest/Course/getAllCourses")
 					.then(function(response){
 						$scope.course = response.data;
 						console.log($scope.course);
@@ -40,8 +37,7 @@ app.controller("instructorCourse",function($scope,$http){
 	};
 	
 	$scope.editCourse=function(index){
-/*		var index = getSelectedIndex(index);
-*/		var a = $scope.course[index];
+		var a = $scope.course[index];
 		
 		$("#dialog").dialog({
 			autoOpen: true,
@@ -57,14 +53,14 @@ app.controller("instructorCourse",function($scope,$http){
 		$scope.articles = a.articles;
 		$scope.isactive = a.isactive;
 		
-		$http.get("http://localhost:8080/coursemanagementsystem/rest/Tag/getAllTag")
+		$http.get("http://localhost/coursemanagementsystem/rest/Tag/getAllTag")
 		.then(function(response){
 			$scope.tag = response.data;
 			console.log($scope.tag);
 		});
 		
 		$scope.edit=function () {
-			$http.get("http://localhost:8080/coursemanagementsystem/rest/Course/updateCourse?id="+$scope.id
+			$http.get("http://localhost/coursemanagementsystem/rest/Course/updateCourse?id="+$scope.id
 					+"&name="+$scope.name
 					+"&instructorid="+$scope.instructorCourse
 					+"&description="+$scope.description
@@ -76,7 +72,7 @@ app.controller("instructorCourse",function($scope,$http){
 			.then(function(response) {
 				var response = response.data;
 				if(response.msg=="ok"){
-					$http.get("http://localhost:8080/coursemanagementsystem/rest/Course/getAllCourses")
+					$http.get("http://localhost/coursemanagementsystem/rest/Course/getAllCourses")
 					.then(function(response){
 						$scope.course = response.data;
 						console.log($scope.course);
@@ -101,12 +97,6 @@ app.controller("instructorCourse",function($scope,$http){
 					return id;
 				return -1;	
 		};
-			
-	}
+	};
 	
-	$http.get("http://localhost:8080/coursemanagementsystem/rest/Instructor/getAllInstructors")
-	.then(function(response){
-		$scope.instructor = response.data;
-		console.log($scope.instructor);
-	});
 });

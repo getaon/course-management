@@ -1,6 +1,4 @@
-var app = angular.module("myApp", []);
-
-app.controller("coursemakerCtrl", function ($scope,$http) {
+angular.module('myApp').controller("coursemakerCtrl",function($http,$scope){
 	
 	$http.get("http://localhost/coursemanagementsystem/rest/Instructor/getAllInstructors")
     .then(function(response) {

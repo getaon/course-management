@@ -3,7 +3,9 @@
 	<head>
 
 	<title>Course Management System</title>
-	
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>	
 		
 		<!-- resources-->		
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,15 +27,13 @@
 			<link rel="stylesheet" type="text/css" href="studentCourseInfo/studentScroll.css">
 			<link rel="stylesheet" type="text/css" href="studentMode/studentMode.css">
 			<link rel="stylesheet" type="text/css" href="coursemaker/coursemaker.css">
-			
-		
+			<link rel="stylesheet" type="text/css" href="Admin_Mode/instructorCourse.css">
 	
 	</head>
 	<body data-ng-controller="myCtrl"> 
 
 			<!-------------------------------- head menu ---------------------------->
 			
-	<div >		
 		<div id="headmenu">
 		 	 <span class="glyphicon glyphicon-home" data-ng-click="homeButton()"></span>
 		 	 
@@ -50,23 +50,7 @@
 		 	<span class="glyphicon glyphicon-log-out" data-ng-click="logout()"></span> Log out
 		</div>
 		
-		<!-------------------------------- login ---------------------------->
-		
-	    <div id="login">
-	      <h1>Login to Web App</h1>
-	      
-		      <form>
-		        <p><input type="text" placeholder="Username" data-ng-model="username"></p>
-		        <p><input type="password" placeholder="Password"  data-ng-model="password"></p>
-		        <p data-ng-click="login()"><input type="button" value="Login"></p>
-		      </form>
-	      
-	        <div class="login-help">
-	    	  <p>Forgot your password? <a>Click here to reset it</a>.</p>
-	    	</div>
-	    </div>
-	</div>
-				<!-------------------------------- menu of subject & search ---------------------------->
+		<!-------------------------------- menu of subject & search ---------------------------->
 		
 			<div class="sidemenu">
 				
@@ -76,345 +60,32 @@
 
 				<p  data-ng-repeat="tag in tags" data-ng-click="Courses($index)">{{tag.name}}</p>
 			</div>			
+			
+			<div ng-view></div>
 
-		<!--------------------------------  student course options ---------------------------->
-					
-				<div id="course_list" class="wrapper">
-					 <span id="plusButton" class="glyphicon glyphicon-plus" data-ng-click="createCourse()"></span> 
-					 
-					 <div data-ng-repeat="x in studentCourses" class="student" id="#div-{{x.id}}">course-{{x.name}}<br>
-						 instructor:{{x.instructor.firstname}}&nbsp;{{x.instructor.lastname}}<br>
-						 <button id="logBtn"  class="glyphicon glyphicon-log-in" data-ng-click="courseInfo($index)"></button>
-						 <div class="courseUpdate">
-						 	 <button>delete</button>
-							 <button>update</button>
-						 </div>
-						
-					 </div>
-				
-				</div>
-
-
-			<!--------------------------------  student Course Selected ---------------------------->
-			
-	  <div id="studentCourse">
-	  	
-			<div class="container" >
-			  <div class="row">
-			    <nav class="col-sm-3" id="myScrollspy">
-			      <ul class="nav nav-pills nav-stacked">
-			        <li class="active">
-		        		<a href="#general"  data-ng-click="gotoGeneral()">General</a></li>
-			        <li><a href="#syllabus" data-ng-click="gotoSyllabus()">Syllabus</a></li>
-			        <li><a href="#schedule" data-ng-click="gotoSchedule()">Schedule</a></li>
-			        <li><a href="#presentations" data-ng-click="gotoPresentations()">Presentations</a></li>
-			        <li><a href="#message" data-ng-click="gotoMessage()">Message Board</a></li> 
-			      </ul>
-			    </nav>
-			    <div class="col-sm-9" >
-			      <div id="general">    
-			      		<div style="float:right">
-			      			<button>register</button>
-			      		</div>
-			       		<div id="studentDescription">
-								<h1>General</h1>
-								<h1>{{courseSelected.name}}</h1>
-								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-						         <h4>{{courseSelected.startdate}}</h4>
-						         <div>
-									<p>{{courseSelected.description}}</p>
-							
-							    </div>
-								
-						</div>
-			      </div>
-			      <div id="syllabus"> 
-			       		<div>
-							<h2>Syllabus</h2>
-							<p>{{courseSelected.syllabus}}</p>
-						</div>
-			      </div>        
-			      <div id="schedule">         
-			        <div id="strudentScheduale">
-							<h1>Schedule</h1>
-							<h1>{{courseSelected.name}}</h1>
-							<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-							<p>{{scheduleSelected.date + " "+scheduleSelected.starthour +" "+scheduleSelected.endhour }}</p>
-					</div>
-			      </div>
-			      <div id="presentations">         
-			        	<div id="studentPresentation">
-							 <h1>Presentations</h1>
-								<h1>{{courseSelected.name}}</h1>
-								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-							
-								
-								<object width="200px" height="200px"></object>
-							
-						</div>
-			      </div>      
-			      <div id="message" style="height: 500px;">         
-			        <p>Massage Board</p>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-	  </div>
-			
-			
-		<!-------------------- this div show me the course list in student main page ---------------------------->
-			
-					<div id="coursemaker" data-spy="scroll" data-target="#myScrollspy">
-				  	
-						<div class="container" >
-						  <div class="row">
-						    <nav class="col-sm-3" id="myScrollspy">
-						      <ul class="nav nav-pills nav-stacked">
-						        <li class="active">
-					        		<a href="#general">General</a></li>
-						        <li><a href="#syllabus">Syllabus</a></li>
-						        <li><a href="#schedule">Schedule</a></li>
-						        <li><a href="#presentations">Presentations</a></li>
-						        <li><a href="#message">Message Board</a></li>                     
-						      </ul>
-						    </nav>
-						    <div class="col-sm-9" >
-						    
-						      <div id="general">
-						      	<table>    
-					      			<tr class="course">
-										<td>
-											Course Name :
-										</td>
-										<td>
-											<input type="text" data-ng-model="name">
-										</td>
-										<td>
-											<button class="publish" data-ng-click="create()">publish</button>
-										</td>
-									</tr>
-								<tr class="instructor">
-									<td>
-										By :
-									</td>
-									<td>
-										<select data-ng-model="instructor">
-											<option value="{{instructor.id}}" data-ng-repeat="instructor in allinstructors">{{instructor.firstname}} {{instructor.lastname}}</option>
-										</select>
-									</td>
-									<td></td>
-								</tr>
-									<tr class="Attendants">
-										<td>
-											Attendants :
-										</td>
-										<td>
-											<select data-ng-model="student" multiple="multiple">
-												<option data-ng-repeat="student in allstudents">{{student.firstname}} {{student.lastname}}</option>
-											</select>
-										</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>
-											Location :
-										</td>
-										<td>
-											<input data-ng-model="location" type="text">
-										</td>
-									</tr>
-									<tr>
-										<td colspan="3">Description :</td>
-									</tr>
-									<tr class="descriptionAdmin" >
-										<td colspan="3">
-											<textarea rows="4" cols="50" placeholder="Add Description Here..." data-ng-model="description"></textarea>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											Date :
-										</td>
-										<td>
-											<input type="date" data-ng-model="date" id="datepicker">
-										</td>
-									</tr>
-									<tr class="tagAdmin">
-										<td>
-											Tag :
-										</td>
-										<td>
-											<select data-ng-model="tag">
-												<option value="{{tag.id}}" data-ng-repeat="tag in alltags">{{tag.name}}</option>
-											</select>
-										</td>
-										<td></td>
-									</tr>
-									<tr class="articleAdmin">
-										<td>
-											Article :
-										</td>
-										<td>
-											<select data-ng-model="article">
-												<option value="{{article.id}}" data-ng-repeat="article in allarticles">{{article.name}}</option>
-											</select>
-										</td>
-										<td></td>
-									</tr>
-								</table>
-						      </div>
-						      
-						      <div id="syllabus"> 
-						       		<div class="adminSyllabus">
-									<p>Syllabus</p>
-									<table>
-										<tr>
-											<td>
-												<textarea rows="10" cols="50" placeholder="Add Syllabus Here..." data-ng-model="syllabus"></textarea>
-											</td>
-										</tr>
-									</table>
-						      </div>        
-						      <div id="schedule">         
-						        <div id="strudentScheduale">
-										<h1>Schedule</h1>
-										<h1>{{courseSelected.name}}</h1>
-										<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-										<p>{{scheduleSelected.date + " "+scheduleSelected.starthour +" "+scheduleSelected.endhour }}</p>
-								</div>
-						      </div>
-						      <div id="presentations">         
-						        	<div id="studentPresentation">
-										 <h1>Presentations</h1>
-											<h1>{{courseSelected.name}}</h1>
-											<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-										
-											
-											<object width="200px" height="200px"></object>
-										
-									</div>
-						      </div>      
-						      <div id="message">         
-						        <p>Massage Board</p>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-				  </div>
-	
-	  	
-	  		<!---------------- open course ,add instructor and publish to the attendants --------------------->
-	  		
-		<!-- <div id="coursemaker">
-	
-			<div class="div1">
-			
-				<table>
-					<tr class="div1tr">
-						<td>
-							Course Name :
-						</td>
-						<td>
-							<input type="text" data-ng-model="name">
-						</td>
-						<td>
-							<button class="publish" data-ng-click="create()">publish</button>
-						</td>
-					</tr>
-					<tr class="div1tr">
-						<td>
-							By :
-						</td>
-						<td>
-							<select data-ng-model="instructor">
-								<option value="{{instructor.id}}" data-ng-repeat="instructor in allinstructors">{{instructor.firstname}} {{instructor.lastname}}</option>
-							</select>
-						</td>
-						<td></td>
-					</tr>
-					<tr class="div1tr">
-						<td>
-							Attendants :
-						</td>
-						<td>
-							<select data-ng-model="student" multiple="multiple">
-								<option data-ng-repeat="student in allstudents">{{student.firstname}} {{student.lastname}}</option>
-							</select>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td colspan="3">Description :</td>
-					</tr>
-					<tr class="div1tr" >
-						<td colspan="3">
-							<textarea rows="4" cols="50" placeholder="Add Description Here..." data-ng-model="description"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Date :
-						</td>
-						<td>
-							<input type="date" data-ng-model="date" id="datepicker">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Location :
-						</td>
-						<td>
-							<input data-ng-model="location" type="text">
-						</td>
-					</tr>
-					<tr class="div1tr">
-						<td>
-							Tag :
-						</td>
-						<td>
-							<select data-ng-model="tag">
-								<option value="{{tag.id}}" data-ng-repeat="tag in alltags">{{tag.name}}</option>
-							</select>
-						</td>
-						<td></td>
-					</tr>
-					<tr class="div1tr">
-						<td>
-							Article :
-						</td>
-						<td>
-							<select data-ng-model="article">
-								<option value="{{article.id}}" data-ng-repeat="article in allarticles">{{article.name}}</option>
-							</select>
-						</td>
-						<td></td>
-					</tr>
-				</table>
-			
-			</div>
-			
-			  		-------------- add syllabus to course -------------------
-			
-			<div class="div2">
-			
-				<p>Syllabus</p>
-				<table>
-					<tr>
-						<td>
-							<textarea rows="10" cols="50" placeholder="Add Syllabus Here..." data-ng-model="syllabus"></textarea>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div> -->
-
-			
 				<!----------------- js files ------------------>
-			<script type="text/javascript" src="coursemaker/coursemaker.js"></script>
+				
 			<script type="text/javascript" src="coursemanagement.js"></script>
 			
+			<script type="text/javascript" src="coursemaker/coursemaker.js"></script>
+			<script type="text/javascript" src="coursemaker/coursemaker.route.js"></script>
+			
+			<script type="text/javascript" src="Admin_Mode/admin_mode.js"></script>
+			<script type="text/javascript" src="Admin_Mode/adminmode.route.js"></script>
+			
+			<script type="text/javascript" src="coursemaker/coursemaker.js"></script>
+			<script type="text/javascript" src="coursemaker/coursemaker.route.js"></script>
+			
+			<script type="text/javascript" src="studentMode/studentMode.js"></script>
+			<script type="text/javascript" src="studentMode/studentmode.route.js"></script>
+			
+			<script type="text/javascript" src="studentCourseInfo/courseinfo.js"></script>
+			<script type="text/javascript" src="studentCourseInfo/courseinfo.route.js"></script>
+			
+			
+			<script type="text/javascript" src="login/login.ctrl.js"></script>
+			<script type="text/javascript" src="login/login.route.js"></script>
+			
 	</body>	
-		
-		
 		
 </html>

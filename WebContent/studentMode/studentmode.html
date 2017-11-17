@@ -1,19 +1,17 @@
 		
-
-
-	<!--------------------------------  student course options ---------------------------->
-			
-		<div id="course_list" class="wrapper">
-			 <span id="plusButton" class="glyphicon glyphicon-plus" data-ng-click="createCourse()"></span> 
-			 
-			 <div data-ng-repeat="x in studentCourses" class="student" id="#div-{{x.id}}">course-{{x.name}}<br>
-				 instructor:{{x.instructor.firstname}}&nbsp;{{x.instructor.lastname}}<br>
-				 <button id="logBtn"  class="glyphicon glyphicon-log-in" data-ng-click="courseInfo($index)"></button>
-				 <div class="courseUpdate">
-				 	 <button>delete</button>
-					 <button>update</button>
-				 </div>
-				
+<!--------------------------------  student course options ---------------------------->
+					
+	<div id="course_list" class="wrapper">
+		 <span id="plusButton" class="glyphicon glyphicon-plus" data-ng-click="createCourse()"></span> 
+		 
+		 <div data-ng-repeat="x in studentCourses" class="student" id="#div-{{x.id}}">course-{{x.name}}<br>
+			 instructor:{{x.instructor.firstname}}&nbsp;{{x.instructor.lastname}}<br>
+			 <button id="logBtn"  class="glyphicon glyphicon-log-in" data-ng-click="courseInfo($index)"></button>
+			 <div class="courseUpdate">
+			 	 <button>delete</button>
+				 <button>update</button>
 			 </div>
-		
-		</div>
+			
+		 </div>
+	
+	</div>

@@ -1,0 +1,66 @@
+ 
+ 			<!--------------------------------  student Course Selected ---------------------------->
+ 
+  <div id="studentCourse">
+	  	
+			<div class="container" >
+			  <div class="row">
+			    <nav class="col-sm-3" id="myScrollspy">
+			      <ul class="nav nav-pills nav-stacked">
+			        <li class="active">
+		        		<a data-ng-click="gotoGeneral()">General</a></li>
+			        <li><a data-ng-click="gotoSyllabus()">Syllabus</a></li>
+			        <li><a data-ng-click="gotoSchedule()">Schedule</a></li>
+			        <li><a data-ng-click="gotoPresentations()">Presentations</a></li>
+			        <li><a data-ng-click="gotoMessage()">Message Board</a></li> 
+			      </ul>
+			    </nav>
+			    <div class="col-sm-9" >
+			      <div id="general">    
+			      		<div style="float:right">
+			      			<button>register</button>
+			      		</div>
+			       		<div id="studentDescription">
+								<h1>General</h1>
+								<h1>{{courseSelected.name}}</h1>
+								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
+						         <h4>{{courseSelected.startdate}}</h4>
+						         <div>
+									<p>{{courseSelected.description}}</p>
+							
+							    </div>
+								
+						</div>
+			      </div>
+			      <div id="syllabus"> 
+			       		<div>
+							<h2>Syllabus</h2>
+							<p>{{courseSelected.syllabus}}</p>
+						</div>
+			      </div>        
+			      <div id="schedule">         
+			        <div id="strudentScheduale">
+							<h1>Schedule</h1>
+							<h1>{{courseSelected.name}}</h1>
+							<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
+							<p>{{scheduleSelected.date + " "+scheduleSelected.starthour +" "+scheduleSelected.endhour }}</p>
+					</div>
+			      </div>
+			      <div id="presentations">         
+			        	<div id="studentPresentation">
+							 <h1>Presentations</h1>
+								<h1>{{courseSelected.name}}</h1>
+								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
+							
+								
+								<object width="200px" height="200px"></object>
+							
+						</div>
+			      </div>      
+			      <div id="message" style="height: 500px;">         
+			        <p>Massage Board</p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	  </div>
