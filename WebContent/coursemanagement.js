@@ -4,13 +4,35 @@
 		var courseId;
 		var app = angular.module("myApp", []).controller("myCtrl",function($http,$scope,$location,$anchorScroll){
 			
+			//scroller
 			
-			$scope.gotoBottom = function(){
-				  $location.hash('syllabus');
-
-			      // call $anchorScroll()
+			$scope.gotoGeneral = function(){
+				  $location.hash('general');
 			      $anchorScroll();
 			}
+			
+			$scope.gotoSyllabus = function(){
+				  $location.hash('syllabus');
+			      $anchorScroll();
+			}
+
+			$scope.gotoSchedule = function(){
+				  $location.hash('schedule');
+			      $anchorScroll();
+			}
+
+			$scope.gotoPresentations = function(){
+				  $location.hash('presentations');
+			      $anchorScroll();
+			}
+
+			$scope.gotoMessage = function(){
+				  $location.hash('message');
+			      $anchorScroll();
+			}
+
+			
+			
 			
 			$scope.homeButton=function(){
 				$("#login").hide();

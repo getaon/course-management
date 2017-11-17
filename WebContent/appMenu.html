@@ -10,11 +10,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
-		
-
 				
 	     <meta name="viewport" content="width=device-width, initial-scale=1">
-	   
 	   	    
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -25,8 +22,8 @@
 	
 		<!-- css files -->
 			<link rel="stylesheet" type="text/css" href="menu.css">
-			<link rel="stylesheet" type="text/css" href="studentScrol/studentScroll.css">
-			<link rel="stylesheet" type="text/css" href="studentCourse/studentMode.css">
+			<link rel="stylesheet" type="text/css" href="studentCourseInfo/studentScroll.css">
+			<link rel="stylesheet" type="text/css" href="studentMode/studentMode.css">
 			<link rel="stylesheet" type="text/css" href="coursemaker/coursemaker.css">
 			
 		
@@ -80,37 +77,38 @@
 				<p  data-ng-repeat="tag in tags" data-ng-click="Courses($index)">{{tag.name}}</p>
 			</div>			
 
-			<!--------------------------------  student course options ---------------------------->
-			
-		<div id="course_list" class="wrapper">
-			 <span id="plusButton" class="glyphicon glyphicon-plus" data-ng-click="createCourse()"></span> 
-			 
-			 <div data-ng-repeat="x in studentCourses" class="student" id="#div-{{x.id}}">course-{{x.name}}<br>
-				 instructor:{{x.instructor.firstname}}&nbsp;{{x.instructor.lastname}}<br>
-				 <button id="logBtn"  class="glyphicon glyphicon-log-in" data-ng-click="courseInfo($index)"></button>
-				 <div class="courseUpdate">
-				 	 <button>delete</button>
-					 <button>update</button>
-				 </div>
+		<!--------------------------------  student course options ---------------------------->
+					
+				<div id="course_list" class="wrapper">
+					 <span id="plusButton" class="glyphicon glyphicon-plus" data-ng-click="createCourse()"></span> 
+					 
+					 <div data-ng-repeat="x in studentCourses" class="student" id="#div-{{x.id}}">course-{{x.name}}<br>
+						 instructor:{{x.instructor.firstname}}&nbsp;{{x.instructor.lastname}}<br>
+						 <button id="logBtn"  class="glyphicon glyphicon-log-in" data-ng-click="courseInfo($index)"></button>
+						 <div class="courseUpdate">
+						 	 <button>delete</button>
+							 <button>update</button>
+						 </div>
+						
+					 </div>
 				
-			 </div>
-		
-		</div>
+				</div>
+
 
 			<!--------------------------------  student Course Selected ---------------------------->
 			
-	  <div id="studentCourse" data-spy="scroll" data-target="#myScrollspy">
+	  <div id="studentCourse">
 	  	
 			<div class="container" >
 			  <div class="row">
 			    <nav class="col-sm-3" id="myScrollspy">
 			      <ul class="nav nav-pills nav-stacked">
 			        <li class="active">
-		        		<a href="#general">General</a></li>
-			        <li><a href="#syllabus" data-ng-click="gotoBottom()">Syllabus</a></li>
-			        <li><a href="#schedule">Schedule</a></li>
-			        <li><a href="#presentations">Presentations</a></li>
-			        <li><a href="#message">Message Board</a></li>                     
+		        		<a href="#general"  data-ng-click="gotoGeneral()">General</a></li>
+			        <li><a href="#syllabus" data-ng-click="gotoSyllabus()">Syllabus</a></li>
+			        <li><a href="#schedule" data-ng-click="gotoSchedule()">Schedule</a></li>
+			        <li><a href="#presentations" data-ng-click="gotoPresentations()">Presentations</a></li>
+			        <li><a href="#message" data-ng-click="gotoMessage()">Message Board</a></li> 
 			      </ul>
 			    </nav>
 			    <div class="col-sm-9" >
@@ -155,7 +153,7 @@
 							
 						</div>
 			      </div>      
-			      <div id="message">         
+			      <div id="message" style="height: 500px;">         
 			        <p>Massage Board</p>
 			      </div>
 			    </div>
