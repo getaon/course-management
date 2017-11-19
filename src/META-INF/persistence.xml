@@ -11,7 +11,10 @@
 		<class>entity.Student</class>
 		<class>entity.StudentCourse</class>
 		<class>entity.Tag</class>
-
+		<class>entity.Article</class>
+		<class>entity.Chat</class>
+		<class>entity.CourseArticle</class>
+		<class>entity.Schedule</class>
 	
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/coursemanagementsystem"/>
