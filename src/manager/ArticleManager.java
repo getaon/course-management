@@ -5,9 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import org.apache.openjpa.persistence.EntityManagerImpl;
 import entity.Article;
-import entity.Instructor;
-import entity.Student;
-import entity.User;
 
 
 public class ArticleManager {
