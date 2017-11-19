@@ -50,7 +50,7 @@ public class ArticleService {
 	
 	@GET
 	@Path("/addArticle")
-	public Article addArticle(@QueryParam("name")String name,@QueryParam("presentation")byte[] presentation){
+	public Article addArticle(@QueryParam("name")String name,@QueryParam("presentation")String presentation){
 		return ManagerHelper.getArticleManager().addArticle(name,presentation);
 	}
 	@GET

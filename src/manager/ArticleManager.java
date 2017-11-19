@@ -57,7 +57,14 @@ public class ArticleManager {
 		System.out.println("getAllArticlesManager");
 		return (List<Article>)entityManager.createNativeQuery(sql,Article.class).getResultList();
 	}
-	public Article addArticle(String name,byte[] presentation){
+	
+	/**
+	 * function that adds new article to the list
+	 * @param name
+	 * @param presentation
+	 * @return
+	 */
+	public Article addArticle(String name,String presentation){
 		
 			
 		Article article = new Article(name,presentation);
