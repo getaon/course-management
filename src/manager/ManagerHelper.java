@@ -35,5 +35,18 @@ public class ManagerHelper {
 	public static TagManager getTagManager() {
 		return new TagManager(entityManagerFactory.createEntityManager());
 	}
+	public static ArticleManager getArticleManager() {
+		return new ArticleManager(entityManagerFactory.createEntityManager());
+	}
+	
+	public static ChatManager getChatManager() {
+		return new ChatManager(entityManagerFactory.createEntityManager());
+	}
+	public static CourseArticleManager getCourseArticleManager() {
+		return new CourseArticleManager(entityManagerFactory.createEntityManager());
+	}
+	public static ScheduleManager getScheduleManager() {
+		return new ScheduleManager(entityManagerFactory.createEntityManager());
+	}
 	
 }
