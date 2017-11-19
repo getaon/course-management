@@ -52,7 +52,7 @@ public class InstructorManager {
 	 */
 	public List<Instructor> getAllInstructors(){
 		String sql="SELECT i.id,i.firstname,i.lastname,i.email,i.phone,i.user,i.isactive FROM"
-				+ " coursemanagementsystem.instructors i";
+				+ " coursemanagementsystem.instructor i";
 		return (List<Instructor>)entityManager.createNativeQuery(sql,Instructor.class).getResultList();
 	}
 	

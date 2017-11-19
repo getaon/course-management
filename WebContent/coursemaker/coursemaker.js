@@ -1,6 +1,6 @@
 angular.module('myApp').controller("coursemakerCtrl",function($http,$scope){
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/Instructor/getAllInstructors")
+	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
     .then(function(response) {
     console.log(response.data);
     	$scope.allinstructors = response.data;
@@ -12,7 +12,7 @@ angular.module('myApp').controller("coursemakerCtrl",function($http,$scope){
     	$scope.allstudents = response.data;
     });
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/Tag/getAllTags")
+	$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
 	.then(function(response) {
 		console.log(response.data);
 		$scope.alltags = response.data;

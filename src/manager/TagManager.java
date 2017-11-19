@@ -27,7 +27,7 @@ public class TagManager {
 				String sql = "select id,name from coursemanagementsystem.tag ";
 				return (List<Tag>)entityManager.createNativeQuery(sql,Tag.class).getResultList();
 			}catch (Exception e) { 
-				// TODO: handle exception
+				
 				return null;
 			}
 			
