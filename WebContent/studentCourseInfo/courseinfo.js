@@ -1,4 +1,4 @@
-angular.module('myApp').controller("studentCourseInfo",function($http,$scope){
+angular.module('myApp').controller("studentCourseInfo",function($http,$scope,$location,$interval,$anchorScroll){
 	
 	//scroller
 	

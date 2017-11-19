@@ -1,10 +1,10 @@
-angular.module('myApp').controller("login",function($http,$scope){
+angular.module('myApp').controller("login",function($http,$scope,$location){
 	
 	$scope.login = function(){
 		   $http.get("http://localhost/coursemanagementsystem/rest/user/getFullUser?"
 		   		   +"username="+$scope.username
 		   		   +"&password="+$scope.password)
-			      .then(function(response, $location) {
+			      .then(function(response) {
 	     var fullUser = response.data;
 		console.log(fullUser);
 		userId = fullUser.id;
@@ -32,9 +32,10 @@ angular.module('myApp').controller("login",function($http,$scope){
 							
 						});
 						
-						window.location = 'http://localhost/coursemanagementsystem/appMenu.html#!/student';
-						
-						
+						$location.path("/student");
+
+/*						window.location = 'http://localhost/coursemanagementsystem/appMenu.html#!/student';
+*/						
 						}
 
 				}else

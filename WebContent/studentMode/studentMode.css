@@ -42,3 +42,7 @@
 .courseUpdate{
 	display: none;
 }
+
+#plusButton{
+	display: none;
+}
