@@ -1,5 +1,15 @@
-angular.module('myApp').controller("studentMode",function($http,$scope){
+angular.module('myApp').controller("studentMode",function($http,$scope,$location){
 
+	$("#course_list").show();
+
+	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
+		.then(function(response){
+		$scope.studentCourses=response.data;
+		courseId = $scope.studentCourses.id;
+		console.log($scope.studentCourses);
+		
+	});
+	
 	$scope.courseInfo =function(index){
 		console.log($scope.studentCourses[index].id);
 		$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
@@ -7,13 +17,9 @@ angular.module('myApp').controller("studentMode",function($http,$scope){
 		.then(function(response){
 			$scope.courseSelected = response.data;
 			console.log($scope.courseSelected);
+			
+			$location.path("/studentCourseInfo");
 		});
-		
-		$("#course_list").hide();
-		$("#studentCourse").show();
-		$(".sidemenu").hide();
-		
-
 	}			
 	
 	$scope.createCourse = function(){

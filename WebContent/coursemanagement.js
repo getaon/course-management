@@ -6,23 +6,22 @@ var app = angular.module("myApp", ["ngRoute"]).controller("myCtrl",
 			function($http,$scope,$location,$interval,$anchorScroll){
 		
 		$scope.homeButton=function(){
-			$("#login").hide();
+			$("#headmenu").show();
 			$(".sidemenu").show();
-			$("#studentCourse").hide();
-			$("#course_list").show();
-			$(".div2").hide();
-			$(".courseUpdate").hide();
-			$("#pluseButton").hide();
+			
+			if(usertype == "student"){
+				$("#pluseButton").hide();
 
+			}
+			
+			$location.path('/student');
 		}
 		
 		$scope.logout=function(){
-			$("#login").show();
+			$("#headmenu").hide();
 			$(".sidemenu").hide();
-			$("#course_list").hide();
-			$("#studentCourse").hide();
-			$("#course_list").hide();
-			$(".div2").hide();
+			
+			$location.path('/');
 		}
 		
 		
