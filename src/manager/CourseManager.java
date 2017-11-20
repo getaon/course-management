@@ -86,7 +86,6 @@ public class CourseManager {
 					" inner join coursemanagementsystem.user u on s.user = u.id"+
 					" where s.user ="+user+" and c.isactive = 1";
 		   return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
-
 		   
 	}
 	
@@ -177,15 +176,15 @@ public class CourseManager {
 					
 		try{
 		
-		Course course = new Course(name, instructor, description, date , location, tag, articles,isactive);
-		create(course);
-		return course;
-	}catch (Exception e) {
-		e.printStackTrace();
-		return null;
-	}
+			Course course = new Course(name, instructor, description, date , location, tag, articles,isactive);
+			create(course);
+			return course;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	
-}
+	}
 	/**
 	 * this function gives the course are selected by user
 	 * @param id
