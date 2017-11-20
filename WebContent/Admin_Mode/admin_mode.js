@@ -1,6 +1,6 @@
 angular.module('myApp').controller("adminMode",function($http,$scope){
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/Instructor/getAllInstructors")
+	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
 		.then(function(response){
 			$scope.instructor = response.data;
 			console.log($scope.instructor);
