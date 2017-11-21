@@ -47,11 +47,11 @@ public class CourseManager {
 	 * @return
 	 */
 	public List<Course>getAllCourses(){
-		String sql = "SELECT c.id,c.name,c.instructor,c.description,c.location, "
-				 	+" c.tag,c.article,c.isactive FROM coursemanagementsystem.course c "
-				 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
-				 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
-				 	+ " where c.isactive = 1 and i.isactive = 1 ";
+		String sql = " SELECT c.id,c.name,c.instructor,c.description,c.location, "
+			 	+ " c.tag,c.article,c.isactive FROM coursemanagementsystem.course c "
+			 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
+			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
+			 	+ " where c.isactive = 1 and i.isactive = 1 ";
 		System.out.println("getAllCoursesManager");
 		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
 	}

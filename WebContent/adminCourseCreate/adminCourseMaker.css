@@ -8,4 +8,17 @@
 	margin-top: 10px;
 	margin-left:0px;
 	width: 100%; 
+	background-color: gray;
 }
+
+.instructor,.Attendants,
+		.descriptionAdmin,.tagAdmin,.articleAdmin{
+	margin: 10px;
+}
+		
+		
+#general,#syllabus, #schedule, #presentations,#message{
+	margin-top: 20px;
+	min-height: 100px;
+	min-width: 100px;
+}		

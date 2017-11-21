@@ -1,7 +1,34 @@
-angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScope){
+angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScope,$location,$anchorScroll){
 	
 	$('#sideNav').hide();
 	$('#view').css("width", "100%");
+	
+	//scroller
+	
+	$scope.gotoGeneral = function(){
+		  $location.hash('general');
+	      $anchorScroll();
+	}
+	
+	$scope.gotoSyllabus = function(){
+		  $location.hash('syllabus');
+	      $anchorScroll();
+	}
+
+	$scope.gotoSchedule = function(){
+		  $location.hash('schedule');
+	      $anchorScroll();
+	}
+
+	$scope.gotoPresentations = function(){
+		  $location.hash('presentations');
+	      $anchorScroll();
+	}
+
+	$scope.gotoMessage = function(){
+		  $location.hash('message');
+	      $anchorScroll();
+	}
 
 	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
     .then(function(response) {
