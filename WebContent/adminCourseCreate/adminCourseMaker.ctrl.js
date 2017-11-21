@@ -1,5 +1,8 @@
-angular.module('myApp').controller("coursemakerCtrl",function($http,$scope){
+angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScope){
 	
+	$('#sideNav').hide();
+	$('#view').css("width", "100%");
+
 	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
     .then(function(response) {
     console.log(response.data);

@@ -3,7 +3,7 @@
 		$routeProvider
 	
 		.when("/instructorCourse", {
-	    	templateUrl : "Admin_Mode/instructorCourse.html",
+	    	templateUrl : "Admin_Mode/adminMode.html",
 	        controller : "adminMode"
 	    })
 	});

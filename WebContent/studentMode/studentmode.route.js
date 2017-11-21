@@ -1,9 +1,9 @@
 
-	angular.module('myApp').config(function($routeProvider) {
+	angular.module("myApp").config(function($routeProvider) {
 		$routeProvider
 	
 		.when("/student", {
-	    	templateUrl : "./studentMode/studentmode.html",
+	    	templateUrl : "studentMode/studentmode.html",
 	        controller : "studentMode"
 	    
 	    })
