@@ -2,7 +2,6 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 		
 	
 	$('#sideNav').show();
-	
 		
 	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
 		.then(function(response){
