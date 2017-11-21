@@ -20,7 +20,6 @@ angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScop
 		console.log(response.data);
 		$scope.alltags = response.data;
 	});	
-	
 	$http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
 	.then(function(response) {
 		console.log(response.data);
