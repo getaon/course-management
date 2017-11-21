@@ -25,7 +25,7 @@ var app = angular.module("myApp", ["ngRoute"]).controller("myCtrl",
 		}
 		
 		
-		   $http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
+	   $http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
 			.then(function(response){
 				$scope.tags = response.data;
 				console.log($scope.tags);
