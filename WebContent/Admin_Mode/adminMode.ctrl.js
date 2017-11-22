@@ -20,7 +20,7 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 			})
 		}
 	  
-
+	 
 		$scope.courseInfo =function(index){
 			console.log($scope.adminCourses[index].id);
 			$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
@@ -39,5 +39,26 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 			$location.path('/createCourse');
 		}
 	
+		$scope.remove=function(index){
+			var confirm1 =confirm('Are you sure?');
+			
+			if(confirm1==true){					
+				var course = $scope.adminCourses[index].id;
+				console.log(course);
+				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
+				.then(function(response){
+					console.log(response.data);
+						var response =response.data;
+					
+						$http.get("http://localhost/coursemanagementsystem/rest/Course/getAllCourses")
+						.then(function(response){
+							$scope.course = response.data;
+							console.log($scope.course);
+						});
+						
+				});
+			}
+		
+		}
 	
 });

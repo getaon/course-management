@@ -107,13 +107,12 @@ public class CourseManager {
 	 * @return
 	 */
 	public Reply removeCourse(int id){
-		id=3;
 		System.out.println("id ---> "+id);
 		try{
 			String sql = "update coursemanagementsystem.course "+
-					" set isactive = 0 "
+						" set isactive = 0 "
 					+ " where id ="+id;
-			return (Reply)entityManager.createNativeQuery(sql,Course.class).getSingleResult();
+			return (Reply)entityManager.createNativeQuery(sql,Course.class);
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
