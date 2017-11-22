@@ -1,4 +1,4 @@
-angular.module("myApp").controller("login",function($http,$scope,$location){
+angular.module("myApp").controller("login",function($http,$scope,$location,$rootScope){
 	
 	$scope.login = function(){
 		   $http.get("http://localhost/coursemanagementsystem/rest/user/getFullUser?"
@@ -9,21 +9,24 @@ angular.module("myApp").controller("login",function($http,$scope,$location){
 		console.log(fullUser);
 		userId = fullUser.id;
 	    usertype = fullUser.type;
+	    $rootScope.loginName = fullUser.username; 
 	    console.log(userId);
 	    	
 	    	if(fullUser.username == "undefined"){	
 				alert("pleas enter user name and password");
 				
-			}else if(fullUser != null){
+			}
+	    	if(fullUser != null){
+			
+				if(usertype == "student"){
 					$("#layout").show();
 					$("#sideNav").show();
-			}
-				if(usertype == "student"){
-						
+			
 						$location.path("/student");
 
 				}else if(usertype == "instructor"){
-					
+					$("#layout").show();
+					$("#sideNav").show();
 					$location.path("/instructorCourse");
 
 				}else if(usertype == "admin"){
@@ -32,9 +35,9 @@ angular.module("myApp").controller("login",function($http,$scope,$location){
 				}else{
 						alert("user name and password incorrect");
 						
-						$("#forgetpassword").show();
-		 		}
-			 	});
+		 		 }
+	    		} 
+		      });
 			}		
 	
 });
