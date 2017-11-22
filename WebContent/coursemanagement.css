@@ -5,6 +5,8 @@
 	background-color: gray;
 	color: white;
 	display: none;
+	position: fixed;
+	
 }
 
 #layout > span{
