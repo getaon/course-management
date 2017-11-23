@@ -1,6 +1,7 @@
 #layout{
 	background-color: PaleTurquoise;
 	color:DodgerBlue; 
+	display: none;
 	
 }
 
@@ -8,10 +9,9 @@
     list-style-type: none;
      height: 100%;
      padding-top: 10%;
-     
     background-color: #f1f1f1;
    	float: left;
-    display: block;
+	display: none;
     width: 20%;
 }
 
