@@ -13,6 +13,10 @@
 		<link rel="stylesheet" type="text/css" href="studentCourseInfo/studentScroll.css">
 		<link rel="stylesheet" type="text/css" href="adminCourseInfo/adminCourseInfo.css">
 		
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+		<link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Open+Sans">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>	
 		
@@ -37,6 +41,7 @@
  	
 	</head>
 	<body   data-ng-controller="myCtrl">
+
 	<div>
 		<nav class="navbar navbar-inverse navbar-fixed-top" id="layout"  >
 		  <div class="container-fluid">
@@ -72,6 +77,34 @@
 								
 		</ul>
 		</div>
+
+	
+		<!-- Navbar -->
+<div class="w3-top" id="layout">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);"  data-ng-click="openNav()"><i class="fa fa-bars"></i></a>
+  <a class="w3-bar-item w3-button w3-padding-large w3-theme-d4 w3-padding-large w3-hover-blue"  title="home" data-ng-click="homeButton()"><i class="fa fa-home w3-margin-right"></i></a>
+  <a class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-blue" title="Logout"  data-ng-click="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></a><br><br>
+  <div id="sideNav">
+	  <i data-ng-click="myCourses()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue"> my Courses</i> 
+	  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue" data-ng-repeat="tag in tags" 
+					data-ng-click="chooseTag($index)"
+						style="display: inline-block;">{{tag.name}}</i>
+  </div>
+ </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+  <a class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home w3-margin-right" data-ng-click="homeButton()"></i>HOME</a>
+  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="myCourses()"> my Courses</i></a>
+  <a><i class="w3-bar-item w3-button w3-padding-large" data-ng-repeat="tag in tags" 
+					data-ng-click="chooseTag($index)"
+						style="display: block; color: white;">{{tag.name}}</i></a>
+  <a class="w3-bar-item w3-button w3-padding-large" data-ng-click="logout()"><i class="fa fa-power-off" >Logout</i></a>
+</div>
+		
+>>>>>>> 34aea05ce066c8a078cf2f7d83396e995b503361
 		<div id="view" data-ng-view></div>
 			
 			
