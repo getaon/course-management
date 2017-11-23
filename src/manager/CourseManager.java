@@ -93,7 +93,7 @@ public class CourseManager {
 	 * function that gives you the active courses from DB
 	 * @return
 	 */
-	public List<Course>geACtiveCourses(){
+	public List<Course>getActiveCourses(){
 		String sql = "SELECT c.id,c.name,c.instructor,c.description,c.date,"+
 					" c.location,c.tag,c.articles,c.isactive FROM course c"+
 					" where current_date() <= c.startdate where isactive = 1";
@@ -168,14 +168,14 @@ public class CourseManager {
 	 * @return
 	 */
 	public Course addCourse(String name,int instructorid,String description,String date,String location,
-			int tagid,String articles,boolean isactive){
+			int tagid,String article,boolean isactive){
 		
 			Instructor instructor = ManagerHelper.getInstructorManager().getById(instructorid);
 			Tag tag = ManagerHelper.getTagManager().getTagById(tagid);
 					
 		try{
 		
-			Course course = new Course(name, instructor, description, date , location, tag, articles,isactive);
+			Course course = new Course(name, instructor, description, date , location, tag, article,isactive);
 			create(course);
 			return course;
 		}catch (Exception e) {
