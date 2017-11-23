@@ -12,6 +12,8 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>	
 		
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		
 		<!-- resources-->		
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,31 +33,40 @@
  	
 	</head>
 	<body   data-ng-controller="myCtrl">
-		<div id="layout" align="center">
-			 <span class="glyphicon glyphicon-home" data-ng-click="homeButton()"></span>
-		 	 
-		 	 <span class="fa fa-bell"  style="font-size:24px"></span>
-		 	 
-		 	 <span class="fa fa-edit"  style="font-size:24px"></span>
-
-		 	 <span class="glyphicon glyphicon-download"></span>
-		 	 
-		 	 <span class="glyphicon glyphicon-upload"></span>
-			
-			 <span>{{loginName}}</span>
-			 
- 		 	<span class="glyphicon glyphicon-log-out" data-ng-click="logout()"></span>
-			 
-		</div>
+	
+		<nav class="navbar navbar-inverse navbar-fixed-top" id="layout"  >
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" >At&t</a>
+		    </div>
+		    <ul class="nav navbar-nav"  align="center">
+				 <li><a class="glyphicon glyphicon-home" data-ng-click="homeButton()"></a></li>
+			 	 
+			 	 <li><a class="fa fa-bell"  style="font-size:36px"></a></li>
+			 	 
+			 	 <li><a class="fa fa-edit"  style="font-size:36px"></a></li>
+	
+			 	 <li><a class="glyphicon glyphicon-download"></a></li>
+			 	 
+			 	 <li><a class="glyphicon glyphicon-upload"></a></li>
+				
+				 <li><a>{{loginName.firstname+ " "}}{{loginName.firstname}}</a></li>
+				 
+	 		 	<li><a class="glyphicon glyphicon-log-out" data-ng-click="logout()"></a> Log out</li>
+		    </ul>
+		  </div>
+		</nav>
 		
-		<div id="sideNav">
-			<input type="search">
-				<p data-ng-click="myCourses()"> my Courses</p>
-
-		<p data-ng-repeat="tag in tags" 
-				data-ng-click="chooseTag($index)">{{tag.name}}</p>
-					
-		</div>
+		<ul id="sideNav" class="w3-sidebar w3-bar-block">
+			<img class="logo" alt="At&t" src="world-wide-web.jpg"> 
+				<input type="search">
+					<li data-ng-click="myCourses()" class="w3-bar-item w3-button"> my Courses</li>
+	
+				<li data-ng-repeat="tag in tags" 
+					data-ng-click="chooseTag($index)"
+						class="w3-bar-item w3-button">{{tag.name}}</li>
+								
+		</ul>
 		
 		<div id="view" data-ng-view></div>
 			

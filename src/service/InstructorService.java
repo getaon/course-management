@@ -11,12 +11,21 @@ import manager.ManagerHelper;
 @Path("/instructor")
 public class InstructorService {
 
+
+	
+	@GET
+	@Path("/getById")
+	public Instructor getById(@QueryParam("id") int id){
+		return ManagerHelper.getInstructorManager().getById(id);
+	}
+	
+	
 	@GET
 	@Path("/getAllInstructors")
 	public List<Instructor>getAllInstructors(){
 		return ManagerHelper.getInstructorManager().getAllInstructors();
 	}
-	
+
 	@GET
 	@Path("/addInstructor")
 	public Instructor addInstructor(@QueryParam("firstname")String firstname,

@@ -1,5 +1,5 @@
 
-#courseTable{
+/* #courseTable{
 	width: 100%;
 	padding: 10px;	
 }
@@ -11,14 +11,9 @@
 	background-color: gray;
 }
 
-.instructor,.Attendants,
-		.descriptionAdmin,.tagAdmin,.articleAdmin{
-	margin: 10px;
-}
-		
-		
-#general,#syllabus, #schedule, #presentations,#message{
-	margin-top: 20px;
-	min-height: 100px;
-	min-width: 100px;
-}		
+.col-sm-3{
+	height: 100%;
+	background-color: black;
+	color: white;
+	
+} */
