@@ -1,8 +1,11 @@
 angular.module('myApp').controller("studentCourseInfo",function($http,$scope,$location,$interval,$anchorScroll){
 	
 	$('#sideNav').hide();
-	$('#view').css("width", "100%");
+	$('#scrollerNav').show();
 
+	$('#header').hide();
+	$('#scroller').show();
+	
 	//scroller
 	
 	$scope.gotoGeneral = function(){

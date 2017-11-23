@@ -1,7 +1,10 @@
 angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScope,$location,$anchorScroll){
 	
 	$('#sideNav').hide();
-	$('#view').css("width", "100%");
+	$('#scrollerNav').show();
+
+	$('#header').hide();
+	$('#scroller').show();
 	
 	//scroller
 	

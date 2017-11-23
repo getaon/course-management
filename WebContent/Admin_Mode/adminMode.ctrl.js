@@ -2,6 +2,10 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 		
 	
 	$('#sideNav').show();
+	$('#scrollerNav').hide();
+
+	$('#header').show();
+	$('#scroller').hide();
 	
 	$('#datepicker').show();
 	$('#dateExp').hide();
