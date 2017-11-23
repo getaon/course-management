@@ -63,15 +63,16 @@ angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$loca
 		.then(function(response) {
 			console.log(response.data);
 			$scope.newcourse = response.data;
-			console.log($scope.newcourse);
+			console.log("newcourse---->"+$scope.newcourse);
+			console.log("response.msg---->"+response.data.msg);
 			
-			if(response.msg=="ok"){
+			if(response.data.msg=="ok"){
 	    		$scope.courseSelected1.name = $scope.name;
-	    		$scope.courseSelected1.instructor = $scope.instructor;
+	    		$scope.courseSelected1.instructor.id = $scope.instructor;
 	    		$scope.courseSelected1.location = $scope.location;
 	    		$scope.courseSelected1.description = $scope.description;
-	    		$scope.courseSelected1.date = $scope.date;
-	    		$scope.courseSelected1.tag = $scope.tag;
+	    		$scope.courseSelected1.startdate = $scope.date;
+	    		$scope.courseSelected1.tag.id = $scope.tag;
 	    		$scope.courseSelected1.article = $scope.article;
 				
 			 }else{

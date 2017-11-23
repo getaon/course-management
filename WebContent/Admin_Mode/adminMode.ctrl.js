@@ -2,6 +2,9 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 		
 	
 	$('#sideNav').show();
+	
+	$('#datepicker').show();
+	$('#dateExp').hide();
 		
 	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
 		.then(function(response){
@@ -23,7 +26,8 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 
 	 	$scope.courseEdit =function(index){
 	 		
-
+	 		$('#datepicker').hide();
+	 		$('#dateExp').show();
 			/*function getSelectedIndex(id){
 				for(var i=0; i<$scope.adminCourses.length; i++)
 					if($scope.adminCourses[i].id==id)
@@ -39,14 +43,22 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 				console.log($scope.courseSelected1);
 				$rootScope.courseSelected1 =  response.data;
 				
-				var x = $scope.courseSelected1;
-				$scope.name = x.name;
-				$scope.instructor = x.instructor;
-				$scope.location = x.location;
-				$scope.description = x.description;
-				$scope.date = x.date;
-				$scope.tag = x.tag;
-				$scope.article = x.article;
+				$scope.name = $scope.courseSelected1.name;
+				$scope.allinstructors = $scope.courseSelected1.instructor.id;
+				$scope.location = $scope.courseSelected1.location;
+				$scope.description = $scope.courseSelected1.description;
+				$scope.date = $scope.courseSelected1.startdate;
+				$scope.dateExpretion = $scope.courseSelected1.startdate;
+				$scope.alltags = $scope.courseSelected1.tag.id;
+				$scope.article = $scope.courseSelected1.article;
+				
+				console.log("name--->"+$scope.name);
+				console.log("instructor--->"+$scope.allinstructors);
+				console.log("location--->"+$scope.location);
+				console.log("description--->"+$scope.description);
+				console.log("date--->"+$scope.date);
+				console.log("tag--->"+$scope.alltags);
+				console.log("article--->"+$scope.article);
 				
 				$location.path('/CourseEdit');
 			});
