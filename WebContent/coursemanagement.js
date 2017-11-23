@@ -10,6 +10,23 @@ var app = angular.module("myApp", ["ngRoute"]).controller("myCtrl",
 		console.log($scope.tags);
 	});
 	
+			$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
+			.then(function(response){
+				$rootScope.studentCourses =response.data;
+			courseId = $rootScope.studentCourses.id;
+			console.log($rootScope.studentCourses);
+			
+		});
+		
+		 $scope.myCourses = function(){
+				$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCourses?"
+						+"user="+userId)
+				.then(function(response){
+					$rootScope.studentCourses = response.data;
+					
+				})
+		}
+		  
 	  $scope.chooseTag = function(index){
 			console.log($scope.tags[index].id);
 

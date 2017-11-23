@@ -3,7 +3,7 @@ angular.module("myApp").controller("studentMode",function($http,$scope,$location
 	
 	$('#sideNav').show();
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
+/*	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
 		.then(function(response){
 		$scope.studentCourses=response.data;
 		courseId = $scope.studentCourses.id;
@@ -18,8 +18,8 @@ angular.module("myApp").controller("studentMode",function($http,$scope,$location
 				$scope.studentCourses = response.data;
 				
 			})
-		}
-	  
+	}
+	  */
 
 		$scope.courseInfo =function(index){
 			console.log($scope.studentCourses[index].id);
