@@ -37,7 +37,7 @@
  	
 	</head>
 	<body   data-ng-controller="myCtrl">
-	
+	<div>
 		<nav class="navbar navbar-inverse navbar-fixed-top" id="layout"  >
 		  <div class="container-fluid">
 		    <div class="navbar-header">
@@ -54,7 +54,7 @@
 			 	 
 			 	 <li><a class="glyphicon glyphicon-upload"></a></li>
 				
-				 <li><a>{{loginName.firstname+ " "}}{{loginName.firstname}}</a></li>
+				 <li><a>{{loginName.firstname+ " "}}{{loginName.lastname}}</a></li>
 				 
 	 		 	<li><a class="glyphicon glyphicon-log-out" data-ng-click="logout()"></a> Log out</li>
 		    </ul>
@@ -71,7 +71,7 @@
 						class="w3-bar-item w3-button">{{tag.name}}</li>
 								
 		</ul>
-		
+		</div>
 		<div id="view" data-ng-view></div>
 			
 			
