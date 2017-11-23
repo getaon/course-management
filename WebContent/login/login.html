@@ -2,15 +2,22 @@
 		
 		<!-------------------------------- login ---------------------------->
 		
-	    <div id="login" align="center">
-		      <h1>Login to Web App</h1>
-			      <form>
-			        <p><input type="text" placeholder="Username" data-ng-model="username"></p>
-			        <p><input type="password" placeholder="Password"  data-ng-model="password"></p>
-			        <p data-ng-click="login()"><input type="button" value="Login"></p>
-			      </form>
-		      
-		        <div class="login-help">
-		    	  <p>Forgot your password? <a>Click here to reset it</a>.</p>
-		    	</div>
-		    </div>
+		    
+		    <div class="loginPage">
+	    <div class="logincontent">
+	        <div class="loginheading">
+	            Course-Management System
+	        </div>
+	        <label for="txtUserName">
+	            Username:</label>
+	        <input type="text" placeholder="Username" data-ng-model="username" />
+	        <label for="txtPassword">
+	            Password:</label>
+	        <input type="password" placeholder="Password"  data-ng-model="password" />
+	        <div class="loginremember">
+	            <input type="checkbox" id="chbRemember" name="chbRemember" /><label class="check"
+	                for="chbRemember">Remember me next time</label>
+	            <input type="submit" value="Login" data-ng-click="login()" />
+	        </div>
+	    </div>
+	</div>  
