@@ -47,10 +47,10 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 				.then(function(response){
-					console.log(response.data);
-						var response =response.data;
+					var response1 =response.data;
+					console.log(response1);
 					
-						$http.get("http://localhost/coursemanagementsystem/rest/Course/getAllCourses")
+						$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
 						.then(function(response){
 							$scope.course = response.data;
 							console.log($scope.course);
