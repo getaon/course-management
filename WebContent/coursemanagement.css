@@ -6,6 +6,8 @@
 
 #layout{
 	display: none;
+	height: 20%;
+	width: 100%;
 }
 
 #sideNav {
@@ -20,6 +22,7 @@
 	position: initial;
 	float: right;
 	width: 100%;
+	height: 80%;
     margin-top: 3.5%;
 }
 
@@ -30,5 +33,6 @@
 .CourseDetail{
 	width: 80%;
 	float: right;
+	position: absolute;
 }
 
