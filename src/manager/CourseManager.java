@@ -107,7 +107,6 @@ public class CourseManager {
 	 * @return
 	 */
 	public Reply removeCourse(int id){
-		id=3;
 		System.out.println("id ---> "+id);
 		try{
 			String sql = "update coursemanagementsystem.course "+
