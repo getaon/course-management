@@ -5,7 +5,7 @@
 	    name="coursemanagementsystem" 
 	    transaction-type="RESOURCE_LOCAL">
 		<class>entity.User</class>
-		<class>entity.Course</class>
+		<class>entity.Course </class>
 		<class>entity.CourseInstructor</class>
 		<class>entity.Instructor</class>
 		<class>entity.Student</class>

@@ -12,9 +12,9 @@ public class Course {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id; 
 	private String name;
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name="instructor")
 	private Instructor instructor;
 	private String description;
