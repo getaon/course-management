@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Chat {
-	
+	    
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
