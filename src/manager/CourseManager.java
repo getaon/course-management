@@ -47,11 +47,11 @@ public class CourseManager {
 	 * @return
 	 */
 	public List<Course>getAllCourses(){
-		String sql = "SELECT c.id,c.name,c.instructor,c.description,c.location, "
-				 	+"c.tag,c.article,c.isactive FROM coursemanagementsystem.course c "
-				 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
-				 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
-				 	+ " where c.isactive = 1 and i.isactive = 1 ";
+		String sql = " SELECT c.id,c.name,c.instructor,c.description,c.location, "
+			 	+ " c.tag,c.article,c.isactive FROM coursemanagementsystem.course c "
+			 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
+			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
+			 	+ " where c.isactive = 1 and i.isactive = 1 ";
 		System.out.println("getAllCoursesManager");
 		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
 	}
@@ -107,13 +107,12 @@ public class CourseManager {
 	 * @return
 	 */
 	public Reply removeCourse(int id){
-		id=3;
 		System.out.println("id ---> "+id);
 		try{
 			String sql = "update coursemanagementsystem.course "+
-					" set isactive = 0 "
+						" set isactive = 0 "
 					+ " where id ="+id;
-			return (Reply)entityManager.createNativeQuery(sql,Course.class).getSingleResult();
+			return (Reply)entityManager.createNativeQuery(sql,Course.class);
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;

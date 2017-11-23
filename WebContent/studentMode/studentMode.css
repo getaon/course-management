@@ -1,48 +1,29 @@
-#button{
-	 margin-left: 50px;
-	 color: black;
-}
-
 .wrapper {
-  width: 85%;
   overflow: hidden;
-  background: skyblue;	
   margin: 20px auto;
   padding: 20px;
-  color: #ff0000;
+  color: white;
+  width: 100%;
+  float: right;
 }
-
 .student {
-	padding: 0px;
+	padding: 20px;
 	margin: 0px;
 	float: left;
-	width:20%;
+	width:200px;
 	height: 200px;
 	background: green;
 	margin: 40px 40px  0px 55px;
 }
-#div{
-	float: left;
-	padding-right: 25px;
-	margin-left: 300px;
-}
-#div1{
-	float: right;
-	padding-left: 25px;
-	margin-right: 500px;
-}
-#logBtn{color:black;}
 
-#course_list{
-	display: none;
-	width: 85%;
-	float: right;
-}
+#logBtn{color:black; margin-left: 50px;margin-top:50px;}
 
 .courseUpdate{
 	display: none;
 }
 
 #plusButton{
+	height:24px;
 	display: none;
+	
 }

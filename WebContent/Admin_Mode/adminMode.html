@@ -1,0 +1,26 @@
+
+	<a class="btn btn-info btn-lg" style="float: left;" data-ng-click="createCourse()">
+         <span class="glyphicon glyphicon-plus"></span> add 
+     </a>
+	
+	
+	<div id="course_list" class="wrapper">
+		 
+ 		<div data-ng-repeat="course in adminCourses" 
+		 		class="student" id="#div-{{x.id}}">
+		 		
+		 		<div dir="rtl" style="float: right;">
+ 					  <span class="glyphicon glyphicon-trash" data-ng-click="remove($index)"></span><br>
+					  <span class="glyphicon glyphicon-pencil" data-ng-click="edit($index)"></span>
+				 </div>
+			 
+		 		course-{{course.name}}<br><br>
+			    instructor:{{course.instructor.firstname}}&nbsp;
+			    {{course.instructor.lastname}}<br>
+			    
+			 <button id="logBtn"  class="glyphicon glyphicon-log-in"
+			 			 data-ng-click="courseInfo($index)"></button>
+			
+		 </div>
+	
+	</div>

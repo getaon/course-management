@@ -1,8 +1,9 @@
-	angular.module('myApp').config(function($routeProvider) {
+angular.module("myApp").config(function($routeProvider) {
 		$routeProvider
 	
 		.when("/", {
 	    	templateUrl : "login/login.html",
 	        controller : "login"
-	    })
-	});
+		})
+	    
+});

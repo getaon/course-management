@@ -6,6 +6,7 @@ import org.apache.openjpa.persistence.EntityManagerImpl;
 
 import entity.Course;
 import entity.Instructor;
+import entity.Student;
 import entity.User;
 import manager.Reply;
 
@@ -42,7 +43,7 @@ public class InstructorManager {
 	 * @return
 	 */
 	public Instructor getById(Integer id) {
-		return entityManager.find(Instructor.class, id);
+		return (Instructor)entityManager.find(Instructor.class, id);
 	}
 
 	/**

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html   data-ng-app="myApp">
+	<head>
+	<title>course management</title>
+
+		<link rel="stylesheet" type="text/css" href="coursemanagement.css">	
+		<link rel="stylesheet" type="text/css" href="login/login.css">
+		<link rel="stylesheet" type="text/css" href="studentMode/studentMode.css">
+		<link rel="stylesheet" type="text/css" href="studentCourseInfo/studentScroll.css">
+		<link rel="stylesheet" type="text/css" href="adminCourseInfo/adminCourseInfo.css">
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>	
+		
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		
+		<!-- resources-->		
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+				
+	     <meta name="viewport" content="width=device-width, initial-scale=1">
+	     
+	     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">  
+	   	    
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	
+	</head>
+	<body   data-ng-controller="myCtrl">
+	
+		<nav class="navbar navbar-inverse navbar-fixed-top" id="layout"  >
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" >At&t</a>
+		    </div>
+		    <ul class="nav navbar-nav"  align="center">
+				 <li><a class="glyphicon glyphicon-home" data-ng-click="homeButton()"></a></li>
+			 	 
+			 	 <li><a class="fa fa-bell"  style="font-size:36px"></a></li>
+			 	 
+			 	 <li><a class="fa fa-edit"  style="font-size:36px"></a></li>
+	
+			 	 <li><a class="glyphicon glyphicon-download"></a></li>
+			 	 
+			 	 <li><a class="glyphicon glyphicon-upload"></a></li>
+				
+				 <li><a>{{loginName.firstname+ " "}}{{loginName.firstname}}</a></li>
+				 
+	 		 	<li><a class="glyphicon glyphicon-log-out" data-ng-click="logout()"></a> Log out</li>
+		    </ul>
+		  </div>
+		</nav>
+		
+		<ul id="sideNav" class="w3-sidebar w3-bar-block">
+			<img class="logo" alt="At&t" src="world-wide-web.jpg"> 
+				<input type="search">
+					<li data-ng-click="myCourses()" class="w3-bar-item w3-button"> my Courses</li>
+	
+				<li data-ng-repeat="tag in tags" 
+					data-ng-click="chooseTag($index)"
+						class="w3-bar-item w3-button">{{tag.name}}</li>
+								
+		</ul>
+		
+		<div id="view" data-ng-view></div>
+			
+			
+		<script type="text/javascript" src="coursemanagement.js"></script>
+
+		<script type="text/javascript" src="adminCourseInfo/adminCourseInfo.ctrl.js"></script>
+		<script type="text/javascript" src="adminCourseInfo/adminCourseInfo.route.js"></script>
+		
+		<script type="text/javascript" src="Admin_Mode/adminMode.ctrl.js"></script>
+		<script type="text/javascript" src="Admin_Mode/adminmode.route.js"></script>
+
+		<script type="text/javascript" src="adminCourseCreate/adminCourseMaker.ctrl.js"></script>
+		<script type="text/javascript" src="adminCourseCreate/adminCourseMaker.route.js"></script>
+		
+		
+		<script type="text/javascript" src="login/login.route.js"></script>
+		<script type="text/javascript" src="login/login.ctrl.js"></script>
+		
+		<script type="text/javascript" src="studentMode/studentMode.ctrl.js"></script>
+		<script type="text/javascript" src="studentMode/studentmode.route.js"></script>
+
+		<script type="text/javascript" src="studentCourseInfo/courseinfo.ctrl.js"></script>
+		<script type="text/javascript" src="studentCourseInfo/courseinfo.route.js"></script>
+		
+	</body>
+</html>
