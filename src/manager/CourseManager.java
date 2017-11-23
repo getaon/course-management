@@ -110,9 +110,9 @@ public class CourseManager {
 		System.out.println("id ---> "+id);
 		try{
 			String sql = "update coursemanagementsystem.course "+
-						" set isactive = 0 "
-					+ " where id ="+id;
-			return (Reply)entityManager.createNativeQuery(sql,Course.class);
+						 " set isactive = 0 "+
+						 " where id ="+id;
+			return (Reply)entityManager.createNativeQuery(sql,Course.class).getSingleResult();
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
