@@ -43,7 +43,14 @@ public class StudentCourseManager {
 	 * @return
 	 */
 	public StudentCourse getStudentCourseById(Integer id) {
-		return entityManager.find(StudentCourse.class, id);
+		
+		try{
+			StudentCourse studentCourse = entityManager.find(StudentCourse.class, id);
+					return studentCourse;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**

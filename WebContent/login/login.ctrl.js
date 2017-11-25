@@ -33,7 +33,6 @@ angular.module("myApp").controller("login",
 					$http.get("http://localhost/coursemanagementsystem/rest/student/getStudentById?"
 					   		   +"id="+fullUser.id)
 						      .then(function(response) {
-				    	  
 			    	  $rootScope.loginName = response.data;    	  
 						    	  
 			        });

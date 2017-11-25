@@ -55,7 +55,6 @@ public class CourseService {
 	@GET
 	@Path("/removeCourse")
 	public Reply removeCourse(@QueryParam("id")int id){
-		System.out.println("course id ---> "+id);
 		return ManagerHelper.getCourseManager().removeCourse(id);
 	}
 	

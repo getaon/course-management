@@ -1,5 +1,5 @@
 angular.module('myApp').controller("adminMode",
-			function($http,$scope,$location,$rootScope){
+			function($http,$scope,$location,$rootScope,repeatServices){
 	
 	$('#sideNav').show();
 	$('#scrollerNav').hide();
@@ -48,26 +48,26 @@ angular.module('myApp').controller("adminMode",
 			$location.path('/createCourse');
 		}
 	
-		$scope.remove=function(index){
+		$scope.remove = function(index){
 			var confirm1 =confirm('Are you sure?');
 			
 			if(confirm1==true){					
-				var course = $scope.adminCourses[index].id;
-				console.log(course);
-				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
-				.then(function(response){
-					var response1 =response.data;
-					console.log(response1);
+				var course = $scope.Courses[index].id;
+					$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
+					.then(function(response){
+						var reply =response.data;
+						console.log(reply);
 					
-						$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
-						.then(function(response){
-							$scope.course = response.data;
-							console.log($scope.course);
-						});
-						
+					if(reply.id == 0){
+						repeatServices.AllCourses().then(function(response){
+							$rootScope.Courses = response;
+						})
+	
+					}else{
+						console.log("didnt removed");
+					}
 				});
 			}
-		
 		}
 	
 });

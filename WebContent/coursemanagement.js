@@ -9,22 +9,23 @@ var app = angular.module("myApp", ["ngRoute"]);
 		//scroller
 		
 		$rootScope.gotoGeneral = function(){
-			  $location.hash('studentCourse');
+			  $location.hash('CourseDetail');
+			  $("#CourseDetail").css("style","margin-top: 100px;")
 		      $anchorScroll();
 		}
 		
 		$rootScope.gotoSyllabus = function(){
-			  $location.hash('syllabus');
-		      $anchorScroll();
+			  $location.hash('general');
+			  $anchorScroll();
 		}
 
 		$rootScope.gotoSchedule = function(){
-			  $location.hash('schedule');
+			  $location.hash('studentDescription');
 		      $anchorScroll();
 		}
 
 		$rootScope.gotoPresentations = function(){
-			  $location.hash('presentations');
+			  $location.hash('syllabus');
 		      $anchorScroll();
 		}
 
@@ -71,15 +72,15 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 					$rootScope.courseSelected =  response.data;
 					
-					$location.path('/CourseInfo');
+					$location.path('/studentCourseInfo');
 				});
 			}else if(usertype == "instructor"){
 				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
 					$rootScope.studentSelection = response.data;
-
-					$location.path('/studentCourseInfo');
+					
+					$location.path('/CourseInfo');
 				});
 			}
 			
@@ -93,7 +94,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 				$rootScope.Courses = response.data;
 			})
 	     }
-  
+	
 	  $scope.openNav = function () {
 		    var x = document.getElementById("navDemo");
 		    if (x.className.indexOf("w3-show") == -1) {
