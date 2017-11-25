@@ -54,12 +54,11 @@ angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScop
 	});	
 	$scope.create = function(){
 		var date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
-		$http.get("http://localhost/coursemanagementsystem/rest/Course/addCourse?name="+$scope.name
+		$http.get("http://localhost/coursemanagementsystem/rest/course/addCourse?name="+$scope.name
 				+"&instructorid="+$scope.instructor
 				+"&description="+$scope.description
 				+"&date="+date+"&location="+$scope.location
-				+"&tag="+$scope.tag+"&article="+$scope.article
-				+"&syllabus="+$scope.syllabus+"&isactive=true")
+				+"&tag="+$scope.tag+"&article=test&syllabus="+$scope.syllabus+"&isactive=true")
 		.then(function(response) {
 			console.log(response.data);
 			$scope.newcourse = response.data;

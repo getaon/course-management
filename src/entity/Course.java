@@ -24,6 +24,7 @@ public class Course {
 	@JoinColumn(name="tag")
 	private Tag tag;
 	private String article;
+	private String syllabus;
 	private boolean isactive;
 	
 	
@@ -31,7 +32,7 @@ public class Course {
 	}
 	
 	public Course(String name,Instructor instructor,String description,String date,String location,
-					Tag tag,String article,boolean isactive){
+					Tag tag,String article,String syllabus,boolean isactive){
 		this.name=name;
 		this.instructor=instructor;
 		this.description=description;
@@ -39,6 +40,7 @@ public class Course {
 		this.location=location;
 		this.tag=tag;
 		this.article=article;
+		this.syllabus=syllabus;
 		this.isactive=isactive;
 	}
 	
