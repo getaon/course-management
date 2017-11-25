@@ -1,4 +1,5 @@
-angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScope,$location,$anchorScroll){
+angular.module('myApp').controller("courseMaker",
+			function($http,$scope,$rootScope,$location,$anchorScroll,repeatServices){
 	
 	$('#sideNav').hide();
 	$('#scrollerNav').show();
@@ -6,32 +7,9 @@ angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScop
 	$('#header').hide();
 	$('#scroller').show();
 	
-	//scroller
-	
-	$scope.gotoGeneral = function(){
-		  $location.hash('general');
-	      $anchorScroll();
-	}
-	
-	$scope.gotoSyllabus = function(){
-		  $location.hash('syllabus');
-	      $anchorScroll();
-	}
-
-	$scope.gotoSchedule = function(){
-		  $location.hash('schedule');
-	      $anchorScroll();
-	}
-
-	$scope.gotoPresentations = function(){
-		  $location.hash('presentations');
-	      $anchorScroll();
-	}
-
-	$scope.gotoMessage = function(){
-		  $location.hash('message');
-	      $anchorScroll();
-	}
+	  repeatServices.AllTags().then(function(response){
+			$scope.alltags = response.data;
+	  })
 
 	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
     .then(function(response) {
@@ -50,17 +28,22 @@ angular.module('myApp').controller("courseMaker",function($http,$scope,$rootScop
 		console.log(response.data);
 		$scope.allarticles = response.data;
 	});	
+	
+	
 	$scope.create = function(){
 		var date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
 		$http.get("http://localhost/coursemanagementsystem/rest/course/addCourse?name="+$scope.name
 				+"&instructorid="+$scope.instructor
 				+"&description="+$scope.description
 				+"&date="+date+"&location="+$scope.location
-				+"&tag="+$scope.tag+"&article=test&syllabus="+$scope.syllabus+"&isactive=true")
+				+"&tag="+$scope.tag+"&article=1&syllabus="+$scope.syllabus+"&isactive=true")
 		.then(function(response) {
 			console.log(response.data);
 			$scope.newcourse = response.data;
 			console.log($scope.newcourse);
+			
+			$http
+			
 		});
 	}	
 });	

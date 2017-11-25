@@ -9,7 +9,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 		//scroller
 		
 		$rootScope.gotoGeneral = function(){
-			  $location.hash('general');
+			  $location.hash('studentCourse');
 		      $anchorScroll();
 		}
 		
