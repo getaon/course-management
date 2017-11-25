@@ -73,8 +73,8 @@ public class CourseService {
 	@Path("/addCourse")
 	public Course addCourse(@QueryParam("name")String name,@QueryParam("instructorid")int instructorid,@QueryParam("description")String description,
 			@QueryParam("date")String date,@QueryParam("location")String location,@QueryParam("tag")int tag,@QueryParam("article")String article,
-			@QueryParam("isactive")boolean isactive){
-		return ManagerHelper.getCourseManager().addCourse(name, instructorid, description,date, location, tag, article, isactive);
+			@QueryParam("syllabus")String syllabus,@QueryParam("isactive")boolean isactive){
+		return ManagerHelper.getCourseManager().addCourse(name, instructorid, description,date, location, tag, article, syllabus, isactive);
 	}
 	
 	@GET

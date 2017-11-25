@@ -191,14 +191,16 @@ public class CourseManager {
 	 * @return
 	 */
 	public Course addCourse(String name,int instructorid,String description,String date,String location,
-			int tagid,String article,boolean isactive){
+
+			int tagid,String article,String syllabus,boolean isactive){
 		
 			Instructor instructor = ManagerHelper.getInstructorManager().getById(instructorid);
 			Tag tag = ManagerHelper.getTagManager().getTagById(tagid);
 					
 		try{
 		
-			Course course = new Course(name, instructor, description, date , location, tag, article,isactive);
+
+			Course course = new Course(name, instructor, description, date , location, tag, article, syllabus , isactive);
 			create(course);
 			return course;
 		}catch (Exception e) {

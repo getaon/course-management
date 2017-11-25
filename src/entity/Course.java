@@ -24,6 +24,7 @@ public class Course {
 	@JoinColumn(name="tag")
 	private Tag tag;
 	private String article;
+	private String syllabus;
 	private boolean isactive;
 	
 	
@@ -31,7 +32,7 @@ public class Course {
 	}
 	
 	public Course(String name,Instructor instructor,String description,String date,String location,
-					Tag tag,String article,boolean isactive){
+					Tag tag,String article,String syllabus,boolean isactive){
 		this.name=name;
 		this.instructor=instructor;
 		this.description=description;
@@ -39,6 +40,7 @@ public class Course {
 		this.location=location;
 		this.tag=tag;
 		this.article=article;
+		this.syllabus=syllabus;
 		this.isactive=isactive;
 	}
 	
@@ -54,62 +56,85 @@ public class Course {
 		this.article=article;
 		this.isactive=isactive;
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Instructor getInstructor() {
 		return instructor;
 	}
+
 	public void setInstructor(Instructor instructor) {
 		this.instructor = instructor;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getStartdate() {
+
+	public String getDate() {
 		return date;
 	}
-	public void setStartdate(String startdate) {
-		this.date = startdate;
+
+	public void setDate(String date) {
+		this.date = date;
 	}
+
 	public String getLocation() {
 		return location;
 	}
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
 	public Tag getTag() {
 		return tag;
 	}
+
 	public void setTag(Tag tag) {
 		this.tag = tag;
 	}
-	public String getarticle() {
+
+	public String getArticle() {
 		return article;
 	}
-	public void setarticle(String article) {
+
+	public void setArticle(String article) {
 		this.article = article;
 	}
+
+	public String getSyllabus() {
+		return syllabus;
+	}
+
+	public void setSyllabus(String syllabus) {
+		this.syllabus = syllabus;
+	}
+
 	public boolean isIsactive() {
 		return isactive;
 	}
+
 	public void setIsactive(boolean isactive) {
 		this.isactive = isactive;
 	}
-	
 
 }
