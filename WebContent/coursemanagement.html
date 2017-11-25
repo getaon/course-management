@@ -55,20 +55,42 @@
 						data-ng-click="chooseTag($index)"
 							style="display: inline-block;">{{tag.name}}</i>
 	  </div>
+	  
+  <div id="scrollerNav">
+	  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue"  data-ng-click="gotoGeneral()">General</i> 
+	  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue" data-ng-click="gotoSyllabus()">Syllabus</i>
+	  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue" data-ng-click="gotoSchedule()">Schedule</i>
+	  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue" data-ng-click="gotoPresentations()">Presentations</i>
+	  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue" data-ng-click="gotoMessage()">Message Board</i>
+  </div>
+	  
 	 </div>
 	</div>
+	
+	<!-- Navbar on small screens -->
+	<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+	<div id="header">
+		  <a class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home w3-margin-right" data-ng-click="homeButton()"></i>HOME</a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="myCourses()"> my Courses</i></a>
+		  <a><i class="w3-bar-item w3-button w3-padding-large" data-ng-repeat="tag in tags" 
+							data-ng-click="chooseTag($index)"
+								style="display: block; color: white;">{{tag.name}}</i></a>
+	</div>
+	<div id="scroller">
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoGeneral()">General</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoSyllabus()">Syllabus</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoSchedule()">Schedule</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoPresentations()">Presentations</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoMessage()">Message Board</i></a>
+	</div>
 
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-  <a class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home w3-margin-right" data-ng-click="homeButton()"></i>HOME</a>
-  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="myCourses()"> my Courses</i></a>
-  <a><i class="w3-bar-item w3-button w3-padding-large" data-ng-repeat="tag in tags" 
-					data-ng-click="chooseTag($index)"
-						style="display: block; color: white;">{{tag.name}}</i></a>
-  <a class="w3-bar-item w3-button w3-padding-large" data-ng-click="logout()"><i class="fa fa-power-off" >Logout</i></a>
-</div>
-	<div id="view" data-ng-view></div>
-</div>			
+	  <a class="w3-bar-item w3-button w3-padding-large" data-ng-click="logout()"><i class="fa fa-power-off" >Logout</i></a>
+	  
+
+	  
+	</div>
+		<div id="view" data-ng-view></div>
+	</div>			
 			
 		<script type="text/javascript" src="coursemanagement.js"></script>
 
@@ -83,7 +105,7 @@
 		
 		<script type="text/javascript" src="adminCourseCreate/adminCourseMaker.ctrl.js"></script>
 		<script type="text/javascript" src="adminCourseCreate/adminCourseMaker.route.js"></script>
-s		
+		
 		<script type="text/javascript" src="login/login.route.js"></script>
 		<script type="text/javascript" src="login/login.ctrl.js"></script>
 		

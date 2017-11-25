@@ -40,9 +40,9 @@ public class CourseService {
 	}
 	
 	@GET
-	@Path("/geActiveCourses")
-	public List<Course>geACtiveCourses(){
-		return ManagerHelper.getCourseManager().geACtiveCourses();
+	@Path("/getActiveCourses")
+	public List<Course>getActiveCourses(){
+		return ManagerHelper.getCourseManager().getActiveCourses();
 	}
 	
 	@GET

@@ -3,10 +3,9 @@
 	width: 100%;
 }
 
-
-
 #layout{
 	display: none;
+	width: 100%;
 }
 
 #sideNav {
@@ -17,20 +16,30 @@
 	position: fixed;
 }
 
+#scroller{
+	width: 50%;
+	position: fixed;
+}
+
+
 #view{
 	position: initial;
-	float: right;
 	width: 100%;
-    margin-top: 3.5%;
+    margin-top: 10%;
 }
 
 #scroller{
-	background-color: gray;
-	position: fixed;
+	display: none;
+}
+#scrollerNav{
+	display: none;
 }
 .CourseDetail{
-	width: 80%;
-	float: right;
+	width: 100%;
+	position: absolute;
+}
+.addbtn{
+	margin-top:10%; 
 }
 .addbtn{
 	margin-top: 10%;

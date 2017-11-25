@@ -1,9 +1,10 @@
 angular.module('myApp').controller("adminCourseInformation",function($http,$scope,$location,$anchorScroll){
-	
+
 	$('#sideNav').hide();
-	$('#view').css("width", "100%");
-	
-	
+	$('#scrollerNav').show();
+
+	$('#header').hide();
+	$('#scroller').show();
 //scroller
 	
 	$scope.gotoGeneral = function(){
