@@ -17,7 +17,7 @@ public class CourseInstructor {
 	@JoinColumn(name="instructorid")
 	private Instructor instructorid ;
 	@ManyToOne
-	@JoinColumn(name="coursesid")
+	@JoinColumn(name="courseid")
 	private Course courseid;
 	
 	

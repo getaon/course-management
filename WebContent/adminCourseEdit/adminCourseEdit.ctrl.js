@@ -43,13 +43,7 @@ angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$loca
     console.log(response.data);
     	$scope.allstudents = response.data;
     });
-	
-	$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
-	.then(function(response) {
-		console.log(response.data);
-		$scope.alltags = response.data;
-	});	
-	
+
 	$http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
 	.then(function(response) {
 		console.log(response.data);
@@ -57,7 +51,6 @@ angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$loca
 	});
 	
 	$scope.edit = function(){
-		
 		var date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
 		$http.get("http://localhost/coursemanagementsystem/rest/course/updateCourse?id="+$scope.courseSelected1.id+"&name="+$scope.name+"&instructorid="+$scope.instructor+"&description="+$scope.description+"&date="+date+"&location="+$scope.location+"&tag="+$scope.tag+"&articles=test&isactive=true")
 		.then(function(response) {

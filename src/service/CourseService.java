@@ -7,7 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
 import entity.Course;
-
+import entity.CourseInstructor;
+import entity.StudentCourse;
 import manager.ManagerHelper;
 import manager.Reply;
 
@@ -34,9 +35,15 @@ public class CourseService {
 		return ManagerHelper.getCourseManager().getCoursesByTag(tag);
 	}
 	@GET
-	@Path("/getMyCourses")
-	public List<Course>getMyCourses(@QueryParam("user")int user){
-		return ManagerHelper.getCourseManager().getMyCourses(user);
+	@Path("/getMyCoursesStudent")
+	public List<StudentCourse> getMyCoursesStudent(@QueryParam("user") int user){
+		return ManagerHelper.getCourseManager().getMyCoursesStudent(user);
+	}
+	
+	@GET
+	@Path("/getMyCoursesInstructor")
+	public List<CourseInstructor>getMyCoursesInstructor(@QueryParam("user") int user){
+		return ManagerHelper.getCourseManager().getMyCoursesInstructor(user);
 	}
 	
 	@GET

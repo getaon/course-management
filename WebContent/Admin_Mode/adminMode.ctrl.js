@@ -1,5 +1,5 @@
-angular.module('myApp').controller("adminMode",function($http,$scope,$location,$rootScope){
-		
+angular.module('myApp').controller("adminMode",
+			function($http,$scope,$location,$rootScope){
 	
 	$('#sideNav').show();
 	$('#scrollerNav').hide();
@@ -9,37 +9,12 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 	
 	$('#datepicker').show();
 	$('#dateExp').hide();
-		
-	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
-		.then(function(response){
-		$scope.adminCourses=response.data;
-		courseId = $scope.adminCourses.id;
-		console.log($scope.adminCourses);
-		
-	});
-
-	 $scope.myCourses = function(){
-			$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCourses?"
-					+"user="+userId)
-			.then(function(response){
-				$scope.adminCourses = response.data;
-				
-			})
-		}
-	  
 
 	 	$scope.courseEdit =function(index){
-	 		
 	 		$('#datepicker').hide();
 	 		$('#dateExp').show();
-			/*function getSelectedIndex(id){
-				for(var i=0; i<$scope.adminCourses.length; i++)
-					if($scope.adminCourses[i].id==id)
-						return i;
-					return -1;	
-			};*/
-			
-			console.log($scope.adminCourses[index].id);
+		
+	 		console.log($scope.adminCourses[index].id);
 			$http.get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 					+"id="+$scope.adminCourses[index].id)
 			.then(function(response){
@@ -68,20 +43,6 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 			});
 		}			
 
-	 
-		$scope.courseInfo =function(index){
-			console.log($scope.adminCourses[index].id);
-			$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
-					+"id="+$scope.adminCourses[index].id)
-			.then(function(response){
-				$scope.courseSelected = response.data;
-				console.log($scope.courseSelected);
-				$rootScope.courseSelected =  response.data;
-				
-				$location.path('/CourseInfo');
-			});
-		}			
-		
 		$scope.createCourse = function(){
 			
 			$location.path('/createCourse');

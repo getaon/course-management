@@ -5,7 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import org.apache.openjpa.persistence.EntityManagerImpl;
 import entity.Course;
+import entity.CourseInstructor;
 import entity.Instructor;
+import entity.Student;
+import entity.StudentCourse;
 import entity.Tag;
 
 public class CourseManager {
@@ -47,8 +50,7 @@ public class CourseManager {
 	 * @return
 	 */
 	public List<Course>getAllCourses(){
-		String sql = " SELECT c.id,c.name,c.instructor,c.description,c.location, "
-			 	+ " c.tag,c.article,c.isactive FROM coursemanagementsystem.course c "
+		String sql = " SELECT * FROM coursemanagementsystem.course c "
 			 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
 			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
 			 	+ " where c.isactive = 1 and i.isactive = 1 ";
@@ -76,17 +78,38 @@ public class CourseManager {
 	 * @param user
 	 * @return
 	 */
-	public List<Course> getMyCourses(int user){
+	public List<StudentCourse> getMyCoursesStudent(int user){
 
-		String sql = "SELECT c.id,c.name,c.instructor,c.description,c.date, "+
-				 	" c.location,c.tag,c.article,c.isactive "+
-				 	" FROM coursemanagementsystem.studentcourse sc"+
-					" inner join coursemanagementsystem.course c on sc.coursesid = c.id"+
+		String sql = "";
+		String s="";
+			s ="select * from coursemanagementsystem.student where user="+user;
+			Student studentid =(Student)entityManager.createNativeQuery(s,Student.class).getSingleResult();
+		
+			sql = "SELECT * FROM coursemanagementsystem.studentcourse sc"+
+					" inner join coursemanagementsystem.course c on sc.courseid = c.id"+
 					" inner join coursemanagementsystem.student s on sc.studentid = s.id"+
 					" inner join coursemanagementsystem.user u on s.user = u.id"+
-					" where s.user ="+user+" and c.isactive = 1";
-		   return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
-		   
+					" where sc.studentid="+studentid.getId() +" and c.isactive = 1";
+			
+			return (List<StudentCourse>)entityManager.createNativeQuery(sql,StudentCourse.class).getResultList();
+	}
+	
+	/**
+	 * this function gives you courses from DB by the user
+	 * @param user
+	 * @return
+	 */
+	public List<CourseInstructor> getMyCoursesInstructor(int user){
+			String s= "";
+			s ="select * from coursemanagementsystem.instructor where user="+user;
+			Instructor instrustorid = (Instructor)entityManager.createNativeQuery(s,Instructor.class).getSingleResult();
+			
+			String sql = "SELECT * FROM coursemanagementsystem.courseinstructor ci"+
+					" inner join coursemanagementsystem.course c on ci.courseid = c.id"+
+					" inner join coursemanagementsystem.instructor i on ci.instructorid= i.id"+
+					" where ci.instructorid="+instrustorid.getId()+" and c.isactive = 1";
+			 
+			 return (List<CourseInstructor>)entityManager.createNativeQuery(sql,CourseInstructor.class).getResultList();
 	}
 	
 	/**

@@ -1,4 +1,5 @@
-angular.module("myApp").controller("login",function($http,$scope,$location,$rootScope){
+angular.module("myApp").controller("login",
+			function($http,$scope,$location,$rootScope,repeatServices){
 	
 	$scope.login = function(){
 		   $http.get("http://localhost/coursemanagementsystem/rest/user/getFullUser?"
@@ -8,9 +9,10 @@ angular.module("myApp").controller("login",function($http,$scope,$location,$root
 	     var fullUser = response.data;
 		console.log(fullUser);
 		userId = fullUser.id;
-	    usertype = fullUser.type;
-	    
+		usertype = fullUser.type;
+
 	    console.log(userId);
+	    console.log(usertype);
 	    	
 	    
 	    	if(fullUser.username == "undefined"){	
@@ -18,17 +20,21 @@ angular.module("myApp").controller("login",function($http,$scope,$location,$root
 				
 			}
 	    	if(fullUser != null){
-			
+	    		 
 				if(usertype == "student"){
+					
 					$("#layout").show();
 					$("#sideNav").show();
+
+					repeatServices.AllCourses().then(function(response){
+						$rootScope.Courses = response.data;
+					})
 					
 					$http.get("http://localhost/coursemanagementsystem/rest/student/getStudentById?"
 					   		   +"id="+fullUser.id)
 						      .then(function(response) {
 				    	  
 			    	  $rootScope.loginName = response.data;    	  
-						    	  
 						    	  
 			        });
 				    
@@ -38,6 +44,10 @@ angular.module("myApp").controller("login",function($http,$scope,$location,$root
 				}else if(usertype == "instructor"){
 					$("#layout").show();
 					$("#sideNav").show();
+
+					repeatServices.AllCourses().then(function(response){
+						$rootScope.Courses = response.data;
+					})
 					
 					$http.get("http://localhost/coursemanagementsystem/rest/instructor/getById?"
 							 +"id="+fullUser.id)
