@@ -14,7 +14,7 @@
 								<input type="text" data-ng-model="name">
 							</td>
 							<td>
-								<button class="publish" data-ng-click="create()">publish</button>
+								<button class="publish" data-ng-click="create()" data-ng-click="add()">publish</button>
 							</td>
 						</tr>
 					<tr class="instructor">
@@ -81,7 +81,12 @@
 							<td>
 								<select data-ng-model="article">
 									<option value="{{article.id}}" data-ng-repeat="article in allarticles">{{article.name}}</option>
+									
 								</select>
+								<div>
+									<input type="file" id="file" name="file"/>
+									
+								</div>
 							</td>
 							<td></td>
 						</tr>
@@ -102,10 +107,16 @@
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
 							<h1>Schedule</h1>
-							<h1>{{courseSelected.name}}</h1>
-							<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-							<p>{{scheduleSelected.date + " "+scheduleSelected.starthour +" "+scheduleSelected.endhour }}</p>
+							<strong>Date : </strong><input type="date" data-ng-model="scheduleDate" id="scheduleDatepicker" placeholder="Date">
+							<strong>Start Hour : </strong><input type="time" data-ng-model="starthour" id="starthour" placeholder="Start Hour">
+							<strong>End Hour : </strong><input type="time" data-ng-model="endhour" id="endhour" placeholder="End Hour">
 					</div>
+					<div data-ng-repeat="row in rows">
+							<strong>Date : </strong><input type="date" data-ng-model="row.date" id="scheduleDatepicker" placeholder="{{row.datePlaceholder}}">
+							<strong>Start Hour : </strong><input type="time" data-ng-model="row.start" id="starthour" placeholder="{{row.startPlaceholder}}">
+							<strong>End Hour : </strong><input type="time" data-ng-model="row.end" id="endhour" placeholder="{{row.endPlaceholder}}">
+					</div>
+					<button data-ng-click="addDynamically()">Add Schedule</button>
 			      </div>
 			      <div id="presentations">         
 			        	<div id="studentPresentation">

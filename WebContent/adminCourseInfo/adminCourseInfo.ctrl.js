@@ -24,6 +24,7 @@ angular.module('myApp').controller("adminCourseInformation",
 		console.log(response.data);
 		$scope.allarticles = response.data;
 	});	
+		
 	
 	repeatServices.instructorCourse($scope.courseSelected.id).then(function(response){
 		var reply = response.data;

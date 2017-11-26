@@ -27,7 +27,32 @@ angular.module('myApp').controller("courseMaker",
 	.then(function(response) {
 		console.log(response.data);
 		$scope.allarticles = response.data;
-	});	
+	});
+	
+	$scope.rows = [];
+
+    $scope.addDynamically = function() {
+
+      $scope.rows.push({
+
+        pick: false,
+
+        date: "",
+
+        datePlaceholder: "Date",
+
+        startPlaceholder: "Start Hour",
+        
+        endPlaceholder: "End Hour",
+
+        start: "",
+        
+        end: ""
+
+      });
+
+    };
+
 	
 	
 	$scope.create = function(){
@@ -42,8 +67,37 @@ angular.module('myApp').controller("courseMaker",
 			$scope.newcourse = response.data;
 			console.log($scope.newcourse);
 			
-			$http
+			console.log($("#scheduleDatepicker").val());
+			console.log($scope.starthour);
+			console.log($scope.endhour);
+			console.log($scope.newcourse.id);
 			
+			$http.get("http://localhost/coursemanagementsystem/rest/schedule/addSchedule?"
+					+ "date="+$("#scheduleDatepicker").val()
+					+ "&starthour="+$("#starthour").val()
+					+ "&endhour="+$("#endhour").val()
+					+ "&courseid="+$scope.newcourse.id)
+			.then(function(response){
+				$scope.newschedule = response.data;
+				console.log($scope.newschedule);
+			});
 		});
-	}	
+	}
+	
+	/*$scope.createArticle = function(){
+		$http.get("http://localhost/coursemanagementsystem/rest/article/addArticle?name=program&presentation=&courseid=3
+	*/
+	
+	$scope.add = function() {
+	    var f = document.getElementById('file').files[0],
+	        r = new FileReader();
+
+	    r.onloadend = function(e) {
+	      var data = e.target.result;
+	      //send your binary data via $http or $resource or do anything else with it
+	    }
+
+	    r.readAsBinaryString(f);
+	}
+	
 });	

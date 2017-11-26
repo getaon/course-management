@@ -3,51 +3,47 @@
  
   <div id="studentCourse">
 			    
-	    <div class="CourseDetail">
-	      <div id="general">    
-	      		<div style="float:right;">
-	      			<button data-ng-click= "register(studentSelection.id)" data-ng-show="registertion" data-ng-hide="hideRegistertion">register</button>
-	      		</div>
-	       		<div id="studentDescription">
-						<h1>{{studentSelection.name}}</h1>
-						<h4>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h4>
-				         <h4>{{studentSelection.startdate}}</h4>
-				         <div>
-							<p>{{studentSelection.description}}</p>
-					
-					    </div>
-						
-				</div>
-	      </div>
-	      <div id="syllabus"> 
-	       		<div>
-					<h2>Syllabus</h2>
-					<p>{{studentSelection.syllabus}}</p>
-				</div>
-	      </div>        
-	      <div id="schedule">         
-	        <div id="strudentScheduale">
-					<h1>Schedule</h1>
-					<h1>{{studentSelection.name}}</h1>
-					<h4>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h4>
-					<p>{{scheduleSelected.date + " "+scheduleSelected.starthour +" "+scheduleSelected.endhour }}</p>
-			</div>
-	      </div>
-	      <div id="presentations">         
-	        	<div id="studentPresentation">
-					 <h1>Presentations</h1>
-						<h1>{{studentSelection.name}}</h1>
-						<h4>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h4>
-					
-						
-						<object width="200px" height="200px"></object>
-					
-				</div>
-	      </div>      
-	      <div id="message" style="height: 500px;">
-	        <p>Massage Board</p>
-	      </div>
-	    </div>
-	  </div>
-	</div>
- </div>
+			    <div class="CourseDetail">
+			      <div id="general">    
+			      		<div style="float:right">
+			      			<button>register</button>
+			      		</div>
+			       		<div id="studentDescription">
+								<h1>{{studentSelection.name}}</h1>
+								<h4>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h4>
+						         <h4>{{studentSelection.startdate}}</h4>
+						         <div>
+									<p>{{studentSelection.description}}</p>
+							
+							    </div>
+								
+						</div>
+			      </div>
+			      <div id="syllabus"> 
+			       		<div>
+							<h2>Syllabus</h2>
+							<p>{{studentSelection.syllabus}}</p>
+						</div>
+			      </div>        
+			      <div id="schedule">         
+			        <div id="strudentScheduale">
+							<h1>Schedule</h1>
+							<p><strong>Date : </strong>{{scheduleSelected.date}}  <strong>Start Hour : </strong>{{scheduleSelected.starthour}}  <strong>End Hour : </strong>{{scheduleSelected.endhour}}</p>
+					</div>
+			      </div>
+			      <div id="presentations">         
+			        	<div id="studentPresentation">
+							 <h1>Presentations</h1>
+								<h1>{{studentSelection.name}}</h1>
+								<h4>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h4>
+							
+								
+								<object width="200px" height="200px"></object>
+							
+						</div>
+			      </div>      
+			      <div id="message" style="height: 500px;">         
+			        <p>Massage Board</p>
+			      </div>
+			    </div>
+			  </div>

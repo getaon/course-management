@@ -29,9 +29,7 @@
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
 							<h1>Schedule</h1>
-							<h1>{{courseSelected.name}}</h1>
-							<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-							<p>{{scheduleSelected.date + " "+scheduleSelected.starthour +" "+scheduleSelected.endhour }}</p>
+							<p><strong>Date : </strong>{{scheduleSelected.date}}  <strong>Start Hour : </strong>{{scheduleSelected.starthour}}  <strong>End Hour : </strong>{{scheduleSelected.endhour}}</p>
 					</div>
 			      </div>
 			      <div id="presentations">         
@@ -39,9 +37,8 @@
 							 <h1>Presentations</h1>
 								<h1>{{courseSelected.name}}</h1>
 								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-							
+								<embed src="{{presentationCourse.presentation}}">
 								
-								<object width="200px" height="200px"></object>
 							
 						</div>
 			      </div>      
