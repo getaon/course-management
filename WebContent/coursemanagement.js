@@ -69,8 +69,14 @@ var app = angular.module("myApp", ["ngRoute"]);
 				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
-
-					$rootScope.studentSelection =  response.data;
+					console.log(response.data);
+					$rootScope.studentSelection = response.data;
+						
+					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.studentSelection.id)
+					.then(function(response) {
+						console.log(response.data);
+						$rootScope.scheduleSelected = response.data;
+					});	
 					
 					$location.path('/studentCourseInfo');
 				});
@@ -78,8 +84,15 @@ var app = angular.module("myApp", ["ngRoute"]);
 				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
+					console.log(response.data);
 					$rootScope.courseSelected = response.data;
 					
+					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
+					.then(function(response) {
+						console.log(response.data);
+						$rootScope.scheduleSelected = response.data;
+					});	
+
 					$location.path('/CourseInfo');
 				});
 			}
