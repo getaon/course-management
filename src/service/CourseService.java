@@ -7,7 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
 import entity.Course;
-
+import entity.CourseInstructor;
+import entity.StudentCourse;
 import manager.ManagerHelper;
 import manager.Reply;
 
@@ -34,21 +35,26 @@ public class CourseService {
 		return ManagerHelper.getCourseManager().getCoursesByTag(tag);
 	}
 	@GET
-	@Path("/getMyCourses")
-	public List<Course>getMyCourses(@QueryParam("user")int user){
-		return ManagerHelper.getCourseManager().getMyCourses(user);
+	@Path("/getMyCoursesStudent")
+	public List<StudentCourse> getMyCoursesStudent(@QueryParam("user") int user){
+		return ManagerHelper.getCourseManager().getMyCoursesStudent(user);
 	}
 	
 	@GET
-	@Path("/geActiveCourses")
-	public List<Course>geACtiveCourses(){
-		return ManagerHelper.getCourseManager().geACtiveCourses();
+	@Path("/getMyCoursesInstructor")
+	public List<CourseInstructor>getMyCoursesInstructor(@QueryParam("user") int user){
+		return ManagerHelper.getCourseManager().getMyCoursesInstructor(user);
+	}
+	
+	@GET
+	@Path("/getActiveCourses")
+	public List<Course>getActiveCourses(){
+		return ManagerHelper.getCourseManager().getActiveCourses();
 	}
 	
 	@GET
 	@Path("/removeCourse")
 	public Reply removeCourse(@QueryParam("id")int id){
-		System.out.println("course id ---> "+id);
 		return ManagerHelper.getCourseManager().removeCourse(id);
 	}
 	
@@ -65,9 +71,9 @@ public class CourseService {
 	@GET
 	@Path("/addCourse")
 	public Course addCourse(@QueryParam("name")String name,@QueryParam("instructorid")int instructorid,@QueryParam("description")String description,
-			@QueryParam("date")String date,@QueryParam("location")String location,@QueryParam("tag")int tag,@QueryParam("articles")String articles,
-			@QueryParam("isactive")boolean isactive){
-		return ManagerHelper.getCourseManager().addCourse(name, instructorid, description,date, location, tag, articles, isactive);
+			@QueryParam("date")String date,@QueryParam("location")String location,@QueryParam("tag")int tag,@QueryParam("article")String article,
+			@QueryParam("syllabus")String syllabus,@QueryParam("isactive")boolean isactive){
+		return ManagerHelper.getCourseManager().addCourse(name, instructorid, description,date, location, tag, article, syllabus, isactive);
 	}
 	
 	@GET

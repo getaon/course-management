@@ -1,65 +1,141 @@
 	var userId;
 	var usertype;
-var app = angular.module("myApp", ["ngRoute"]).controller("myCtrl",
-			function($http,$scope,$location,$interval,$anchorScroll,$rootScope){
+var app = angular.module("myApp", ["ngRoute"]);
+	
+	app.controller("myCtrl",
+		function($http,$scope,$location,$interval,$anchorScroll,$rootScope,repeatServices){
 
-	
-	$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
-	.then(function(response){
-		$scope.tags = response.data;
-		console.log($scope.tags);
-	});
-	
-			$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
-			.then(function(response){
-				$rootScope.studentCourses =response.data;
-			courseId = $rootScope.studentCourses.id;
-			console.log($rootScope.studentCourses);
-			
-		});
 		
-		 $scope.myCourses = function(){
-				$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCourses?"
+		//scroller
+		
+		$rootScope.gotoGeneral = function(){
+			  $location.hash('CourseDetail');
+			  $("#CourseDetail").css("style","margin-top: 100px;")
+		      $anchorScroll();
+		}
+		
+		$rootScope.gotoSyllabus = function(){
+			  $location.hash('general');
+			  $anchorScroll();
+		}
+
+		$rootScope.gotoSchedule = function(){
+			  $location.hash('studentDescription');
+		      $anchorScroll();
+		}
+
+		$rootScope.gotoPresentations = function(){
+			  $location.hash('syllabus');
+		      $anchorScroll();
+		}
+
+		$rootScope.gotoMessage = function(){
+			  $location.hash('message');
+		      $anchorScroll();
+		}
+		
+		$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
+			.then(function(response){
+				$rootScope.tags = response.data;
+				console.log($scope.tags);
+		});
+
+		repeatServices.AllCourses().then(function(response){
+				$rootScope.Courses = response;
+		 })
+		
+		$scope.myCourses = function(){
+			
+			if(usertype == "student"){
+				$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCoursesStudent?"
 						+"user="+userId)
 				.then(function(response){
-					$rootScope.studentCourses = response.data;
-					
+					$rootScope.Courses = response.data;
 				})
+				
+			}else if(usertype == "instructor"){
+				$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCoursesInstructor?"
+						+"user="+userId)
+				.then(function(response){
+					$rootScope.Courses = response.data;
+				})
+				
+			}
 		}
-		  
-	  $scope.chooseTag = function(index){
-			console.log($scope.tags[index].id);
+		
+		$scope.courseInfo =function(index){
+			
+			if(usertype == "student"){
+				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
+						+"id="+$scope.Courses[index].id)
+				.then(function(response){
 
+					$rootScope.studentSelection =  response.data;
+					
+					$location.path('/studentCourseInfo');
+				});
+			}else if(usertype == "instructor"){
+				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
+						+"id="+$scope.Courses[index].id)
+				.then(function(response){
+					$rootScope.courseSelected = response.data;
+					
+					$location.path('/CourseInfo');
+				});
+			}
+			
+		}			
+
+	  
+	    $scope.chooseTag = function(index){
 			$http.get("http://localhost/coursemanagementsystem/rest/course/getCoursesByTag?tag="
 					+$scope.tags[index].id)
 			.then(function(response){
-				$scope.studentCourses = response.data;
-				console.log($scope.studentCourses = response.data);
-
-				$rootScope.studentCourses = response.data;
-				
+				$rootScope.Courses = response.data;
 			})
-	  }
+	     }
+	
+	  $scope.openNav = function () {
+		    var x = document.getElementById("navDemo");
+		    if (x.className.indexOf("w3-show") == -1) {
+		        x.className += " w3-show";
+		    } else { 
+		        x.className = x.className.replace(" w3-show", "");
+		    }
+	   }
 	  
 	  $scope.homeButton = function (){
+
 		  if(usertype == "student"){
+			  
+			  repeatServices.AllCourses().then(function(response){
+					$rootScope.Courses = response.data;
+			  })
+			  
 			  $("#sideNav").show();
 			  $location.path('/student');
 			  
 		  }else if(usertype == "instructor"){
+
+				repeatServices.AllCourses().then(function(response){
+					$rootScope.Courses = response.data;
+				})
+
 			  $("#sideNav").show();	
 			  $location.path('/instructorCourse');
+			  
+
 		  }
 	  }
-	  
+
 	  $scope.logout = function (){
 		  $("#layout").hide();
-		  $("#sideNav").hide();
+		  $("#header").hide();
+		  $("#scroller").hide();
+		  $("#logout").hide();
 		  
 		  $location.path('/');
-		  
 	  }
-		
 	
 });
 

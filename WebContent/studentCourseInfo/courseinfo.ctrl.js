@@ -1,33 +1,37 @@
-angular.module('myApp').controller("studentCourseInfo",function($http,$scope,$location,$interval,$anchorScroll){
+angular.module('myApp').controller("CourseInfo",function($http,$scope,$location,$interval,$anchorScroll){
 	
 	$('#sideNav').hide();
-	$('#view').css("width", "100%");
+	$('#scrollerNav').show();
 
-	//scroller
+	$('#header').hide();
+	$('#scroller').show();
 	
-	$scope.gotoGeneral = function(){
-		  $location.hash('general');
-	      $anchorScroll();
-	}
-	
-	$scope.gotoSyllabus = function(){
-		  $location.hash('syllabus');
-	      $anchorScroll();
+
+/*
+ * גטהון עדיין עובד על זה 
+ * 
+ * 	console.log($scope.studentSelection.id + "<----- studentCourse id");
+	$http.get("http://localhost/coursemanagementsystem/rest/studentCourse/studentCourseVerefiy?"
+			+"id="+$scope.studentSelection.id
+			+ "&userId="+userId).then(function(response){
+				
+				var reply = response.data;
+		
+    });
+*/
+	$scope.register = function(courseid){
+		$http.get("http://localhost/coursemanagementsystem/rest/studentCourse/register?"
+			+ "studentid="+userId
+			+ "&courseid="+courseid).then(function(response){
+				var registered = response.data;
+				
+				if(registered.id != null){
+					$(".registertion").hide();
+				}else{
+					console.log("regestertion did not happend!");
+					$(".registertion").show();
+				}
+			})
 	}
 
-	$scope.gotoSchedule = function(){
-		  $location.hash('schedule');
-	      $anchorScroll();
-	}
-
-	$scope.gotoPresentations = function(){
-		  $location.hash('presentations');
-	      $anchorScroll();
-	}
-
-	$scope.gotoMessage = function(){
-		  $location.hash('message');
-	      $anchorScroll();
-	}
-	
 });

@@ -1,37 +1,20 @@
-angular.module('myApp').controller("adminMode",function($http,$scope,$location,$rootScope){
-		
+angular.module('myApp').controller("adminMode",
+			function($http,$scope,$location,$rootScope,repeatServices){
 	
 	$('#sideNav').show();
-		
-	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
-		.then(function(response){
-		$scope.adminCourses=response.data;
-		courseId = $scope.adminCourses.id;
-		console.log($scope.adminCourses);
-		
-	});
+	$('#scrollerNav').hide();
 
-	 $scope.myCourses = function(){
-			$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCourses?"
-					+"user="+userId)
-			.then(function(response){
-				$scope.adminCourses = response.data;
-				
-			})
-		}
-	  
+	$('#header').show();
+	$('#scroller').hide();
+	
+	$('#datepicker').show();
+	$('#dateExp').hide();
 
 	 	$scope.courseEdit =function(index){
-	 		
-
-			/*function getSelectedIndex(id){
-				for(var i=0; i<$scope.adminCourses.length; i++)
-					if($scope.adminCourses[i].id==id)
-						return i;
-					return -1;	
-			};*/
-			
-			console.log($scope.adminCourses[index].id);
+	 		$('#datepicker').hide();
+	 		$('#dateExp').show();
+		
+	 		console.log($scope.adminCourses[index].id);
 			$http.get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 					+"id="+$scope.adminCourses[index].id)
 			.then(function(response){
@@ -39,58 +22,61 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 				console.log($scope.courseSelected1);
 				$rootScope.courseSelected1 =  response.data;
 				
-				var x = $scope.courseSelected1;
-				$scope.name = x.name;
-				$scope.instructor = x.instructor;
-				$scope.location = x.location;
-				$scope.description = x.description;
-				$scope.date = x.date;
-				$scope.tag = x.tag;
-				$scope.article = x.article;
+				$scope.name = $scope.courseSelected1.name;
+				$scope.allinstructors = $scope.courseSelected1.instructor.id;
+				$scope.location = $scope.courseSelected1.location;
+				$scope.description = $scope.courseSelected1.description;
+				$scope.date = $scope.courseSelected1.startdate;
+				$scope.dateExpretion = $scope.courseSelected1.startdate;
+				$scope.alltags = $scope.courseSelected1.tag.id;
+				$scope.article = $scope.courseSelected1.article;
+				
+				console.log("name--->"+$scope.name);
+				console.log("instructor--->"+$scope.allinstructors);
+				console.log("location--->"+$scope.location);
+				console.log("description--->"+$scope.description);
+				console.log("date--->"+$scope.date);
+				console.log("tag--->"+$scope.alltags);
+				console.log("article--->"+$scope.article);
 				
 				$location.path('/CourseEdit');
 			});
 		}			
 
-	 
-		$scope.courseInfo =function(index){
-			console.log($scope.adminCourses[index].id);
-			$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
-					+"id="+$scope.adminCourses[index].id)
-			.then(function(response){
-				$scope.courseSelected = response.data;
-				console.log($scope.courseSelected);
-				$rootScope.courseSelected =  response.data;
-				
-				$location.path('/CourseInfo');
-			});
-		}			
-		
 		$scope.createCourse = function(){
 			
 			$location.path('/createCourse');
 		}
 	
-		$scope.remove=function(index){
+		$scope.remove = function(index){
 			var confirm1 =confirm('Are you sure?');
 			
 			if(confirm1==true){					
+<<<<<<< HEAD
 				var course = $scope.adminCourses[index].id;
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 				.then(function(response){
 					var remove =response.data;
 					alert(remove);
+=======
+				var course = $scope.Courses[index].id;
+					$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
+					.then(function(response){
+						var reply =response.data;
+						console.log(reply);
+>>>>>>> 9a9a37ec0e8226f590002a81ea5db79e756f4820
 					
-						$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
-						.then(function(response){
-							$scope.course = response.data;
-							console.log($scope.course);
-						});
-						
+					if(reply.id == 0){
+						repeatServices.AllCourses().then(function(response){
+							$rootScope.Courses = response;
+						})
+	
+					}else{
+						console.log("didnt removed");
+					}
 				});
 			}
-		
 		}
 	
 });

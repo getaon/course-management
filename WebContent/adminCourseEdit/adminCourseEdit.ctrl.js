@@ -43,13 +43,7 @@ angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$loca
     console.log(response.data);
     	$scope.allstudents = response.data;
     });
-	
-	$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
-	.then(function(response) {
-		console.log(response.data);
-		$scope.alltags = response.data;
-	});	
-	
+
 	$http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
 	.then(function(response) {
 		console.log(response.data);
@@ -57,21 +51,21 @@ angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$loca
 	});
 	
 	$scope.edit = function(){
-		
 		var date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
 		$http.get("http://localhost/coursemanagementsystem/rest/course/updateCourse?id="+$scope.courseSelected1.id+"&name="+$scope.name+"&instructorid="+$scope.instructor+"&description="+$scope.description+"&date="+date+"&location="+$scope.location+"&tag="+$scope.tag+"&articles=test&isactive=true")
 		.then(function(response) {
 			console.log(response.data);
 			$scope.newcourse = response.data;
-			console.log($scope.newcourse);
+			console.log("newcourse---->"+$scope.newcourse);
+			console.log("response.msg---->"+response.data.msg);
 			
-			if(response.msg=="ok"){
+			if(response.data.msg=="ok"){
 	    		$scope.courseSelected1.name = $scope.name;
-	    		$scope.courseSelected1.instructor = $scope.instructor;
+	    		$scope.courseSelected1.instructor.id = $scope.instructor;
 	    		$scope.courseSelected1.location = $scope.location;
 	    		$scope.courseSelected1.description = $scope.description;
-	    		$scope.courseSelected1.date = $scope.date;
-	    		$scope.courseSelected1.tag = $scope.tag;
+	    		$scope.courseSelected1.startdate = $scope.date;
+	    		$scope.courseSelected1.tag.id = $scope.tag;
 	    		$scope.courseSelected1.article = $scope.article;
 				
 			 }else{
