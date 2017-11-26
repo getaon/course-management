@@ -40,7 +40,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 		});
 
 		repeatServices.AllCourses().then(function(response){
-				$rootScope.Courses = response;
+				$rootScope.Courses = response.data;
 		 })
 		
 		$scope.myCourses = function(){
@@ -68,8 +68,14 @@ var app = angular.module("myApp", ["ngRoute"]);
 				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
-
-					$rootScope.studentSelection =  response.data;
+					console.log(response.data);
+					$rootScope.studentSelection = response.data;
+						
+					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.studentSelection.id)
+					.then(function(response) {
+						console.log(response.data);
+						$rootScope.scheduleSelected = response.data;
+					});	
 					
 					$location.path('/studentCourseInfo');
 				});
@@ -77,8 +83,10 @@ var app = angular.module("myApp", ["ngRoute"]);
 				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
+					console.log(response.data);
 					$rootScope.courseSelected = response.data;
 					
+<<<<<<< HEAD
 					$http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
 							+"course="+$scope.courseSelected.id)
 							.then(function(response){
@@ -86,6 +94,14 @@ var app = angular.module("myApp", ["ngRoute"]);
 					
 							})
 					
+=======
+					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
+					.then(function(response) {
+						console.log(response.data);
+						$rootScope.scheduleSelected = response.data;
+					});	
+
+>>>>>>> ee5aa34686ad8cbe8d43a2ef7c9e935a4618f51c
 					$location.path('/CourseInfo');
 				});
 			}

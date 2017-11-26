@@ -23,5 +23,6 @@ angular.module('myApp').controller("adminCourseInformation",function($http,$scop
 		console.log(response.data);
 		$scope.allarticles = response.data;
 	});	
+		
 	
 });	

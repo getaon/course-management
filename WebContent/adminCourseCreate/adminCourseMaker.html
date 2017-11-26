@@ -107,9 +107,9 @@
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
 							<h1>Schedule</h1>
-							<h1>{{courseSelected.name}}</h1>
-							<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-							<p>{{scheduleSelected.date + " "+scheduleSelected.starthour +" "+scheduleSelected.endhour }}</p>
+							<strong>Date : </strong><input type="date" data-ng-model="scheduleDate" id="scheduleDatepicker">
+							<strong>Start Hour : </strong><input type="time" data-ng-model="starthour" id="starthour">
+							<strong>End Hour : </strong><input type="time" data-ng-model="endhour" id="endhour">
 					</div>
 			      </div>
 			      <div id="presentations">         
