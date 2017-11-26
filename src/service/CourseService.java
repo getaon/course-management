@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
+import entity.Article;
 import entity.Course;
 import entity.CourseInstructor;
 import entity.StudentCourse;
@@ -63,17 +64,17 @@ public class CourseService {
 	public Reply updateCourse(@QueryParam("id")int id,@QueryParam("name")String name,
 			@QueryParam("instructorid")int instructorid,@QueryParam("description")String description,
 			@QueryParam("date")String date,@QueryParam("location")String location,
-			@QueryParam("tag")int tag,@QueryParam("articles")String articles,
+			@QueryParam("tag")int tag,
 			@QueryParam("isactive")boolean isactive){
-		return ManagerHelper.getCourseManager().updateCourse(id, name, instructorid, description,date, location, tag, articles, isactive);
+		return ManagerHelper.getCourseManager().updateCourse(id, name, instructorid, description,date, location, tag, isactive);
 	}
 	
 	@GET
 	@Path("/addCourse")
 	public Course addCourse(@QueryParam("name")String name,@QueryParam("instructorid")int instructorid,@QueryParam("description")String description,
-			@QueryParam("date")String date,@QueryParam("location")String location,@QueryParam("tag")int tag,@QueryParam("article")String article,
+			@QueryParam("date")String date,@QueryParam("location")String location,@QueryParam("tag")int tag,
 			@QueryParam("syllabus")String syllabus,@QueryParam("isactive")boolean isactive){
-		return ManagerHelper.getCourseManager().addCourse(name, instructorid, description,date, location, tag, article, syllabus, isactive);
+		return ManagerHelper.getCourseManager().addCourse(name, instructorid, description,date, location, tag, syllabus, isactive);
 	}
 	
 	@GET

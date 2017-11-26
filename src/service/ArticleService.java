@@ -50,12 +50,12 @@ public class ArticleService {
 	
 	@GET
 	@Path("/addArticle")
-	public Article addArticle(@QueryParam("name")String name,@QueryParam("presentation")String presentation){
-		return ManagerHelper.getArticleManager().addArticle(name,presentation);
+	public Article addArticle(@QueryParam("name")String name,@QueryParam("presentation")String presentation,@QueryParam("courseid")int courseid){
+		return ManagerHelper.getArticleManager().addArticle(name,presentation,courseid);
 	}
 	@GET
 	@Path("/updateArticle")
-	public Reply updateArticle(@QueryParam("id")int id,@QueryParam("name")String name,@QueryParam("presentation")String presentation){
-		return ManagerHelper.getArticleManager().updateArticle(id,name,presentation);
+	public Reply updateArticle(@QueryParam("id")int id,@QueryParam("name")String name,@QueryParam("presentation")String presentation,@QueryParam("presentation")int courseid){
+		return ManagerHelper.getArticleManager().updateArticle(id,name,presentation,courseid);
 	}
 }

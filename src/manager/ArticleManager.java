@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import org.apache.openjpa.persistence.EntityManagerImpl;
 import entity.Article;
+import entity.Course;
 
 
 public class ArticleManager {
@@ -43,9 +44,8 @@ public class ArticleManager {
 	}
 	public List<Article> getArticleByCourse(Integer course) {
 		String sql ="SELECT a.id,a.name,a.presentation FROM coursemanagementsystem.article a"
-				+ " inner join coursemanagementsystem.coursearticle ca on ca.articleid = a.id"
-				+ " inner join coursemanagementsystem.course c on c.article = ca.courseid "
-				+ " where c.id="+course;
+					+" inner join course c on c.id = a.courseid"
+				+ " where a.courseid="+course;
 		return (List<Article>)entityManager.createNativeQuery(sql, Article.class).getResultList();
 	}
 	/**
@@ -64,10 +64,11 @@ public class ArticleManager {
 	 * @param presentation
 	 * @return
 	 */
-	public Article addArticle(String name,String presentation){
+	public Article addArticle(String name,String presentation,int courseid){
 		
+		Course course = ManagerHelper.getCourseManager().getCourseById(courseid);
 			
-		Article article = new Article(name,presentation);
+		Article article = new Article(name,presentation,course);
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.persist(article);
@@ -95,7 +96,7 @@ public class ArticleManager {
 			return r;
 		}
 	}
-   public Reply updateArticle(int id,String name,String presentation) {
+   public Reply updateArticle(int id,String name,String presentation,int courseid) {
 	   Article article = getArticleById(id);
 		try {
 			entityManager.getTransaction().begin();

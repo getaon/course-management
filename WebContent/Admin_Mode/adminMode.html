@@ -6,7 +6,7 @@
 	
 	<div id="course_list" class="wrapper">
 		 
- 		<div data-ng-repeat="course in Courses" 
+ 		<div data-ng-repeat="course in Courses | filter : test" 
 		 		class="student" id="#div-{{x.id}}">
 		 		
 		 		<div dir="rtl" style="float: right;">

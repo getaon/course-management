@@ -58,11 +58,10 @@ angular.module('myApp').controller("adminMode",
 						var reply =response.data;
 						console.log(reply);
 
-
 						
 						if(reply.id == 0){
 							repeatServices.AllCourses().then(function(response){
-								$rootScope.Courses = response;
+								$rootScope.Courses = response.data;
 							})
 		
 						}else{

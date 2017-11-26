@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Article {
@@ -14,21 +16,24 @@ public class Article {
 	private String name;
 	
 	private String presentation;
-
-	  
+	@ManyToOne 
+	@JoinColumn(name="courseid")
+	private Course courseid;  
 	
 	public Article(){
 	}
 	
-	public Article(String name,String presentation){
+	public Article(String name,String presentation,Course courseid){
 		this.name=name;
 		this.presentation=presentation;
+		this.courseid=courseid;
 	}
 	
-	public Article(int id ,String name,String presentation){
+	public Article(int id ,String name,String presentation,Course courseid){
 		this.id=id;
 		this.name=name;
 		this.presentation=presentation;
+		this.courseid=courseid;
 	}
 
 	public int getId() {
@@ -50,6 +55,14 @@ public class Article {
 	}
 	public void setPresentation(String presentation) {
 		this.presentation = presentation;
+	}
+
+	public Course getCourseid() {
+		return courseid;
+	}
+
+	public void setCourseid(Course courseid) {
+		this.courseid = courseid;
 	}
 	
 	

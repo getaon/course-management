@@ -8,6 +8,7 @@ import javax.ws.rs.QueryParam;
 
 import entity.Tag;
 import manager.ManagerHelper;
+import manager.Reply;
 
 @Path("/tag")
 public class TagService {
@@ -22,5 +23,15 @@ public class TagService {
 	@Path("/getAllTags")
 	public List<Tag> getAllTags(){
 		return ManagerHelper.getTagManager().getAllTags();
+	}
+	@GET
+	@Path("/addTag")
+	public Tag addTag(@QueryParam("name")String name){
+		return ManagerHelper.getTagManager().addTag(name);
+	}
+	@GET
+	@Path("/removeTag")
+	public Reply removeTag(@QueryParam("id")int id){
+		return ManagerHelper.getTagManager().removeTag(id);
 	}
 }
