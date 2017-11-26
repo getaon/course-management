@@ -53,6 +53,7 @@ angular.module('myApp').controller("adminMode",
 			
 			if(confirm1==true){					
 
+
 				var course = $scope.adminCourses[index].id;
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
@@ -60,11 +61,13 @@ angular.module('myApp').controller("adminMode",
 					var remove =response.data;
 					alert(remove);
 
+
 				var course = $scope.Courses[index].id;
 					$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 					.then(function(response){
 						var reply =response.data;
 						console.log(reply);
+
 
 						
 						if(reply.id == 0){
@@ -77,6 +80,15 @@ angular.module('myApp').controller("adminMode",
 						}
 					});
 				})
+				
+					if(reply.id == 0){
+						repeatServices.AllCourses().then(function(response){
+							$rootScope.Courses = response;
+						})
+	
+					}else{
+						console.log("didnt removed");
+					}
 			}
 		}
 });
