@@ -27,7 +27,32 @@ angular.module('myApp').controller("courseMaker",
 	.then(function(response) {
 		console.log(response.data);
 		$scope.allarticles = response.data;
-	});	
+	});
+	
+	$scope.rows = [];
+
+    $scope.addDynamically = function() {
+
+      $scope.rows.push({
+
+        pick: false,
+
+        date: "",
+
+        datePlaceholder: "Date",
+
+        startPlaceholder: "Start Hour",
+        
+        endPlaceholder: "End Hour",
+
+        start: "",
+        
+        end: ""
+
+      });
+
+    };
+
 	
 	
 	$scope.create = function(){

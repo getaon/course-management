@@ -102,10 +102,16 @@
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
 							<h1>Schedule</h1>
-							<strong>Date : </strong><input type="date" data-ng-model="scheduleDate" id="scheduleDatepicker">
-							<strong>Start Hour : </strong><input type="time" data-ng-model="starthour" id="starthour">
-							<strong>End Hour : </strong><input type="time" data-ng-model="endhour" id="endhour">
+							<strong>Date : </strong><input type="date" data-ng-model="scheduleDate" id="scheduleDatepicker" placeholder="Date">
+							<strong>Start Hour : </strong><input type="time" data-ng-model="starthour" id="starthour" placeholder="Start Hour">
+							<strong>End Hour : </strong><input type="time" data-ng-model="endhour" id="endhour" placeholder="End Hour">
 					</div>
+					<div data-ng-repeat="row in rows">
+							<strong>Date : </strong><input type="date" data-ng-model="row.date" id="scheduleDatepicker" placeholder="{{row.datePlaceholder}}">
+							<strong>Start Hour : </strong><input type="time" data-ng-model="row.start" id="starthour" placeholder="{{row.startPlaceholder}}">
+							<strong>End Hour : </strong><input type="time" data-ng-model="row.end" id="endhour" placeholder="{{row.endPlaceholder}}">
+					</div>
+					<button data-ng-click="addDynamically()">Add Schedule</button>
 			      </div>
 			      <div id="presentations">         
 			        	<div id="studentPresentation">
