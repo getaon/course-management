@@ -19,6 +19,7 @@ angular.module('myApp').controller("CourseInfo",function($http,$scope,$location,
 		
     });
 */
+
 	$scope.register = function(courseid){
 		$http.get("http://localhost/coursemanagementsystem/rest/studentCourse/register?"
 			+ "studentid="+userId

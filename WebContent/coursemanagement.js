@@ -41,7 +41,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 		});
 
 		repeatServices.AllCourses().then(function(response){
-				$rootScope.Courses = response;
+				$rootScope.Courses = response.data;
 		 })
 		
 		$scope.myCourses = function(){

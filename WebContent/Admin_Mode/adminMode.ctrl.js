@@ -14,9 +14,9 @@ angular.module('myApp').controller("adminMode",
 	 		$('#datepicker').hide();
 	 		$('#dateExp').show();
 		
-	 		console.log($scope.adminCourses[index].id);
+	 		console.log($scope.Courses[index].id);
 			$http.get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
-					+"id="+$scope.adminCourses[index].id)
+					+"id="+$scope.Courses[index].id)
 			.then(function(response){
 				$scope.courseSelected1 = response.data;
 				console.log($scope.courseSelected1);
@@ -38,9 +38,9 @@ angular.module('myApp').controller("adminMode",
 				console.log("date--->"+$scope.date);
 				console.log("tag--->"+$scope.alltags);
 				console.log("article--->"+$scope.article);
-				
-				$location.path('/CourseEdit');
 			});
+			
+			$location.path('/CourseEdit');
 		}			
 
 		$scope.createCourse = function(){
