@@ -14,9 +14,9 @@ angular.module('myApp').controller("adminMode",
 	 		$('#datepicker').hide();
 	 		$('#dateExp').show();
 		
-	 		console.log($scope.adminCourses[index].id);
+	 		console.log($scope.Courses[index].id);
 			$http.get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
-					+"id="+$scope.adminCourses[index].id)
+					+"id="+$scope.Courses[index].id)
 			.then(function(response){
 				$scope.courseSelected1 = response.data;
 				console.log($scope.courseSelected1);
@@ -52,7 +52,7 @@ angular.module('myApp').controller("adminMode",
 			var confirm1 =confirm('Are you sure?');
 			
 			if(confirm1==true){					
-				var course = $scope.adminCourses[index].id;
+				var course = $scope.Courses[index].id;
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 				.then(function(response){

@@ -1,4 +1,4 @@
-angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$location,$anchorScroll){
+angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$location,$anchorScroll,repeatServices){
 	
 	$('#sideNav').hide();
 	$('#view').css("width", "100%");
@@ -31,6 +31,9 @@ angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$loca
 	      $anchorScroll();
 	}
 	
+	repeatServices.AllTags().then(function(response){
+		$scope.alltags = response.data;
+	})
 	
 	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
     .then(function(response) {

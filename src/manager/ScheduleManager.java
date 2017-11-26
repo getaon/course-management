@@ -39,14 +39,32 @@ public class ScheduleManager {
 		return entityManager.find(Schedule.class, id);
 	}
 	
-	public List<Schedule> getSchedule(int id) {
+	public Schedule getSchedule(int id) {
 		System.out.println("getSchedule manager");
 		String sql ="SELECT s.id, s.date, s.starthour, s.endhour, s.courseid FROM coursemanagementsystem.schedule s "+
 					" inner join coursemanagementsystem.course c on c.id = s.courseid "+
 					" where s.courseid="+id+
 					" and c.isactive=1";
-		return (List<Schedule>)entityManager.createNativeQuery(sql,Schedule.class).getResultList();
+		return (Schedule) entityManager.createNativeQuery(sql,Schedule.class).getSingleResult();
 		
+	}
+	
+	public Schedule addSchedule(String date,String starthour,String endhour,int courseid) {
+		
+		System.out.println("date---> " + date);
+		System.out.println("starthour ----> " +starthour);
+		System.out.println("endhour ---- >" + endhour);
+		System.out.println("courseid ----> "+ courseid);
+		
+		Course course = ManagerHelper.getCourseManager().getCourseById(courseid);
+		try {
+			Schedule schedule = new Schedule(date,starthour,endhour,course);
+			create(schedule);
+			return schedule;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 }

@@ -42,8 +42,20 @@ angular.module('myApp').controller("courseMaker",
 			$scope.newcourse = response.data;
 			console.log($scope.newcourse);
 			
-			$http
+			console.log($("#scheduleDatepicker").val());
+			console.log($scope.starthour);
+			console.log($scope.endhour);
+			console.log($scope.newcourse.id);
 			
+			$http.get("http://localhost/coursemanagementsystem/rest/schedule/addSchedule?"
+					+ "date="+$("#scheduleDatepicker").val()
+					+ "&starthour="+$("#starthour").val()
+					+ "&endhour="+$("#endhour").val()
+					+ "&courseid="+$scope.newcourse.id)
+			.then(function(response){
+				$scope.newschedule = response.data;
+				console.log($scope.newschedule);
+			});
 		});
 	}	
 });	

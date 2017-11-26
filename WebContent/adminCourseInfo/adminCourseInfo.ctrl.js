@@ -24,6 +24,7 @@ angular.module('myApp').controller("adminCourseInformation",function($http,$scop
 		console.log(response.data);
 		$scope.allarticles = response.data;
 	});	
+		
 	
 /*	$scope.create = function(){
 		var date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
