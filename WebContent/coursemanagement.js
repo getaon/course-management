@@ -70,7 +70,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
 
-					$rootScope.courseSelected =  response.data;
+					$rootScope.studentSelection =  response.data;
 					
 					$location.path('/studentCourseInfo');
 				});
@@ -78,7 +78,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
-					$rootScope.studentSelection = response.data;
+					$rootScope.courseSelected = response.data;
 					
 					$location.path('/CourseInfo');
 				});

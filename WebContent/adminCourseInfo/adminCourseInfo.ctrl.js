@@ -5,9 +5,6 @@ angular.module('myApp').controller("adminCourseInformation",function($http,$scop
 
 	$('#header').hide();
 	$('#scroller').show();
-
-	
-	
 	
 	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
     .then(function(response) {

@@ -19,6 +19,14 @@ public class StudentCourseService {
 			return ManagerHelper.getStudentCourseManager().getStudentCourseById(id);
 		}
 		
+
+		@GET
+		@Path("/studentCourseVerefiy")
+		public StudentCourse studentCourseVerefiy(@QueryParam("id") int id,
+				@QueryParam("id") int userId) {
+			return ManagerHelper.getStudentCourseManager().studentCourseVerefiy(id,userId);
+		}
+		
 		@GET
 		@Path("/getAllStudentCourse")
 		public List<StudentCourse> getAllStudentCourse() {
