@@ -2,7 +2,7 @@ var courseId;
 angular.module("myApp").controller("studentMode",function($http,$scope,$location,$rootScope){
 	
 	$('#sideNav').show();
-<<<<<<< HEAD
+
 	/*
 	$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
 		.then(function(response){
@@ -21,12 +21,12 @@ angular.module("myApp").controller("studentMode",function($http,$scope,$location
 			})
 	}
 	  */
-=======
+
 	$('#scrollerNav').hide();
 
 	$('#header').show();
 	$('#scroller').hide();
->>>>>>> 9a9a37ec0e8226f590002a81ea5db79e756f4820
+
 
 	
 });

@@ -52,31 +52,31 @@ angular.module('myApp').controller("adminMode",
 			var confirm1 =confirm('Are you sure?');
 			
 			if(confirm1==true){					
-<<<<<<< HEAD
+
 				var course = $scope.adminCourses[index].id;
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 				.then(function(response){
 					var remove =response.data;
 					alert(remove);
-=======
+
 				var course = $scope.Courses[index].id;
 					$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 					.then(function(response){
 						var reply =response.data;
 						console.log(reply);
->>>>>>> 9a9a37ec0e8226f590002a81ea5db79e756f4820
-					
-					if(reply.id == 0){
-						repeatServices.AllCourses().then(function(response){
-							$rootScope.Courses = response;
-						})
-	
-					}else{
-						console.log("didnt removed");
-					}
-				});
+
+						
+						if(reply.id == 0){
+							repeatServices.AllCourses().then(function(response){
+								$rootScope.Courses = response;
+							})
+		
+						}else{
+							console.log("didnt removed");
+						}
+					});
+				})
 			}
 		}
-	
 });
