@@ -8,6 +8,8 @@ import org.apache.openjpa.persistence.EntityManagerImpl;
 import entity.Course;
 import entity.CourseInstructor;
 import entity.Instructor;
+import entity.Student;
+import entity.StudentCourse;
 
 public class CourseInstructorManager {
 	
@@ -46,14 +48,14 @@ public class CourseInstructorManager {
 	 * @return
 	 */
 	public CourseInstructor addCourseInstructor(int courseId, int instructorId) {
-		Course course = ManagerHelper.getCourseManager().getCourseById(courseId);
-		Instructor instructor = ManagerHelper.getInstructorManager().getById(instructorId);
-		
 		try {
+		String s = "select * from coursemanagementsystem.instructor "
+				+ "	where user="+instructorId; 
+		Instructor instructor = (Instructor)entityManager.createNativeQuery(s, Instructor.class).getSingleResult();
+		Course course = ManagerHelper.getCourseManager().getCourseById(courseId);
+
 			CourseInstructor courseInstructor = new CourseInstructor(course,instructor);
-			entityManager.getTransaction().begin();
-			entityManager.persist(courseInstructor);
-			entityManager.getTransaction().commit();
+				create(courseInstructor);
 			return courseInstructor;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,5 +92,27 @@ public class CourseInstructorManager {
 	public List<CourseInstructor> getAllCourseInstructor() {
 		String sql = "SELECT * from coursemanagementsystem.courseinstructor ";
 		return (List<CourseInstructor>) entityManager.createNativeQuery(sql, CourseInstructor.class).getResultList();
+	}
+	/**
+	 * function that bring the connection of instructor courses
+	 * @param courseId
+	 * @param instructorId
+	 * @return
+	 */
+	public CourseInstructor getInstructorCourse(int courseId, int instructorId) {
+		try{
+			
+			String s = "select * from coursemanagementsystem.instructor "
+					+ "	where user="+instructorId;
+			Instructor instructor= (Instructor)entityManager.createNativeQuery(s, Instructor.class).getSingleResult();
+			 
+				String sql = "select * from coursemanagementsystem.studentcourse "
+						+ "where courseid="+courseId+" and studentid="+instructor.getId();
+
+		return (CourseInstructor)entityManager.createNativeQuery(sql, CourseInstructor.class).getSingleResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

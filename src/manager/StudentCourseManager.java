@@ -53,7 +53,7 @@ public class StudentCourseManager {
 		
 			String s = "select * from coursemanagementsystem.student "
 					+ "	where user="+userId;
-			Student student = (Student)entityManager.createNativeQuery(s,Student.class).getSingleResult();
+			Student student = (Student)entityManager.createNativeQuery(s, Student.class).getSingleResult();
 			 
 				String sql = "select * from coursemanagementsystem.studentcourse "
 						+ "where courseid="+id+" and studentid="+student.getId();
@@ -72,13 +72,16 @@ public class StudentCourseManager {
 	 * @return
 	 */
 	public StudentCourse register(int studentid, int courseid){
-		Student student = ManagerHelper.getStudentManager().getStudentById(studentid);
+		try {
+
+		String s = "select * from coursemanagementsystem.student "
+				+ "	where user="+studentid;
+		Student student = (Student)entityManager.createNativeQuery(s, Student.class).getSingleResult();
+
 		Course course = ManagerHelper.getCourseManager().getCourseById(courseid);
 		StudentCourse studentcourse = new StudentCourse(student, course);
-		try {
-			entityManager.getTransaction().begin();
-			entityManager.persist(studentcourse);
-			entityManager.getTransaction().commit();
+			
+		create(studentcourse);
 
 		return studentcourse ;	
 		} catch (Exception e) {

@@ -10,6 +10,7 @@ angular.module('myApp').controller("adminMode",
 	$('#datepicker').show();
 	$('#dateExp').hide();
 
+	
 	 	$scope.courseEdit =function(index){
 	 		$('#datepicker').hide();
 	 		$('#dateExp').show();
@@ -54,7 +55,7 @@ angular.module('myApp').controller("adminMode",
 			if(confirm1==true){					
 
 
-				var course = $scope.adminCourses[index].id;
+				var course = $scope.Courses[index].id;
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 				.then(function(response){
@@ -81,14 +82,9 @@ angular.module('myApp').controller("adminMode",
 					});
 				})
 				
-					if(reply.id == 0){
-						repeatServices.AllCourses().then(function(response){
-							$rootScope.Courses = response;
-						})
-	
-					}else{
-						console.log("didnt removed");
-					}
 			}
 		}
+		
+		
+		
 });

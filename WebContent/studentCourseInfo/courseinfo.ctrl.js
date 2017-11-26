@@ -1,4 +1,5 @@
-angular.module('myApp').controller("CourseInfo",function($http,$scope,$location,$interval,$anchorScroll){
+angular.module('myApp').controller("CourseInfo",
+			function($http,$scope,$location,$interval,$anchorScroll,repeatServices){
 	
 	$('#sideNav').hide();
 	$('#scrollerNav').show();
@@ -6,19 +7,20 @@ angular.module('myApp').controller("CourseInfo",function($http,$scope,$location,
 	$('#header').hide();
 	$('#scroller').show();
 	
-
-/*
- * גטהון עדיין עובד על זה 
- * 
- * 	console.log($scope.studentSelection.id + "<----- studentCourse id");
-	$http.get("http://localhost/coursemanagementsystem/rest/studentCourse/studentCourseVerefiy?"
-			+"id="+$scope.studentSelection.id
-			+ "&userId="+userId).then(function(response){
-				
-				var reply = response.data;
+	repeatServices.studentCourse($scope.studentSelection.id).then(function(response){
+		var reply = response.data;
 		
-    });
-*/
+		console.log(reply);
+		
+		if(reply.length == 0){
+			
+			$scope.registertion = true;
+		}else if(reply != null){
+			$scope.hideRegistertion = true;
+		}
+	})
+	
+
 
 	$scope.register = function(courseid){
 		$http.get("http://localhost/coursemanagementsystem/rest/studentCourse/register?"
@@ -26,13 +28,13 @@ angular.module('myApp').controller("CourseInfo",function($http,$scope,$location,
 			+ "&courseid="+courseid).then(function(response){
 				var registered = response.data;
 				
-				if(registered.id != null){
-					$(".registertion").hide();
+				if(registered != null){
+					$scope.hideRegistertion = true;
 				}else{
 					console.log("regestertion did not happend!");
-					$(".registertion").show();
+					$scope.registertion = true;
 				}
-			})
+		})
 	}
 
 });

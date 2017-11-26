@@ -18,10 +18,18 @@ public class CourseInstructorService {
 	public CourseInstructor getCourseInstructor(@QueryParam("id") int id) {
 		return ManagerHelper.getCourseInstructorManager().get(id);
 	}
+	
+	@GET
+	@Path("/getInstructorCourse")
+	public CourseInstructor getInstructorCourse(@QueryParam("courseId") int courseId,
+					@QueryParam("instructorId") int instructorId) {
+		return ManagerHelper.getCourseInstructorManager().getInstructorCourse(courseId,instructorId);
+	}
+	
 	@GET
 	@Path("/addCourseInstructor")
-	public CourseInstructor addCourseInstructor(@QueryParam("courseId") int courseId,
-			@QueryParam("instructorId") int instructorId) {
+	public CourseInstructor addCourseInstructor(@QueryParam("instructorId") int instructorId,
+			@QueryParam("courseId") int courseId) {
 		return ManagerHelper.getCourseInstructorManager().addCourseInstructor(courseId,instructorId);
 	}
 	@GET

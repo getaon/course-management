@@ -25,7 +25,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 		}
 
 		$rootScope.gotoPresentations = function(){
-			  $location.hash('syllabus');
+			$location.hash('syllabus');
 		      $anchorScroll();
 		}
 
@@ -71,7 +71,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 				.then(function(response){
 
 					$rootScope.studentSelection =  response.data;
-					
+
 					$location.path('/studentCourseInfo');
 				});
 			}else if(usertype == "instructor"){

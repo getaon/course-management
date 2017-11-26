@@ -2,11 +2,13 @@
 			
  <div id="adminCourse">
 		    
-			    <div class="CourseDetail" >
+			    <div class="CourseDetail">
+			    
+ 		    	<div style="float:right;">
+		  			<button data-ng-click= "register(courseSelected.id)" data-ng-show="registertion" data-ng-hide="hideRegistertion">register</button>
+		  		</div>
+ 		  		
 			      <div id="general">    
-			      		<div style="float:right">
-			      			<button>register</button>
-			      		</div>
 			       		<div id="studentDescription">
 								<h1>{{courseSelected.name}}</h1>
 								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>

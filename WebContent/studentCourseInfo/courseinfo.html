@@ -5,8 +5,8 @@
 			    
 	    <div class="CourseDetail">
 	      <div id="general">    
-	      		<div style="float:right; display: block;">
-	      			<button data-ng-click= "register(studentSelection.id)" class="registertion">register</button>
+	      		<div style="float:right;">
+	      			<button data-ng-click= "register(studentSelection.id)" data-ng-show="registertion" data-ng-hide="hideRegistertion">register</button>
 	      		</div>
 	       		<div id="studentDescription">
 						<h1>{{studentSelection.name}}</h1>
@@ -44,7 +44,7 @@
 					
 				</div>
 	      </div>      
-	      <div id="message" style="height: 500px;">         
+	      <div id="message" style="height: 500px;">
 	        <p>Massage Board</p>
 	      </div>
 	    </div>

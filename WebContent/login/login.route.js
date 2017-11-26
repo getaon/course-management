@@ -37,5 +37,10 @@ angular.module('myApp').config(function($routeProvider) {
 	    	templateUrl : "adminCourseEdit/adminCourseEdit.html",
 	        controller : "adminCourseEdit"
 	    })
+	    .when("/message", {
+	    	templateUrl : "messageboard.html",
+	        controller : "CourseInfo"
+	    })
+
 	    
 });

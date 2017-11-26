@@ -6,10 +6,9 @@
 		 <div data-ng-repeat="course in Courses" 
 		 		class="student" id="#div-{{x.id}}">
 		 		
-		 		course-{{course.name}}<br><br>
-			    instructor:{{course.instructor.firstname}}&nbsp;
-			    {{course.instructor.lastname}}<br>
-			    
+		 		<h3>{{course.name}}</h3>
+			    <h4>by:{{course.instructor.firstname}}&nbsp;
+			    {{course.instructor.lastname}}</h4>
 			 <button id="logBtn"  class="glyphicon glyphicon-log-in"
 			 			 data-ng-click="courseInfo($index)"></button>
 		 </div>

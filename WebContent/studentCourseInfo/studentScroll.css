@@ -1,3 +1,17 @@
 .registertion{
 	display: block;
 }
+
+#general,#syllabus,#schedule,#schedule,#presentations,#message{
+ 	border: 2px solid black;
+    border-radius: 12px;
+  	margin: 10px;	
+  	font-weight: 100;
+  	color: white;
+  	width: 80%;
+  	min-height: 500px;
+}
+
+#general{
+	padding-right: 30%;
+}
