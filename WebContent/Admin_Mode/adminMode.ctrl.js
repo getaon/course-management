@@ -79,8 +79,8 @@ angular.module('myApp').controller("adminMode",function($http,$scope,$location,$
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 				.then(function(response){
-					var response1 =response.data;
-					console.log(response1);
+					var remove =response.data;
+					alert(remove);
 					
 						$http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses")
 						.then(function(response){
