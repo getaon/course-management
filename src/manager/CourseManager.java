@@ -130,15 +130,22 @@ public class CourseManager {
 	 * @return
 	 */
 	public Reply removeCourse(int id){
-		System.out.println("id ---> "+id);
 		try{
-			String sql = "update coursemanagementsystem.course "+
-						 " set isactive = 0 "+
-						 " where id ="+id;
-			return (Reply)entityManager.createNativeQuery(sql,Course.class).getSingleResult();
+
+			Course course = ManagerHelper.getCourseManager().getCourseById(id);
+			course.setIsactive(false);
+			update(course);
+			
+			Reply r = new Reply();
+				r.setId(0);
+				r.setMsg(Reply.OK_STR);
+			return r; 
 		}catch(Exception e){
 			e.printStackTrace();
-			return null;
+			Reply r = new Reply();
+				r.setId(-1);
+				r.setMsg("faild");
+			return r;
 		}
 		
 	}

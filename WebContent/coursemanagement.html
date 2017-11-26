@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="studentMode/studentMode.css">
 
 		<link rel="stylesheet" type="text/css" href="adminCourseEdit/adminCourseEdit.css">
-		<link rel="stylesheet" type="text/css" href="adminCourseCreate/adminCourseMaker.css">
+		<link rel="stylesheet" type="text/css" href="adminCourseInfo/adminCourseInfo.css">
 
 		<link rel="stylesheet" type="text/css" href="studentCourseInfo/studentScroll.css">
 		<link rel="stylesheet" type="text/css" href="adminCourseInfo/adminCourseInfo.css">
@@ -44,7 +44,6 @@
 	
 		<!-- Navbar -->
 <div id="courseManagement">
-	<div id="title_front">
 	<div class="w3-top" id="layout">
 	 <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
 	  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);"  data-ng-click="openNav()"><i class="fa fa-bars"></i></a>
@@ -85,36 +84,28 @@
 	</div>
 
 	  <a class="w3-bar-item w3-button w3-padding-large" data-ng-click="logout()" id="logout"><i class="fa fa-power-off" >Logout</i></a>
-	  
-
-	  
 	</div>
-	</div>
-		<div id="view" data-ng-view></div>
-	</div>			
-			
+	
+	<div id="title_front"></div>
+	<div id="view" data-ng-view></div>
+</div>			
+		
 		<script type="text/javascript" src="coursemanagement.js"></script>
 
+		<script type="text/javascript" src="login/login.ctrl.js"></script>
+		<script type="text/javascript" src="login/login.route.js"></script>
+
 		<script type="text/javascript" src="adminCourseInfo/adminCourseInfo.ctrl.js"></script>
-		<script type="text/javascript" src="adminCourseInfo/adminCourseInfo.route.js"></script>
 		
 		<script type="text/javascript" src="Admin_Mode/adminMode.ctrl.js"></script>
-		<script type="text/javascript" src="Admin_Mode/adminmode.route.js"></script>
 
 		<script type="text/javascript" src="adminCourseEdit/adminCourseEdit.ctrl.js"></script>
-		<script type="text/javascript" src="adminCourseEdit/adminCourseEdit.route.js"></script>
 		
 		<script type="text/javascript" src="adminCourseCreate/adminCourseMaker.ctrl.js"></script>
-		<script type="text/javascript" src="adminCourseCreate/adminCourseMaker.route.js"></script>
-		
-		<script type="text/javascript" src="login/login.route.js"></script>
-		<script type="text/javascript" src="login/login.ctrl.js"></script>
 		
 		<script type="text/javascript" src="studentMode/studentMode.ctrl.js"></script>
-		<script type="text/javascript" src="studentMode/studentmode.route.js"></script>
 
 		<script type="text/javascript" src="studentCourseInfo/courseinfo.ctrl.js"></script>
-		<script type="text/javascript" src="studentCourseInfo/courseinfo.route.js"></script>
 
 		<script type="text/javascript" src="appTest.js"></script>
 		

@@ -37,13 +37,32 @@ public class StudentCourseManager {
 		entityManager.getTransaction().commit();
 	}
 	
+	
+	public StudentCourse getStudentCourseById(Integer id) {
+		return (StudentCourse)entityManager.find(StudentCourse.class, id);
+	}
+
+	
 	/**
 	 * function that finds an (student to course) connection 
 	 * @param id
 	 * @return
 	 */
-	public StudentCourse getStudentCourseById(Integer id) {
-		return entityManager.find(StudentCourse.class, id);
+	public StudentCourse studentCourseVerefiy(Integer id, int userId) {
+		try{
+		
+			String s = "select * from coursemanagementsystem.student "
+					+ "	where user="+userId;
+			Student student = (Student)entityManager.createNativeQuery(s,Student.class).getSingleResult();
+			 
+				String sql = "select * from coursemanagementsystem.studentcourse "
+						+ "where courseid="+id+" and studentid="+student.getId();
+
+		return (StudentCourse)entityManager.createNativeQuery(sql, StudentCourse.class).getSingleResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
