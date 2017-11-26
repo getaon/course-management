@@ -6,7 +6,6 @@ var app = angular.module("myApp", ["ngRoute"]);
 		function($http,$scope,$location,$interval,$anchorScroll,$rootScope,repeatServices){
 
 		
-		//scroller
 		
 		$rootScope.gotoGeneral = function(){
 			  $location.hash('CourseDetail');
@@ -79,6 +78,13 @@ var app = angular.module("myApp", ["ngRoute"]);
 						+"id="+$scope.Courses[index].id)
 				.then(function(response){
 					$rootScope.courseSelected = response.data;
+					
+					$http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
+							+"course="+$scope.courseSelected.id)
+							.then(function(response){
+					$rootScope.presentationCourse = response.data;
+					
+							})
 					
 					$location.path('/CourseInfo');
 				});

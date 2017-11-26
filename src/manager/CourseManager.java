@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import org.apache.openjpa.persistence.EntityManagerImpl;
+
+import entity.Article;
 import entity.Course;
 import entity.CourseInstructor;
 import entity.Instructor;
@@ -64,7 +66,7 @@ public class CourseManager {
 	 */
 	public List<Course>getCoursesByTag(int tag){
 		String sql = " SELECT c.id,c.name,c.instructor,c.date,c.description, "
-					+ " c.syllabus, c.location,c.tag,c.article,c.isactive FROM course c "
+					+ " c.syllabus, c.location,c.tag,c.isactive FROM course c "
 					+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
 					+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
 					+ " inner join coursemanagementsystem.article a on c.article = a.id "
@@ -118,7 +120,7 @@ public class CourseManager {
 	 */
 	public List<Course>getActiveCourses(){
 		String sql = "SELECT c.id,c.name,c.instructor,c.description,c.date,"+
-					" c.location,c.tag,c.articles,c.isactive FROM course c"+
+					" c.location,c.tag,c.isactive FROM course c"+
 					" where current_date() <= c.startdate where isactive = 1";
 		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
 	}
@@ -165,13 +167,13 @@ public class CourseManager {
 	 * @return
 	 */
 	public Reply updateCourse(int id,String name,int instructorid,String description,String date,
-					String location,int tagid,String articles,boolean isactive){
+					String location,int tagid,boolean isactive){
 		
 		Instructor instructor = ManagerHelper.getInstructorManager().getById(instructorid);
 		Tag tag = ManagerHelper.getTagManager().getTagById(tagid);
 		
 		try{
-			Course course = new Course(id,name,instructor, description,date,location,tag,articles,isactive);
+			Course course = new Course(id,name,instructor, description,date,location,tag ,isactive);
 			update(course);
 			
 			return new Reply();
@@ -199,7 +201,7 @@ public class CourseManager {
 	 */
 	public Course addCourse(String name,int instructorid,String description,String date,String location,
 
-			int tagid,String article,String syllabus,boolean isactive){
+			int tagid,String syllabus,boolean isactive){
 		
 			Instructor instructor = ManagerHelper.getInstructorManager().getById(instructorid);
 			Tag tag = ManagerHelper.getTagManager().getTagById(tagid);
@@ -207,7 +209,7 @@ public class CourseManager {
 		try{
 		
 
-			Course course = new Course(name, instructor, description, date , location, tag, article, syllabus , isactive);
+			Course course = new Course(name, instructor, description, date , location, tag, syllabus , isactive);
 			create(course);
 			return course;
 		}catch (Exception e) {
@@ -224,7 +226,7 @@ public class CourseManager {
 	public Course getSelectedCource(int id) {
 		try{
 			String sql = "select c.id,c.name, c.instructor, c.description, c.syllabus, "+
-						" c.location, c.tag, c.article, c.isactive from coursemanagementsystem.course c "+ 
+						" c.location, c.tag, c.isactive from coursemanagementsystem.course c "+ 
 						" where id ="+id+" and isactive = 1";
 			return (Course)entityManager.createNativeQuery(sql, Course.class).getSingleResult();
 			

@@ -14,7 +14,7 @@
 								<input type="text" data-ng-model="name">
 							</td>
 							<td>
-								<button class="publish" data-ng-click="create()">publish</button>
+								<button class="publish" data-ng-click="create()" data-ng-click="add()">publish</button>
 							</td>
 						</tr>
 					<tr class="instructor">
@@ -81,7 +81,12 @@
 							<td>
 								<select data-ng-model="article">
 									<option value="{{article.id}}" data-ng-repeat="article in allarticles">{{article.name}}</option>
+									
 								</select>
+								<div>
+									<input type="file" id="file" name="file"/>
+									
+								</div>
 							</td>
 							<td></td>
 						</tr>

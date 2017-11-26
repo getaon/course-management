@@ -23,7 +23,6 @@ public class Course {
 	@ManyToOne
 	@JoinColumn(name="tag")
 	private Tag tag;
-	private String article;
 	private String syllabus;
 	private boolean isactive;
 	
@@ -32,20 +31,19 @@ public class Course {
 	}
 	
 	public Course(String name,Instructor instructor,String description,String date,String location,
-					Tag tag,String article,String syllabus,boolean isactive){
+					Tag tag,String syllabus,boolean isactive){
 		this.name=name;
 		this.instructor=instructor;
 		this.description=description;
 		this.date=date;
 		this.location=location;
 		this.tag=tag;
-		this.article=article;
 		this.syllabus=syllabus;
 		this.isactive=isactive;
 	}
 	
 	public Course(int id,String name,Instructor instructor, String description,String date,String location,
-			Tag tag,String article,boolean isactive){
+			Tag tag,boolean isactive){
 		this.id=id;
 		this.name=name;
 		this.instructor=instructor;
@@ -53,7 +51,6 @@ public class Course {
 		this.date=date;
 		this.location=location;
 		this.tag=tag;
-		this.article=article;
 		this.isactive=isactive;
 	}
 
@@ -113,13 +110,6 @@ public class Course {
 		this.tag = tag;
 	}
 
-	public String getArticle() {
-		return article;
-	}
-
-	public void setArticle(String article) {
-		this.article = article;
-	}
 
 	public String getSyllabus() {
 		return syllabus;
