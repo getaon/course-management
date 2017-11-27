@@ -55,14 +55,6 @@
 								<textarea rows="4" cols="50" placeholder="Add Description Here..." data-ng-model="description"></textarea>
 							</td>
 						</tr>
-						<tr>
-							<td>
-								Date :
-							</td>
-							<td>
-								<input type="date" data-ng-model="date" id="datepicker">
-							</td>
-						</tr>
 						<tr class="tagAdmin">
 							<td>
 								Tag :
@@ -75,26 +67,21 @@
 							<td></td>
 						</tr>
 						<tr class="articleAdmin">
-							<td>
+							<td>	
 								Article :
 							</td>
-							<td>
-								<select data-ng-model="article">
-									<option value="{{article.id}}" data-ng-repeat="article in allarticles">{{article.name}}</option>
-									
-								</select>
+							<td colspan="8">
 								<div>
 									<input type="file" id="file" name="file"/>
-									
 								</div>
 							</td>
 							<td></td>
-						</tr>
+						</tr>	
 					</table>
 			      </div>
 			      
 			      <div id="syllabus"> 
-			       		<div class="adminSyllabus">
+		       		<div class="adminSyllabus">
 						<p>Syllabus</p>
 						<table>
 							<tr>
@@ -103,7 +90,9 @@
 								</td>
 							</tr>
 						</table>
-			      </div>        
+				    </div>
+			      </div>       
+			       
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
 							<h1>Schedule</h1>
@@ -132,7 +121,6 @@
 			      <div id="message">         
 			        <p>Massage Board</p>
 			      </div>
-			    </div>
 			  </div>
 			</div>
 	

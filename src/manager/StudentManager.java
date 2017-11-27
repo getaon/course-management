@@ -77,7 +77,7 @@ public class StudentManager {
 	public Student addStudent(String firstname, String lastname, String email, String phone, String username,
 			String password,boolean isactive){
 		
-			User user = new User(username,password,"student");
+			User user = ManagerHelper.getUserManager().addUser(username, password, "student");
 			Student student = new Student(firstname, lastname, email, phone, user, isactive);
 		try {
 			entityManager.getTransaction().begin();
