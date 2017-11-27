@@ -1,11 +1,13 @@
 angular.module('myApp').controller("settingsCtrl",
 			function($scope,$location,$anchorScroll,repeatServices){
 	
-	$scope.courseArchive = function (){
-		  repeatServices.courseArchive().then(function(response){
-			  $scope.courses = response.data;
-		  })
-	}
+	  repeatServices.AllInstructors().then(function(response){
+  		  $scope.instructors = response.data;
+  	  })
+
+	  repeatServices.AllTags().then(function(response){
+			$scope.tags = response.data;
+	  })
 
 	  $scope.addInstructor = function (){
 	 	  repeatServices.addInstructor($scope.instructor_name,$scope.instructor_last_name,  
@@ -33,9 +35,8 @@ angular.module('myApp').controller("settingsCtrl",
 	  repeatServices.AllTags().then(function(response){
 			$scope.tags = response.data;
 	  })
-	    
+
 	  $scope.addCategory = function(){
-		  console.log($scope.category_name);
 		  repeatServices.addTag($scope.category_name).then(function(response){
 			  
 			  repeatServices.AllTags().then(function(response){
