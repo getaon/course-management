@@ -101,6 +101,10 @@ var app = angular.module("myApp", ["ngRoute"]);
 						$rootScope.schedules= response.data;
 						console.log(schedules);
 
+
+					});	
+
+
 					$location.path('/CourseInfo');
 				});
 			}
