@@ -87,10 +87,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 					console.log(response.data);
 					$rootScope.courseSelected = response.data;
 					
-<<<<<<< HEAD
 
-=======
->>>>>>> 92773076c76820a1855064a7b6318644c4941104
 					$http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
 							+"course="+$scope.courseSelected.id)
 							.then(function(response){
@@ -98,20 +95,14 @@ var app = angular.module("myApp", ["ngRoute"]);
 					
 							})
 					
-<<<<<<< HEAD
 
-=======
->>>>>>> 92773076c76820a1855064a7b6318644c4941104
 					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
 					.then(function(response) {
 						console.log(response.data);
 						$rootScope.scheduleSelected = response.data;
 					});	
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 92773076c76820a1855064a7b6318644c4941104
 					$location.path('/CourseInfo');
 				});
 			}
@@ -171,8 +162,4 @@ var app = angular.module("myApp", ["ngRoute"]);
 	
 });
 
-
 	
-
-
-				
