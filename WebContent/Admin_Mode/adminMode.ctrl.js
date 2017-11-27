@@ -52,11 +52,10 @@ angular.module('myApp').controller("adminMode",
 			var confirm1 =confirm('Are you sure?');
 			
 			if(confirm1==true){					
-<<<<<<< HEAD
 
 
-=======
->>>>>>> ee5aa34686ad8cbe8d43a2ef7c9e935a4618f51c
+
+
 				var course = $scope.Courses[index].id;
 				console.log(course);
 				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)

@@ -86,7 +86,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 					console.log(response.data);
 					$rootScope.courseSelected = response.data;
 					
-<<<<<<< HEAD
+
 					$http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
 							+"course="+$scope.courseSelected.id)
 							.then(function(response){
@@ -94,14 +94,14 @@ var app = angular.module("myApp", ["ngRoute"]);
 					
 							})
 					
-=======
+
 					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
 					.then(function(response) {
 						console.log(response.data);
 						$rootScope.scheduleSelected = response.data;
 					});	
 
->>>>>>> ee5aa34686ad8cbe8d43a2ef7c9e935a4618f51c
+
 					$location.path('/CourseInfo');
 				});
 			}
