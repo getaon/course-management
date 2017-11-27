@@ -99,7 +99,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
 					.then(function(response) {
 						console.log(response.data);
-						$rootScope.scheduleSelected = response.data;
+						$rootScope.schedules = response.data;
 					});	
 
 
