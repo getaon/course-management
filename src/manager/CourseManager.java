@@ -51,12 +51,22 @@ public class CourseManager {
 	 * this function gives you all the course from DB
 	 * @return
 	 */
-	public List<Course>getAllCourses(){
+	public List <Course> getAllCourses(){
 		String sql = " SELECT * FROM coursemanagementsystem.course c "
 			 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
 			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
 			 	+ " where c.isactive = 1 and i.isactive = 1 ";
-		System.out.println("getAllCoursesManager");
+		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
+	}
+	
+	/**
+	 * this function gives you all the course from DB
+	 * @return
+	 */
+	public List<Course> getArchiveCourses(){
+		String sql = " SELECT * FROM coursemanagementsystem.course c "
+			 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
+			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id ";
 		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
 	}
 	/**

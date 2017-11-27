@@ -10,12 +10,10 @@ angular.module('myApp').controller("courseMaker",
 	  repeatServices.AllTags().then(function(response){
 			$scope.alltags = response.data;
 	  })
-
-	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
-    .then(function(response) {
-    console.log(response.data);
-    	$scope.allinstructors = response.data;
-    });	
+	  
+	  repeatServices.AllInstructors().then(function(response){
+		  $scope.allinstructors = response.data;
+	  })
 	
 	$http.get("http://localhost/coursemanagementsystem/rest/student/getAllStudents")
     .then(function(response) {

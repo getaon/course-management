@@ -26,8 +26,13 @@ public class CourseService {
 	@GET
 	@Path("/getAllCourses")
 	public List<Course>getAllCourses(){
-		System.out.println("getAllCoursesService");
 		return ManagerHelper.getCourseManager().getAllCourses();
+	}
+	
+	@GET
+	@Path("/getArchiveCourses")
+	public List<Course>getArchiveCourses(){
+		return ManagerHelper.getCourseManager().getArchiveCourses();
 	}
 	
 	@GET
