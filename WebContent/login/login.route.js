@@ -41,6 +41,8 @@ angular.module('myApp').config(function($routeProvider) {
 	    	templateUrl : "messageboard.html",
 	        controller : "CourseInfo"
 	    })
-
-	    
+	    .when("/settings", {
+	    	templateUrl : "settings/settings.html",
+	    	controller : "settingsCtrl"
+	    });
 });
