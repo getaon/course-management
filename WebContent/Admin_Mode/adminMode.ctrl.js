@@ -10,6 +10,7 @@ angular.module('myApp').controller("adminMode",
 	$('#datepicker').show();
 	$('#dateExp').hide();
 
+	
 	 	$scope.courseEdit =function(index){
 	 		$('#datepicker').hide();
 	 		$('#dateExp').show();
@@ -52,16 +53,19 @@ angular.module('myApp').controller("adminMode",
 			var confirm1 =confirm('Are you sure?');
 			
 			if(confirm1==true){					
+<<<<<<< HEAD
 
 
 
 
+=======
+
+>>>>>>> 92773076c76820a1855064a7b6318644c4941104
 				var course = $scope.Courses[index].id;
-				console.log(course);
-				$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
-				.then(function(response){
-					var remove =response.data;
-					alert(remove);
+					$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
+					.then(function(response){
+						var reply =response.data;
+						console.log(reply);
 
 						
 						if(reply.id == 0){
@@ -73,8 +77,10 @@ angular.module('myApp').controller("adminMode",
 							console.log("didnt removed");
 						}
 					});
-			
 				
 			}
 		}
+		
+		
+		
 });

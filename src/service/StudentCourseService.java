@@ -23,7 +23,7 @@ public class StudentCourseService {
 		@GET
 		@Path("/studentCourseVerefiy")
 		public StudentCourse studentCourseVerefiy(@QueryParam("id") int id,
-				@QueryParam("id") int userId) {
+				@QueryParam("userId") int userId) {
 			return ManagerHelper.getStudentCourseManager().studentCourseVerefiy(id,userId);
 		}
 		
