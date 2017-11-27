@@ -33,9 +33,6 @@ var app = angular.module("myApp", ["ngRoute"]);
 		      $anchorScroll();
 		}
 		
-		$scope.setting = function(){
-			$location.path("/settings");
-		}
 		$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
 			.then(function(response){
 				$rootScope.tags = response.data;
@@ -89,20 +86,22 @@ var app = angular.module("myApp", ["ngRoute"]);
 				.then(function(response){
 					console.log(response.data);
 					$rootScope.courseSelected = response.data;
+					
 
-				
 					$http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
 							+"course="+$scope.courseSelected.id)
 							.then(function(response){
 					$rootScope.presentationCourse = response.data;
 					
 							})
-	
+					
+
 					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
 					.then(function(response) {
 						console.log(response.data);
 						$rootScope.scheduleSelected = response.data;
 					});	
+
 
 					$location.path('/CourseInfo');
 				});

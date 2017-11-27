@@ -29,7 +29,7 @@
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
 							<h1>Schedule</h1>
-							<p><strong>Date : </strong>{{scheduleSelected.date}}  <strong>Start Hour : </strong>{{scheduleSelected.starthour}}  <strong>End Hour : </strong>{{scheduleSelected.endhour}}</p>
+							<p data-ng-repeat="schedule in schedules"><strong>Date : </strong>{{schedule.date}}  <strong>Start Hour : </strong>{{schedule.starthour}}  <strong>End Hour : </strong>{{schedule.endhour}}</p>
 					</div>
 			      </div>
 			      <div id="presentations">         
@@ -37,9 +37,9 @@
 							 <h1>Presentations</h1>
 								<h1>{{courseSelected.name}}</h1>
 								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-								<embed src="{{presentationCourse.presentation}}">
-								<iframe src="C:\Users\ferenj\Desktop\קורס אנדרואיד.pdf"></iframe>
-							
+								<embed src="http://www.ariel.ac.il/sites/tdror/courses/java/lesson%201.pdf">
+								</embed>
+								<embed src="C:\Users\ferenj\Desktop\Ferenj CV.docx">
 						</div>
 			      </div>      
 			      <div id="message" style="height: 500px;">         

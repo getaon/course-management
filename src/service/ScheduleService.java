@@ -22,7 +22,7 @@ public class ScheduleService {
 	
 	@GET
 	@Path("/getSchedule")
-	public Schedule getSchedule(@QueryParam("id") int id){
+	public List<Schedule> getSchedule(@QueryParam("id") int id){
 		System.out.println("getSchedule service");
 		return ManagerHelper.getScheduleManager().getSchedule(id);
 	}

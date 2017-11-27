@@ -32,8 +32,16 @@
 	width: 100%;
 	position: absolute;
 }
+#courseTable{
+	width: 100%;
+}
 
+#courseTable > .course,.instructor,.Attendants,
+		.descriptionAdmin, .tagAdmin,.articleAdmin{
+	
+	margin: 10px;		
+		
+}
 .fa{
 	margin-right: 5px;
 }
-
