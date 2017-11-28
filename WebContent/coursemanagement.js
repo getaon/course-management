@@ -5,7 +5,11 @@ var app = angular.module("myApp", ["ngRoute"]);
 	app.controller("myCtrl",
 		function($http,$scope,$location,$interval,$anchorScroll,$rootScope,repeatServices){
 
-		
+		$rootScope.general =true;
+		$rootScope.Agenda =true;
+		$rootScope.timeSchedule =true;
+		$rootScope.articles =true;
+		$rootScope.description =true;
 		
 		$rootScope.gotoGeneral = function(){
 			  $location.hash('CourseDetail');
@@ -25,6 +29,11 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 		$rootScope.gotoPresentations = function(){
 			$location.hash('syllabus');
+			$rootScope.general =false;
+			$rootScope.Agenda =false;
+			$rootScope.timeSchedule =false;
+			$rootScope.articles =false;
+			$rootScope.description =false;
 		      $anchorScroll();
 		}
 
@@ -146,8 +155,6 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 			  $("#sideNav").show();	
 			  $location.path('/instructorCourse');
-			  
-
 		  }
 	  }
 

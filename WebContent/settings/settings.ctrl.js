@@ -1,5 +1,5 @@
 angular.module('myApp').controller("settingsCtrl",
-function($scope,$location,$anchorScroll,repeatServices, $rootScope){
+			function($scope,$location,$anchorScroll,repeatServices,$rootScope){
 
 	$('#sideNav').hide();
 	$('#scrollerNav').hide();
