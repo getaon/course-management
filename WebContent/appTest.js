@@ -6,6 +6,11 @@ var response = {};
 			return $http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses");
 	}
 
+    
+    response.unArchiveCourse = function(index){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/unRemoveCourse?id="+index);
+    }
+
     response.courseArchive = function(){
 		return $http.get("http://localhost/coursemanagementsystem/rest/course/getArchiveCourses");
     }

@@ -66,7 +66,8 @@ public class CourseManager {
 	public List<Course> getArchiveCourses(){
 		String sql = " SELECT * FROM coursemanagementsystem.course c "
 			 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
-			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id ";
+			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
+			 	+ "	where c.isactive=0";
 		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
 	}
 	/**
@@ -152,6 +153,31 @@ public class CourseManager {
 				r.setId(0);
 				r.setMsg(Reply.OK_STR);
 			return r; 
+		}catch(Exception e){
+			e.printStackTrace();
+			Reply r = new Reply();
+				r.setId(-1);
+				r.setMsg("faild");
+			return r;
+		}
+		
+	}
+	
+	/**
+	 * this function activate a course that has been 
+	 * removed or finished
+	 * @param id
+	 * @return
+	 */
+	public Reply unRemoveCourse(int id){
+		try{
+
+			Course course = ManagerHelper.getCourseManager().getCourseById(id);
+			course.setIsactive(true);
+			update(course);
+			
+			 
+			return new Reply(); 
 		}catch(Exception e){
 			e.printStackTrace();
 			Reply r = new Reply();

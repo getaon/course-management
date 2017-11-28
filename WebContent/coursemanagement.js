@@ -33,11 +33,17 @@ var app = angular.module("myApp", ["ngRoute"]);
 		      $anchorScroll();
 		}
 		
+		$scope.setting = function(){
+			  $location.path("/settings");
+		}
+	
 		$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
 			.then(function(response){
 				$rootScope.tags = response.data;
 				console.log($scope.tags);
 		});
+		
+		
 
 		repeatServices.AllCourses().then(function(response){
 				$rootScope.Courses = response.data;
