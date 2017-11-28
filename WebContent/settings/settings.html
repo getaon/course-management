@@ -49,7 +49,24 @@
 #Student_settingse,#Instrustor_settingse,#Category_settingse,#Archive_settingse > table > tr{
 	margin-bottom: 10px;
 }
-
+#container{
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  float: right;
+}
+#content{
+	background-color: gray;
+    border: 2px solid black;
+    border-radius: 12px;
+	padding: 20px;
+	margin: 0px;
+	float: left;
+	max-height: 80px;
+	margin: 10px 10px  10px 10px;
+}
 
 </style>
 
@@ -61,7 +78,7 @@
   <a id="contact" data-ng-click="gotoContact()">archive</a>
 </div>
 
-<div class="settings" style="margin-left:10%; margin-top: 5%; width: 100%;">
+<div class="settings" style="margin-left:10%; margin-top: 7%; width: 100%;">
 
 	<div id="Student_settingse">
 	  <h2>student</h2>
@@ -182,7 +199,7 @@
 	  <h2>Category</h2>
 	  <p>Insert category here:</p>
 	  
-	  <table style="width: 50% ;float: left;>
+	  <table style="width: 50% ;float: left;">
 	  		<tr>
 	  			<td style="padding-right: 200px;"> Name:</td>
 	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="category_name" required></td>
@@ -206,10 +223,15 @@
 	  <h2>Archive</h2>
 	  <p>course Archive:</p>
 	  	
-	  	<ul>
-	  		<li data-ng-repeat="course in courses">{{course.name}}</li>
-	  	</ul>
-	  
+	  	<div id="container">
+	  		<div id="content" data-ng-repeat="course in courseArchive">
+	  				<a data-ng-click="unArchiveCourse($index)" title="unArchive">
+	  					<i style="font-weight: 12px; float: right;" class="fa fa-recycle" aria-hidden="true"></i></a>	
+	  			<h4>{{course.name}}</h4>
+	  			<h5>by:{{course.instructor.firstname+" "+course.instructor.lastname}}</h5>
+	  		</div>
+	  	</div>
+	  	
 	</div>
 	
 </div>

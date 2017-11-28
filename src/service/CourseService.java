@@ -34,7 +34,7 @@ public class CourseService {
 	public List<Course>getArchiveCourses(){
 		return ManagerHelper.getCourseManager().getArchiveCourses();
 	}
-	
+
 	@GET
 	@Path("/getCoursesByTag")
 	public List<Course>getCoursesByTag(@QueryParam("tag")int tag){
@@ -62,6 +62,12 @@ public class CourseService {
 	@Path("/removeCourse")
 	public Reply removeCourse(@QueryParam("id")int id){
 		return ManagerHelper.getCourseManager().removeCourse(id);
+	}
+	
+	@GET
+	@Path("/unRemoveCourse")
+	public Reply unRemoveCourse(@QueryParam("id")int id){
+		return ManagerHelper.getCourseManager().unRemoveCourse(id);
 	}
 	
 	@GET

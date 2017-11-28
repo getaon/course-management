@@ -35,41 +35,40 @@ angular.module('myApp').controller("adminCourseEdit",function($http,$scope,$loca
 		$scope.alltags = response.data;
 	})
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
-    .then(function(response) {
+	repeatServices.AllInstructors().then(function(response) {
     console.log(response.data);
     	$scope.allinstructors = response.data;
     });	
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/student/getAllStudents")
-    .then(function(response) {
-    console.log(response.data);
+	repeatServices.getAllStudents().then(function(response) {
+		console.log(response.data);
     	$scope.allstudents = response.data;
     });
 
-	$http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
-	.then(function(response) {
+	repeatServices.getAllArticles().then(function(response) {
 		console.log(response.data);
 		$scope.allarticles = response.data;
 	});
 	
+	
 	$scope.edit = function(){
-		var date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
-		$http.get("http://localhost/coursemanagementsystem/rest/course/updateCourse?id="+$scope.courseSelected1.id+"&name="+$scope.name+"&instructorid="+$scope.instructor+"&description="+$scope.description+"&date="+date+"&location="+$scope.location+"&tag="+$scope.tag+"&articles=test&isactive=true")
-		.then(function(response) {
-			console.log(response.data);
-			$scope.newcourse = response.data;
-			console.log("newcourse---->"+$scope.newcourse);
-			console.log("response.msg---->"+response.data.msg);
-			
+		
+		repeatServices.updateCourse($scope.courseEdit.id,$scope.name,$scope.instructor,$scope.description,
+				$('#datepicker').val(),$scope.location,$scope.tag)
+					.then(function(response) {
+					console.log(response.data);
+					$scope.newcourse = response.data;
+					console.log("newcourse---->"+$scope.newcourse);
+					console.log("response.msg---->"+response.data.msg);
+								
 			if(response.data.msg=="ok"){
-	    		$scope.courseSelected1.name = $scope.name;
-	    		$scope.courseSelected1.instructor.id = $scope.instructor;
-	    		$scope.courseSelected1.location = $scope.location;
-	    		$scope.courseSelected1.description = $scope.description;
-	    		$scope.courseSelected1.startdate = $scope.date;
-	    		$scope.courseSelected1.tag.id = $scope.tag;
-	    		$scope.courseSelected1.article = $scope.article;
+	    		$scope.courseEdit.name = $scope.name;
+	    		$scope.courseEdit.instructor.id = $scope.instructor;
+	    		$scope.courseEdit.location = $scope.location;
+	    		$scope.courseEdit.description = $scope.description;
+	    		$scope.courseEdit.startdate = $scope.date;
+	    		$scope.courseEdit.tag.id = $scope.tag;
+	    		$scope.courseEdit.article = $scope.article;
 				
 			 }else{
 				 alert("The course was not updated!");

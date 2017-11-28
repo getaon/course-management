@@ -15,14 +15,12 @@ angular.module('myApp').controller("courseMaker",
 		  $scope.allinstructors = response.data;
 	  })
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/student/getAllStudents")
-    .then(function(response) {
+	repeatServices.getAllStudents().then(function(response) {
     console.log(response.data);
     	$scope.allstudents = response.data;
     });
 
-	$http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
-	.then(function(response) {
+	  repeatServices.AllTags().then(function(response) {
 		console.log(response.data);
 		$scope.allarticles = response.data;
 	});
