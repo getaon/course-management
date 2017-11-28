@@ -65,6 +65,7 @@ angular.module('myApp').controller("adminMode",
 			var confirm1 =confirm('Are you sure?');
 			
 			if(confirm1==true){					
+
 				var course = $scope.Courses[index].id;
 					$http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+course)
 					.then(function(response){

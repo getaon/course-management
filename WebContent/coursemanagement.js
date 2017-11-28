@@ -36,6 +36,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 		$scope.setting = function(){
 			$location.path("/settings");
 		}
+		
 		$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
 			.then(function(response){
 				$rootScope.tags = response.data;
@@ -89,28 +90,32 @@ var app = angular.module("myApp", ["ngRoute"]);
 				.then(function(response){
 					console.log(response.data);
 					$rootScope.courseSelected = response.data;
+					
+
 					$http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
 							+"course="+$scope.courseSelected.id)
 							.then(function(response){
 					$rootScope.presentationCourse = response.data;
 					
 							})
+					
 
 					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
 					.then(function(response) {
-						$rootScope.schedules= response.data;
-						console.log(schedules);
+						console.log(response.data);
+						$rootScope.schedules = response.data;
+					});	
+
 
 
 					});	
 
 
 					$location.path('/CourseInfo');
-				});
+				}
 			}
-			
-		}			
-
+		
+		
 	  
 	    $scope.chooseTag = function(index){
 			$http.get("http://localhost/coursemanagementsystem/rest/course/getCoursesByTag?tag="
@@ -163,6 +168,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 	  }
 	
 });
+
 
 
 	

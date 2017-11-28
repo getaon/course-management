@@ -68,6 +68,13 @@ var response = {};
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/courseInstructor/getInstructorCourse?"
 				+"courseId="+courseid + "&instructorId="+userId);
 	}
+	response.editInstructore = function (userId) {
+		return $http.get("localhost/coursemanagementsystem/rest/instructor/updateInstructor?id="+userId
+				+"&firstname="+$scope.instructor_name
+				+"&lastname="+$scope.instructor_last_name
+				+"&email="+$scope.instructor_email
+				+"&phone="+$scope.instructor_phone)
+	}
 	
 	return response;
 });

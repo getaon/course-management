@@ -1,11 +1,13 @@
 angular.module('myApp').controller("settingsCtrl",
-			function($scope,$location,$anchorScroll,repeatServices){
+			function($scope,$location,$anchorScroll,repeatServices,$rootScope){
 	
-	$scope.courseArchive = function (){
-		  repeatServices.courseArchive().then(function(response){
-			  $scope.courses = response.data;
-		  })
-	}
+	  repeatServices.AllInstructors().then(function(response){
+  		  $scope.instructors = response.data;
+  	  })
+
+	  repeatServices.AllTags().then(function(response){
+			$scope.tags = response.data;
+	  })
 
 	  $scope.addInstructor = function (){
 	 	  repeatServices.addInstructor($scope.instructor_name,$scope.instructor_last_name,  
@@ -19,6 +21,22 @@ angular.module('myApp').controller("settingsCtrl",
 
 		  })
 	  }
+	  $rootScope.gotoAbout = function(){
+		  $location.hash('Student_settingse');
+		  $anchorScroll();
+	}
+	  $rootScope.gotoBlog = function(){
+		  $location.hash('Instrustor_settingse');
+		  $anchorScroll();
+	}
+	  $rootScope.gotoProjects = function(){
+		  $location.hash('Category_settingse');
+		  $anchorScroll();
+	}
+	  $rootScope.gotoContact = function(){
+		  $location.hash('Archive_settingse');
+		  $anchorScroll();
+	}
 	  
 	  $scope.addStudent = function (){
 	 	  repeatServices.addStudent($scope.student_name,$scope.student_last_name,  
@@ -33,9 +51,8 @@ angular.module('myApp').controller("settingsCtrl",
 	  repeatServices.AllTags().then(function(response){
 			$scope.tags = response.data;
 	  })
-	    
+
 	  $scope.addCategory = function(){
-		  console.log($scope.category_name);
 		  repeatServices.addTag($scope.category_name).then(function(response){
 			  
 			  repeatServices.AllTags().then(function(response){
@@ -43,5 +60,17 @@ angular.module('myApp').controller("settingsCtrl",
 			  })
 		  })
 	  }
+	 
+	  $scope.editInstructore = function(){
+		  repeatServices.editInstructore($scope.student_name,$scope.student_last_name,  
+				$scope.student_email, $scope.student_phone)
+	  			.then(function(response){
+	  			$scope.edit = response.data;
+	  				  
+	  			})
+	  }
+	
+		
+	  
 });
 
