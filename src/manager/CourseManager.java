@@ -66,7 +66,8 @@ public class CourseManager {
 	public List<Course> getArchiveCourses(){
 		String sql = " SELECT * FROM coursemanagementsystem.course c "
 			 	+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
-			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id ";
+			 	+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
+			 	+ "	where c.isactive=0";
 		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
 	}
 	/**
@@ -79,7 +80,6 @@ public class CourseManager {
 					+ " c.syllabus, c.location,c.tag,c.isactive FROM course c "
 					+ " inner join coursemanagementsystem.tag t on c.tag = t.id "
 					+ " inner join coursemanagementsystem.instructor i on c.instructor = i.id"
-					+ " inner join coursemanagementsystem.article a on c.article = a.id "
 					+ " where c.tag = "+tag+" and c.isactive = 1";
 		
 		return (List<Course>)entityManager.createNativeQuery(sql,Course.class).getResultList();
@@ -161,6 +161,31 @@ public class CourseManager {
 		}
 		
 	}
+	
+	/**
+	 * this function activate a course that has been 
+	 * removed or finished
+	 * @param id
+	 * @return
+	 */
+	public Reply unRemoveCourse(int id){
+		try{
+
+			Course course = ManagerHelper.getCourseManager().getCourseById(id);
+			course.setIsactive(true);
+			update(course);
+			
+			 
+			return new Reply(); 
+		}catch(Exception e){
+			e.printStackTrace();
+			Reply r = new Reply();
+				r.setId(-1);
+				r.setMsg("faild");
+			return r;
+		}
+		
+	}
 
 	/**
 	 * function that get course and save it on DB
@@ -209,24 +234,38 @@ public class CourseManager {
 	 * @param isactive
 	 * @return
 	 */
-	public Course addCourse(String name,int instructorid,String description,String date,String location,
-
+	public Course addCourse(int courseId, String description,String date,String location,
 			int tagid,String syllabus,boolean isactive){
 		
-			Instructor instructor = ManagerHelper.getInstructorManager().getById(instructorid);
 			Tag tag = ManagerHelper.getTagManager().getTagById(tagid);
 					
 		try{
-		
-
-			Course course = new Course(name, instructor, description, date , location, tag, syllabus , isactive);
-			create(course);
+			Course course = new Course(description, date , location, tag, syllabus , isactive);
+			course.setId(courseId);
+			update(course);
 			return course;
 		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	
+	}
+	
+	public Course addCourseTitle(String name, int instructorid, boolean isactive) {
+			try{
+				
+				Instructor instructor = ManagerHelper.getInstructorManager().getById(instructorid);
+				Course course = new Course();
+					course.setName(name);
+					course.setInstructor(instructor);
+					course.setIsactive(isactive);
+					create(course);
+					return course;
+			}catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+			
 	}
 	/**
 	 * this function gives the course are selected by user

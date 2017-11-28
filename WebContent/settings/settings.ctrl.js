@@ -1,13 +1,33 @@
 angular.module('myApp').controller("settingsCtrl",
-			function($scope,$location,$anchorScroll,repeatServices,$rootScope){
+<<<<<<< HEAD
+			function($scope,$location,$anchorScroll,repeatServices){
+
+	$('#sideNav').hide();
+	$('#scrollerNav').hide();
+	$('#header').hide();
+	$('#scroller').hide();
 	
+	repeatServices.courseArchive().then(function(response){
+		$scope.courseArchive = response.data;
+	})	
+=======
+			function($scope,$location,$anchorScroll,repeatServices,$rootScope){
+>>>>>>> 81b7b295a6cbd1644aa81b924caa065bb998872d
+	
+	$scope.unArchiveCourse = function (index){
+		repeatServices.unArchiveCourse($scope.courseArchive[index].id)
+					.then(function(response){
+			
+			repeatServices.courseArchive().then(function(response){
+				$scope.courseArchive = response.data;
+			})	
+
+		})
+	}
+	  
 	  repeatServices.AllInstructors().then(function(response){
   		  $scope.instructors = response.data;
   	  })
-
-	  repeatServices.AllTags().then(function(response){
-			$scope.tags = response.data;
-	  })
 
 	  $scope.addInstructor = function (){
 	 	  repeatServices.addInstructor($scope.instructor_name,$scope.instructor_last_name,  
