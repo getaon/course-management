@@ -21,6 +21,9 @@ angular.module('myApp').controller("settingsCtrl",
 
 		  })
 	  }
+	  
+	  
+	  
 	  $rootScope.gotoAbout = function(){
 		  $location.hash('Student_settingse');
 		  $anchorScroll();
@@ -61,14 +64,7 @@ angular.module('myApp').controller("settingsCtrl",
 		  })
 	  }
 	 
-	  $scope.editInstructore = function(){
-		  repeatServices.editInstructore($scope.student_name,$scope.student_last_name,  
-				$scope.student_email, $scope.student_phone)
-	  			.then(function(response){
-	  			$scope.edit = response.data;
-	  				  
-	  			})
-	  }
+	  
 	
 		
 	  

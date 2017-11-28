@@ -35,6 +35,13 @@ var response = {};
     			+"&password="+instructor_password
 		    	+"&isactive=true");
     }
+   response.editInstructore = function (userId) {
+		return $http.get("localhost/coursemanagementsystem/rest/instructor/updateInstructor?id="+userId
+				+"&firstname="+instructor_name
+				+"&lastname="+instructor_last_name
+				+"&email="+instructor_email
+				+"&phone="+instructor_phone+"&isactive=true")
+	}
 
    response.AllInstructors= function(){
     	return $http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors");
@@ -59,13 +66,7 @@ var response = {};
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/courseInstructor/getInstructorCourse?"
 				+"courseId="+courseid + "&instructorId="+userId);
 	}
-	response.editInstructore = function (userId) {
-		return $http.get("localhost/coursemanagementsystem/rest/instructor/updateInstructor?id="+userId
-				+"&firstname="+$scope.instructor_name
-				+"&lastname="+$scope.instructor_last_name
-				+"&email="+$scope.instructor_email
-				+"&phone="+$scope.instructor_phone)
-	}
+	
 	
 	return response;
 });
