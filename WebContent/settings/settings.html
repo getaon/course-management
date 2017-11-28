@@ -84,36 +84,57 @@
 	  <h2>student</h2>
 	  <p>Insert new student here: </p>
 	  
-	  	<table>
+	  	<table style="width: 50% ;float: left;>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">First Name:</td>
-	  			<td><input type="text" data-ng-model="student_name"></td>
+	  			<td style="padding-right: 200px; margin-bottom: 10px;">First Name :</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_name" required></td>
 	  		</tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">Last Name:</td>
-	  			<td><input type="text" data-ng-model="student_last_name"></td>
+	  			<td style="padding-right: 200px; margin-bottom: 10px;">Last Name :</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_last_name" required></td>
 	  		</tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">email</td>
-	  			<td><input type="text" data-ng-model="student_email"></td>
+	  			<td style="padding-right: 200px; margin-bottom: 10px;">email :</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_email" required></td>
 	  		</tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">phone</td>
-	  			<td><input type="text" data-ng-model="student_phone"></td>
+	  			<td style="padding-right: 200px; margin-bottom: 10px;">phone :</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_phone" required></td>
 	  		</tr>
 	  		
 	  		<tr style="margin-top: 50px;">
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">user name:</td>
-	  			<td><input type="text" data-ng-model="student_user_name"></td>
+	  			<td style="padding-right: 200px; margin-bottom: 10px;">user name :</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_user_name" required></td>
 	  		</tr>
 	  		
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">password</td>
-	  			<td><input type="text" data-ng-model="student_password"></td>
+	  			<td style="padding-right: 200px; margin-bottom: 10px;">password :</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_password" required></td>
 	  		</tr>
-	  		<tr><td><button data-ng-click="addStudent()">add</button></td></tr>
+	  		<tr><td><button data-ng-click="addStudent()">Add</button></td></tr>
 	  	</table>
-	  
+	  	
+	  	<table style="width: 50% ; border: 1; float: right;">
+	  		<thead>
+		  		<tr>
+		  			<td></td>
+		  			<th>First Name</th>
+		  			<th>Last Name</th>
+		  			<th>email</th>
+		  			<th>phone</th>
+		  			<th>Is Active</th>
+		  		</tr>
+	  		</thead>
+	  		<tr data-ng-repeat="student in students">
+	  			<td>{{$index+1}}</td>
+	  			<td>{{student.firstname}}</td>
+	  			<td>{{student.lastname}}</td>
+	  			<td>{{student.email}}</td>
+	  			<td>{{student.phone}}</td>
+	  			<td>{{student.isactive}}</td>
+	  			<td><button class="glyphicon glyphicon-pencil" data-ng-click="editStudent()"></button></td>
+	  		</tr>
+	  	</table>
 	</div>
 	
 	<div id="Instrustor_settingse">
@@ -122,35 +143,35 @@
 	  	<table style="width: 50% ;float: left;">
 	  		<tr>
 	  			<td style="padding-right: 200px; margin-bottom: 10px;">First Name:</td>
-	  			<td><input type="text" data-ng-model="instructor_name"></td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_name" required></td>
 	  		</tr>
 	  		<tr>
 	  			<td style="padding-right: 200px; margin-bottom: 10px;">Last Name:</td>
-	  			<td><input type="text" data-ng-model="instructor_last_name"></td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_last_name" required></td>
 	  		</tr>
 	  		<tr>
 	  			<td style="padding-right: 200px; margin-bottom: 10px;">email</td>
-	  			<td><input type="text" data-ng-model="instructor_email"></td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_email" required></td>
 	  		</tr>
 	  		<tr>
 	  			<td style="padding-right: 200px; margin-bottom: 10px;">phone</td>
-	  			<td><input type="text" data-ng-model="instructor_phone"></td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_phone" required></td>
 	  		</tr>
 	  		
 	  		<tr style="margin-top: 50px;">
 	  			<td style="padding-right: 200px; margin-bottom: 10px;">user name:</td>
-	  			<td><input type="text" data-ng-model="instructor_user_name"></td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_user_name" required></td>
 	  		</tr>
 	  		
 	  		<tr>
 	  			<td style="padding-right: 200px; margin-bottom: 10px;">password</td>
-	  			<td><input type="text" data-ng-model="instructor_password"></td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_password" required></td>
 	  		</tr>
-	  		<tr><td><button data-ng-click="addInstructor()">add</button></td></tr>
+	  		<tr><td><button data-ng-click="addInstructor()">Add</button></td></tr>
 	  		
 	  	</table>
 	  	
-	  	<table style="margin-top: 50px;width: 50% ; border: 1; float: right;">
+	  	<table style="width: 50% ; border: 1; float: right;">
 	  		<thead>
 		  		<tr>
 		  			<td></td>
@@ -178,15 +199,15 @@
 	  <h2>Category</h2>
 	  <p>Insert category here:</p>
 	  
-	  <table>
+	  <table style="width: 50% ;float: left;">
 	  		<tr>
 	  			<td style="padding-right: 200px;"> Name:</td>
-	  			<td><input type="text" data-ng-model="category_name"></td>
-	  			<td><button value="add" data-ng-click="addCategory()">add</button></td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="category_name" required></td>
+	  			<td><button data-ng-click="addCategory()">Add</button></td>
 	  		</tr>
 	  	</table>
 	  	
-	  	<table style="margin-top: 50px;">
+	  	<table style="width: 50% ; border: 1; float: right;">
 	  		<tr>
 	  			<td></td>
 	  			<td> Name</td>

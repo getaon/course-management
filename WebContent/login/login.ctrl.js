@@ -2,9 +2,8 @@ angular.module("myApp").controller("login",
 			function($http,$scope,$location,$rootScope,repeatServices){
 	
 	$scope.login = function(){
-		   $http.get("http://localhost/coursemanagementsystem/rest/user/getFullUser?"
-		   		   +"username="+$scope.username
-		   		   +"&password="+$scope.password)
+		
+		repeatServices.login($scope.username,$scope.password)
 			      .then(function(response) {
 	     var fullUser = response.data;
 		console.log(fullUser);
@@ -30,12 +29,10 @@ angular.module("myApp").controller("login",
 						$rootScope.Courses = response.data;
 					})
 					
-					$http.get("http://localhost/coursemanagementsystem/rest/student/getStudentById?"
-					   		   +"id="+fullUser.id)
-						      .then(function(response) {
-			    	  $rootScope.loginName = response.data;    	  
+					repeatServices.getById(fullUser.id).then(function(response) {
+			    	  $rootScope.loginName = response.data;
 						    	  
-			        });
+  			        });
 				    
 			
 						$location.path("/student");
@@ -48,9 +45,7 @@ angular.module("myApp").controller("login",
 						$rootScope.Courses = response.data;
 					})
 					
-					$http.get("http://localhost/coursemanagementsystem/rest/instructor/getById?"
-							 +"id="+fullUser.id)
-						      .then(function(response) {
+					repeatServices.getById(fullUser.id).then(function(response) {
 			    	  $rootScope.loginName = response.data;
 						    	  
   			        });

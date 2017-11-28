@@ -1,5 +1,5 @@
 angular.module('myApp').controller("adminCourseInformation",
-				function($http,$scope,$location,$anchorScroll,repeatServices){
+				function($http,$scope,$location,$anchorScroll,repeatServices,$rootScope){
 
 	$('#sideNav').hide();
 	$('#scrollerNav').show();
@@ -7,27 +7,23 @@ angular.module('myApp').controller("adminCourseInformation",
 	$('#header').hide();
 	$('#scroller').show();
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors")
-    .then(function(response) {
+	repeatServices.AllInstructors().then(function(response) {
     console.log(response.data);
     	$scope.allinstructors = response.data;
     });	
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/student/getAllStudents")
-    .then(function(response) {
+	repeatServices.getAllStudents().then(function(response) {
     console.log(response.data);
     	$scope.allstudents = response.data;
     });
 	
-	$http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
-	.then(function(response) {
+	repeatServices.getAllArticles().then(function(response) {
 		console.log(response.data);
 		$scope.allarticles = response.data;
 	});	
 		
-	
-	repeatServices.instructorCourse($scope.courseSelected.id).then(function(response){
-		var reply = response.data;
+/*	repeatServices.instructorCourse($scope.courseSelected.id,userId).then(function(response){
+				var reply = response.data;
 
 		if(reply != null){
 			
@@ -35,12 +31,15 @@ angular.module('myApp').controller("adminCourseInformation",
 		}else if(reply == null){
 			$scope.registertion = true;
 		}
-	})
+	})*/
 
 	$scope.register = function(courseid){
+		
+		repeatServices.registerCourse(userId,courseid)
+		/*
 		$http.get("http://localhost/coursemanagementsystem/rest/courseInstructor/addCourseInstructor?"
 			+ "instructorId="+userId
-			+ "&courseId="+courseid).then(function(response){
+			+ "&courseId="+courseid)*/.then(function(response){
 				var registered = response.data;
 				
 				if(registered != null){

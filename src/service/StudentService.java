@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
+import entity.Instructor;
 import entity.Student;
 import manager.ManagerHelper;
 import manager.Reply;
@@ -39,6 +40,12 @@ public class StudentService {
 			@QueryParam("password") String password,@QueryParam("isactive") boolean isactive) {
 		return (Student) ManagerHelper.getStudentManager().addStudent(firstname, lastname,
 						email, phone, username,password, isactive);
+	}
+	
+	@GET
+	@Path("/updateStudent")
+	public Reply updateStudent(@QueryParam("id") int id,@QueryParam("firstname") String firstname,@QueryParam("lastname") String lastname,@QueryParam("email") String email,@QueryParam("phone") String phone) {
+		return ManagerHelper.getStudentManager().updateStudent(id,firstname,lastname,email,phone);
 	}
 	
 	@GET
