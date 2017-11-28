@@ -7,27 +7,19 @@
 			      <div id="general">
 			      	<table id="courseTable">    
 		      			<tr class="course">
-							<td>
-								Course Name :
-							</td>
-							<td>
-								<input type="text" data-ng-model="name">
-							</td>
+		      				<td>
+		      					<h1>{{courseTitle.name}}</h1>
+		      				</td>
+		      				<td>
+		      				</td>
 							<td>
 								<button class="publish" data-ng-click="create()" data-ng-click="add()">publish</button>
 							</td>
 						</tr>
-					<tr class="instructor">
-						<td>
-							By :
-						</td>
-						<td>
-							<select data-ng-model="instructor">
-								<option value="{{instructor.id}}" data-ng-repeat="instructor in allinstructors">{{instructor.firstname}} {{instructor.lastname}}</option>
-							</select>
-						</td>
-						<td></td>
-					</tr>
+						<tr>
+							<td><h4>{{courseTitle.instructor.firstname}} {{courseTitle.instructor.lastname}}</h4></td>
+							<td colspan="2"></td>
+						</tr>
 						<tr class="Attendants">
 							<td>
 								Attendants :
@@ -45,6 +37,14 @@
 							</td>
 							<td>
 								<input data-ng-model="location" type="text">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Date :
+							</td>
+							<td>
+								<input data-ng-model="date" type="date" id="datepicker">
 							</td>
 						</tr>
 						<tr>
@@ -95,17 +95,15 @@
 			       
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
-							<h1>Schedule</h1>
-							<strong>Date : </strong><input type="date" data-ng-model="scheduleDate" id="scheduleDatepicker" placeholder="Date">
-							<strong>Start Hour : </strong><input type="time" data-ng-model="starthour" id="starthour" placeholder="Start Hour">
-							<strong>End Hour : </strong><input type="time" data-ng-model="endhour" id="endhour" placeholder="End Hour">
+						<h1>Schedule</h1>
+						<strong>Date : </strong><input type="date" data-ng-model="scheduleDate" id="scheduleDatepicker">
+						<strong>Start Hour : </strong><input type="time" data-ng-model="starthour" id="starthour">
+						<strong>End Hour : </strong><input type="time" data-ng-model="endhour" id="endhour">
 					</div>
-					<div data-ng-repeat="row in rows">
-							<strong>Date : </strong><input type="date" data-ng-model="row.date" id="scheduleDatepicker" placeholder="{{row.datePlaceholder}}">
-							<strong>Start Hour : </strong><input type="time" data-ng-model="row.start" id="starthour" placeholder="{{row.startPlaceholder}}">
-							<strong>End Hour : </strong><input type="time" data-ng-model="row.end" id="endhour" placeholder="{{row.endPlaceholder}}">
-					</div>
-					<button data-ng-click="addDynamically()">Add Schedule</button>
+					<p data-ng-repeat="schedule in schedules"><strong>Date : </strong>{{schedule.date}} 
+															 <strong>Start Hour : </strong>{{schedule.starthour}}
+														     <strong>End Hour : </strong>{{schedule.endhour}}</p>
+					<button data-ng-click="createSchedule()">Add Schedule</button>
 			      </div>
 			      <div id="presentations">         
 			        	<div id="studentPresentation">

@@ -1,7 +1,11 @@
 app.factory("repeatServices", function($http){
 var response = {};
 
-
+	response.getScheduleByCourseId = function(courseid){
+		return $http.get("http://localhost/coursemanagementsystem/rest/schedule" 
+							+"/getScheduleByCourseId?courseId="+courseid);
+	}
+	
     response.AllCourses = function(){
 			return $http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses");
 	}
@@ -9,7 +13,12 @@ var response = {};
     response.courseArchive = function(){
 		return $http.get("http://localhost/coursemanagementsystem/rest/course/getArchiveCourses");
     }
-
+    
+    response.createCourse = function(name,instructor){
+    	return $http.get("http://localhost/coursemanagementsystem/rest/course/addCourseTitle?name="+name
+				+"&instructorid="+instructor
+				+"&isactive=true");
+    }
     response.addStudent = function(student_name,student_last_name,  
     					student_email, student_phone, student_user_name,
     					student_password){

@@ -9,8 +9,17 @@ angular.module('myApp').controller("adminMode",
 	
 	$('#datepicker').show();
 	$('#dateExp').hide();
-
 	
+	 repeatServices.AllInstructors().then(function(response){
+		  $scope.allinstructors = response.data;
+	  })
+	  
+	$scope.popUp = function(){
+		$('#courseTitle').dialog({
+	        autoOpen: true,
+	        title: 'Set Course Name And Instructor'
+	    });
+	}
 	 	$scope.courseEdit =function(index){
 	 		$('#datepicker').hide();
 	 		$('#dateExp').show();
@@ -45,7 +54,10 @@ angular.module('myApp').controller("adminMode",
 		}			
 
 		$scope.createCourse = function(){
-			
+			  repeatServices.createCourse($scope.name,$scope.instructor).then(function(response){
+				  $rootScope.courseTitle = response.data;
+			  })
+			  $('#courseTitle').dialog("destroy");
 			$location.path('/createCourse');
 		}
 	

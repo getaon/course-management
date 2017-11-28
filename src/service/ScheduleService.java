@@ -28,14 +28,16 @@ public class ScheduleService {
 	}
 	
 	@GET
+	@Path("/getScheduleByCourseId")
+	public List<Schedule> getScheduleByCourseId(@QueryParam("courseId") int courseId){
+		System.out.println("getSchedule service");
+		return ManagerHelper.getScheduleManager().getScheduleByCourseId(courseId);
+	}
+	
+	@GET
 	@Path("/addSchedule")
 	public Schedule addSchedule(@QueryParam("date") String date,@QueryParam("starthour") String starthour,@QueryParam("endhour") String endhour,@QueryParam("courseid") int courseid){
 		System.out.println("addSchedule service");
-		
-		System.out.println("date---> " + date);
-		System.out.println("starthour ----> " +starthour);
-		System.out.println("endhour ---- >" + endhour);
-		System.out.println("courseid ----> "+ courseid);
 		return  ManagerHelper.getScheduleManager().addSchedule(date, starthour, endhour, courseid);
 	}
 

@@ -30,10 +30,8 @@ public class Course {
 	public Course(){
 	}
 	
-	public Course(String name,Instructor instructor,String description,String date,String location,
+	public Course(String description,String date,String location,
 					Tag tag,String syllabus,boolean isactive){
-		this.name=name;
-		this.instructor=instructor;
 		this.description=description;
 		this.date=date;
 		this.location=location;
