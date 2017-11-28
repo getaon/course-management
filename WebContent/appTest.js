@@ -24,6 +24,7 @@ var response = {};
 				+"&instructorid="+instructor
 				+"&isactive=true");
     }
+    
     response.addStudent = function(student_name,student_last_name,  
     					student_email, student_phone, student_user_name,
     					student_password){

@@ -8,7 +8,7 @@
 			      		<div style="float:right">
 			      			<button>register</button>
 			      		</div>
-			       		<div id="studentDescription">
+			       		<div id="studentDescription" data-ng-show= "description">
 								<h1>{{studentSelection.name}}</h1>
 								<h4>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h4>
 						         <h4>{{studentSelection.startdate}}</h4>
@@ -19,19 +19,19 @@
 								
 						</div>
 			      </div>
-			      <div id="syllabus"> 
+			      <div id="syllabus" data-ng-show= "Agenda"> 
 			       		<div>
 							<h2>Syllabus</h2>
 							<p>{{studentSelection.syllabus}}</p>
 						</div>
 			      </div>        
-			      <div id="schedule">         
+			      <div id="schedule" data-ng-show= "timeSchedule">         
 			        <div id="strudentScheduale">
 							<h1>Schedule</h1>
 							<p data-ng-repeat="schedule in schedules"><strong>Date : </strong>{{schedule.date}}  <strong>Start Hour : </strong>{{schedule.starthour}}  <strong>End Hour : </strong>{{schedule.endhour}}</p>
 					</div>
 			      </div>
-			      <div id="presentations">         
+			      <div id="presentations" data-ng-show="articles">         
 			        	<div id="studentPresentation">
 							 <h1>Presentations</h1>
 								<h1>{{studentSelection.name}}</h1>
@@ -42,8 +42,10 @@
 							
 						</div>
 			      </div>      
-			      <div id="message" style="height: 500px;">         
+			      <div id="message" style="min-height: 500px;">         
 			        <p>Massage Board</p>
+			        
+			        
 			      </div>
 			    </div>
 			  </div>

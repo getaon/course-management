@@ -60,7 +60,16 @@ angular.module('myApp').controller("adminMode",
 			  $('#courseTitle').dialog("destroy");
 			$location.path('/createCourse');
 		}
-	
+		/*	
+		$scope.currentPage = 0;
+		    $scope.pageSize = 6;
+		   
+		    $scope.numberOfPages=function(){
+		    	 repeatServices.AllCourses().then(function(response){
+		   		  $scope.allCourse  = response.data;		   		  
+		    	});
+		    		return Math.ceil($scope.allCourse.length/$scope.pageSize); 
+		    }*/
 		$scope.remove = function(index){
 			var confirm1 =confirm('Are you sure?');
 			

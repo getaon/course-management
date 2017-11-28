@@ -5,7 +5,11 @@ var app = angular.module("myApp", ["ngRoute"]);
 	app.controller("myCtrl",
 		function($http,$scope,$location,$interval,$anchorScroll,$rootScope,repeatServices){
 
-		
+		$rootScope.general =true;
+		$rootScope.Agenda =true;
+		$rootScope.timeSchedule =true;
+		$rootScope.articles =true;
+		$rootScope.description =true;
 		
 		$rootScope.gotoGeneral = function(){
 			  $location.hash('CourseDetail');
@@ -25,6 +29,11 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 		$rootScope.gotoPresentations = function(){
 			$location.hash('syllabus');
+			$rootScope.general =false;
+			$rootScope.Agenda =false;
+			$rootScope.timeSchedule =false;
+			$rootScope.articles =false;
+			$rootScope.description =false;
 		      $anchorScroll();
 		}
 
@@ -34,15 +43,10 @@ var app = angular.module("myApp", ["ngRoute"]);
 		}
 		
 		$scope.setting = function(){
-<<<<<<< HEAD
-			  $location.path("/settings");
-		}
-	
-=======
+
 			$location.path("/settings");
 		}
-		
->>>>>>> 81b7b295a6cbd1644aa81b924caa065bb998872d
+
 		$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
 			.then(function(response){
 				$rootScope.tags = response.data;
