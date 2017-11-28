@@ -1,16 +1,17 @@
 app.factory("repeatServices", function($http){
 var response = {};
 
-	response.getScheduleByCourseId = function(courseid){
-		return $http.get("http://localhost/coursemanagementsystem/rest/schedule" 
-							+"/getScheduleByCourseId?courseId="+courseid);
-	}
-	
+
     response.AllCourses = function(){
 			return $http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses");
 	}
-
-    
+    response.removeCourse = function(courseid){
+    return $http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+courseid);
+    }
+    response.selectedCource = function(courseid){
+    return $http.get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
+			+"id="+courseid)
+    }
     response.unArchiveCourse = function(index){
 		return $http.get("http://localhost/coursemanagementsystem/rest/course/unRemoveCourse?id="+index);
     }
@@ -70,17 +71,81 @@ var response = {};
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/tag/addTag?"
 							+"name="+category_name);
 	}
-
+	
+	response.getCoursesByTag= function(tagid){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/getCoursesByTag?tag="+tagid);
+	}
+			
 	response.studentCourse= function(courseid){
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/studentCourse/studentCourseVerefiy?"
 				+"id="+courseid + "&userId="+userId);
 	}
 	
-	response.instructorCourse= function(courseid){
+	response.instructorCourse= function(courseid,userId){
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/courseInstructor/getInstructorCourse?"
-				+"courseId="+courseid + "&instructorId="+userId);
+				+"courseId="+courseid + "&instructorId="+userId);		
 	}
 	
+	response.getArticleByCourse = function(courseid){
+		return $http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
+			+"course="+courseid);
+	}
 	
+	response.getMyCoursesInstructor = function(userId){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/getMyCoursesInstructor?"
+			+"user="+userId)
+	}
+	
+	response.getMyCoursesStudent = function(userId){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/getMyCoursesStudent?"
+				+"user="+userId)
+	}
+	
+	response.getSelectedCource = function(courseid){
+		return $http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
+				+"id="+courseid)
+	}
+	
+	response.getScheduleByCourseId = function(courseid){
+		return $http.get("http://localhost/coursemanagementsystem/rest/schedule" 
+							+"/getScheduleByCourseId?courseId="+courseid);
+	}
+	
+	response.getAllStudents = function(){
+		return $http.get("http://localhost/coursemanagementsystem/rest/student/getAllStudents")
+	}
+	
+	response.getAllArticles = function(){
+		return $http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
+	}
+	
+	response.updateCourse = function(course_id,course_name,course_instructor,course_description,course_date,course_location,course_tag){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/updateCourse?id="
+			+course_id+"&name="+course_name
+			+"&instructorid="+course_instructor+
+			"&description="+course_description
+			+"&date="+course_date+"&location="
+			+course_location+"&tag="
+			+course_tag+"&articles=test&isactive=true")
+	}
+	
+	response.getById = function(fullUserId){
+		return $http.get("http://localhost/coursemanagementsystem/rest/instructor/getById?"
+			 +"id="+fullUserId)
+	}
+	
+	response.login = function(username,password){
+		return $http.get("http://localhost/coursemanagementsystem/rest/user/getFullUser?"
+		   		   +"username="+username
+		   		   +"&password="+password)
+	}
+	
+	response.registerCourse = function(userId,courseid){
+		return $http.get("http://localhost/coursemanagementsystem/rest/courseInstructor/addCourseInstructor?"
+				+ "instructorId="+userId
+				+ "&courseId="+courseid) 
+	}
+	
+
 	return response;
 });

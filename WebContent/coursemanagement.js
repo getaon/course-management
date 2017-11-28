@@ -34,17 +34,11 @@ var app = angular.module("myApp", ["ngRoute"]);
 		}
 		
 		$scope.setting = function(){
-<<<<<<< HEAD
-			  $location.path("/settings");
-		}
-	
-=======
+
 			$location.path("/settings");
 		}
 		
->>>>>>> 81b7b295a6cbd1644aa81b924caa065bb998872d
-		$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags")
-			.then(function(response){
+		repeatServices.AllTags().then(function(response){
 				$rootScope.tags = response.data;
 				console.log($scope.tags);
 		});
@@ -58,16 +52,12 @@ var app = angular.module("myApp", ["ngRoute"]);
 		$scope.myCourses = function(){
 			
 			if(usertype == "student"){
-				$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCoursesStudent?"
-						+"user="+userId)
-				.then(function(response){
+				repeatServices.getMyCoursesStudent(userId).then(function(response){
 					$rootScope.Courses = response.data;
 				})
 				
 			}else if(usertype == "instructor"){
-				$http.get("http://localhost/coursemanagementsystem/rest/course/getMyCoursesInstructor?"
-						+"user="+userId)
-				.then(function(response){
+				repeatServices.getMyCoursesInstructor(userId).then(function(response){
 					$rootScope.Courses = response.data;
 				})
 				
@@ -77,48 +67,43 @@ var app = angular.module("myApp", ["ngRoute"]);
 		$scope.courseInfo =function(index){
 			
 			if(usertype == "student"){
-				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
-						+"id="+$scope.Courses[index].id)
-				.then(function(response){
-
+				repeatServices.getSelectedCource($scope.Courses[index].id)
+						.then(function(response){
 					$rootScope.studentSelection =  response.data;
-						
-					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.studentSelection.id)
-					.then(function(response) {
+					
+				repeatServices.getScheduleByCourseId($scope.studentSelection.id)
+				.then(function(response) {
 						console.log(response.data);
 						$rootScope.scheduleSelected = response.data;
 					});	
+				
+					/* $http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.studentSelection.id)
+					.then(function(response) {
+						console.log(response.data);
+						$rootScope.scheduleSelected = response.data;
+					});	*/
 					
 					$location.path('/studentCourseInfo');
 				});
 				
 			}else if(usertype == "instructor"){
-				$http. get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
-						+"id="+$scope.Courses[index].id)
+				repeatServices.getSelectedCource($scope.Courses[index].id)
 				.then(function(response){
-					console.log(response.data);
 					$rootScope.courseSelected = response.data;
-					
-
-					$http. get("http://localhost/coursemanagementsystem/rest/article/getArticleByCourse?"	
-							+"course="+$scope.courseSelected.id)
+			
+					repeatServices.getArticleByCourse($scope.courseSelected.id)
 							.then(function(response){
-					$rootScope.presentationCourse = response.data;
+								$rootScope.presentationCourse = response.data;
+					})
 					
-							})
-					
-
-					$http.get("http://localhost/coursemanagementsystem/rest/schedule/getSchedule?id="+$scope.courseSelected.id)
-					.then(function(response) {
-						console.log(response.data);
-						$rootScope.schedules = response.data;
+						console.log("$scope.courseSelected.id--->"+$scope.courseSelected.id);
+					repeatServices.getScheduleByCourseId($scope.courseSelected.id)
+							.then(function(response) {
+									console.log(response.data);
+								$rootScope.schedules = response.data;
 					});	
 
-
-
-					});	
-
-
+				});	
 					$location.path('/CourseInfo');
 				}
 			}
@@ -126,9 +111,9 @@ var app = angular.module("myApp", ["ngRoute"]);
 		
 	  
 	    $scope.chooseTag = function(index){
-			$http.get("http://localhost/coursemanagementsystem/rest/course/getCoursesByTag?tag="
-					+$scope.tags[index].id)
-			.then(function(response){
+	    	
+	    	repeatServices.getCoursesByTag($scope.tags[index].id)
+	    			.then(function(response){
 				$rootScope.Courses = response.data;
 			})
 	     }

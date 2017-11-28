@@ -1,6 +1,6 @@
 angular.module('myApp').controller("settingsCtrl",
-<<<<<<< HEAD
-			function($scope,$location,$anchorScroll,repeatServices){
+
+			function($scope,$location,$anchorScroll,repeatServices, $rootScope){
 
 	$('#sideNav').hide();
 	$('#scrollerNav').hide();
@@ -10,10 +10,7 @@ angular.module('myApp').controller("settingsCtrl",
 	repeatServices.courseArchive().then(function(response){
 		$scope.courseArchive = response.data;
 	})	
-=======
-			function($scope,$location,$anchorScroll,repeatServices,$rootScope){
->>>>>>> 81b7b295a6cbd1644aa81b924caa065bb998872d
-	
+
 	$scope.unArchiveCourse = function (index){
 		repeatServices.unArchiveCourse($scope.courseArchive[index].id)
 					.then(function(response){
