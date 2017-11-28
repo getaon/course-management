@@ -1,7 +1,11 @@
 app.factory("repeatServices", function($http){
 var response = {};
 
-
+	response.getScheduleByCourseId = function(courseid){
+		return $http.get("http://localhost/coursemanagementsystem/rest/schedule" 
+							+"/getScheduleByCourseId?courseId="+courseid);
+	}
+	
     response.AllCourses = function(){
 			return $http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses");
 	}
@@ -14,7 +18,12 @@ var response = {};
     response.courseArchive = function(){
 		return $http.get("http://localhost/coursemanagementsystem/rest/course/getArchiveCourses");
     }
-
+    
+    response.createCourse = function(name,instructor){
+    	return $http.get("http://localhost/coursemanagementsystem/rest/course/addCourseTitle?name="+name
+				+"&instructorid="+instructor
+				+"&isactive=true");
+    }
     response.addStudent = function(student_name,student_last_name,  
     					student_email, student_phone, student_user_name,
     					student_password){
@@ -63,6 +72,13 @@ var response = {};
 	response.instructorCourse= function(courseid){
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/courseInstructor/getInstructorCourse?"
 				+"courseId="+courseid + "&instructorId="+userId);
+	}
+	response.editInstructore = function (userId) {
+		return $http.get("localhost/coursemanagementsystem/rest/instructor/updateInstructor?id="+userId
+				+"&firstname="+$scope.instructor_name
+				+"&lastname="+$scope.instructor_last_name
+				+"&email="+$scope.instructor_email
+				+"&phone="+$scope.instructor_phone)
 	}
 	
 	return response;

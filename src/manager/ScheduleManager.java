@@ -66,5 +66,18 @@ public class ScheduleManager {
 			return null;
 		}
 	}
+
+	public List<Schedule> getScheduleByCourseId(int courseId) {
+		try{
+			String sql ="select * from coursemanagementsystem.schedule "
+								+ " where courseid="+ courseId;
+			
+			return (List<Schedule>) entityManager.createNativeQuery(sql, Schedule.class).getResultList();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }

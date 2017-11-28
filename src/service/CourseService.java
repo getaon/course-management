@@ -18,8 +18,8 @@ public class CourseService {
 
 	
 	@GET
-	@Path("/get")
-	public Course getCustomerById(@QueryParam("id") int id){
+	@Path("/getCourseById")
+	public Course getCourseById(@QueryParam("id") int id){
 		return ManagerHelper.getCourseManager().getCourseById(id);
 	}
 	
@@ -82,10 +82,17 @@ public class CourseService {
 	
 	@GET
 	@Path("/addCourse")
-	public Course addCourse(@QueryParam("name")String name,@QueryParam("instructorid")int instructorid,@QueryParam("description")String description,
+	public Course addCourse(@QueryParam("courseId")int courseId,@QueryParam("description")String description,
 			@QueryParam("date")String date,@QueryParam("location")String location,@QueryParam("tag")int tag,
 			@QueryParam("syllabus")String syllabus,@QueryParam("isactive")boolean isactive){
-		return ManagerHelper.getCourseManager().addCourse(name, instructorid, description,date, location, tag, syllabus, isactive);
+		return ManagerHelper.getCourseManager().addCourse(courseId,description,date, location, tag, syllabus, isactive);
+	}
+	
+	@GET
+	@Path("/addCourseTitle")
+	public Course addCourseTitle(@QueryParam("name")String name,@QueryParam("instructorid")int instructorid,
+						@QueryParam("isactive")boolean isactive){
+		return ManagerHelper.getCourseManager().addCourseTitle(name, instructorid,isactive);
 	}
 	
 	@GET

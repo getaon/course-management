@@ -1,8 +1,18 @@
 
-	<a class="btn btn-info btn-lg addbtn" style="float: left;" data-ng-click="createCourse()">
+	<a class="btn btn-info btn-lg addbtn" style="float: left;" data-ng-click="popUp()">
          <span class="glyphicon glyphicon-plus"></span> add 
      </a>
-	
+	<div style="display: none" id="courseTitle">
+		<form>
+			<a>Course Name : </a>
+			<input type="text" data-ng-model="name"><br>
+			<a>By : </a>		
+			<select data-ng-model="instructor">
+				<option value="{{instructor.id}}" data-ng-repeat="instructor in allinstructors">{{instructor.firstname}} {{instructor.lastname}}</option>
+			</select>
+			<button data-ng-click="createCourse()">Add</button>
+		</form>
+	</div>
 	<div id="course_list" class="wrapper">
 		 
  		<div data-ng-repeat="course in Courses | filter : test" 

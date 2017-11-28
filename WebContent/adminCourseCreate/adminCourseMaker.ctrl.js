@@ -27,58 +27,44 @@ angular.module('myApp').controller("courseMaker",
 		$scope.allarticles = response.data;
 	});
 	
-	$scope.rows = [];
+	$scope.createSchedule = function(){
+		
+		console.log($("#scheduleDatepicker").val());
+		console.log($("#starthour").val());
+		console.log($("#endhour").val());
+		console.log($scope.courseTitle.id);
+		
+		$http.get("http://localhost/coursemanagementsystem/rest/schedule/addSchedule?"
+				+ "date="+$("#scheduleDatepicker").val()
+				+ "&starthour="+$("#starthour").val()
+				+ "&endhour="+$("#endhour").val()
+				+ "&courseid="+$scope.courseTitle.id)
+		.then(function(response){
+			$scope.newSchedule= response.data;
+			console.log($scope.newSchedule);
+			
 
-    $scope.addDynamically = function() {
-
-      $scope.rows.push({
-
-        pick: false,
-
-        date: "",
-
-        datePlaceholder: "Date",
-
-        startPlaceholder: "Start Hour",
-        
-        endPlaceholder: "End Hour",
-
-        start: "",
-        
-        end: ""
-
-      });
-
-    };
-
-	
+			
+			  repeatServices.getScheduleByCourseId($scope.courseTitle.id).then(function(response){
+					$scope.schedules= response.data;
+			  })
+			
+			$('input[type=date]').val('');
+			$('input[type=time]').val('');
+		});
+	}
 	
 	$scope.create = function(){
-		var date = $('#scheduleDatepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
-		$http.get("http://localhost/coursemanagementsystem/rest/course/addCourse?name="+$scope.name
-				+"&instructorid="+$scope.instructor
+		var date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
+		$http.get("http://localhost/coursemanagementsystem/rest/course/addCourse?courseId="+$scope.courseTitle.id
 				+"&description="+$scope.description
 				+"&date="+date+"&location="+$scope.location
 				+"&tag="+$scope.tag+"&syllabus="+$scope.syllabus+"&isactive=true")
 		.then(function(response) {
 			console.log(response.data);
-			$scope.newcourse = response.data;
-			console.log($scope.newcourse);
+			$rootScope.newcourse = response.data;
+			console.log($rootScope.newcourse);
 			
-			console.log($("#scheduleDatepicker").val());
-			console.log($scope.starthour);
-			console.log($scope.endhour);
-			console.log($scope.newcourse.id);
-			
-			$http.get("http://localhost/coursemanagementsystem/rest/schedule/addSchedule?"
-					+ "date="+$("#scheduleDatepicker").val()
-					+ "&starthour="+$("#starthour").val()
-					+ "&endhour="+$("#endhour").val()
-					+ "&courseid="+$scope.newcourse.id)
-			.then(function(response){
-				$scope.newschedule = response.data;
-				console.log($scope.newschedule);
-			});
 		});
 	}
 	
