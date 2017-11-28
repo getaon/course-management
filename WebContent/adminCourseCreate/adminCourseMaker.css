@@ -1,0 +1,10 @@
+#courseTable{
+	width: 100%;
+}
+
+#courseTable > .course,.instructor,.Attendants,
+		.descriptionAdmin, .tagAdmin,.articleAdmin{
+	
+	margin: 10px;		
+		
+}
