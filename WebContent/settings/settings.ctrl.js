@@ -1,6 +1,15 @@
 angular.module('myApp').controller("settingsCtrl",
 			function($scope,$location,$anchorScroll,repeatServices,$rootScope){
+		
+	 $("#sideNav").hide();
+	 $("#scrollerNav").hide();
+	 $("#header").hide();
+	 $("#scroller").hide();
 	
+	  repeatServices.AllStudents().then(function(response){
+	      $scope.students = response.data;
+	  })
+	 
 	  repeatServices.AllInstructors().then(function(response){
   		  $scope.instructors = response.data;
   	  })
@@ -61,9 +70,18 @@ angular.module('myApp').controller("settingsCtrl",
 		  })
 	  }
 	 
+	  $scope.editStudent = function(){
+		  repeatServices.editStudent($scope.student_name,$scope.student_last_name,  
+				  $scope.student_email, $scope.student_phone)
+				  .then(function(response){
+					  $scope.edit = response.data;
+					  
+				  })
+	  }
+	  
 	  $scope.editInstructore = function(){
-		  repeatServices.editInstructore($scope.student_name,$scope.student_last_name,  
-				$scope.student_email, $scope.student_phone)
+		  repeatServices.editInstructore($scope.instructor_name,$scope.instructor_last_name,  
+				$scope.instructor_email, $scope.instructor_phone)
 	  			.then(function(response){
 	  			$scope.edit = response.data;
 	  				  

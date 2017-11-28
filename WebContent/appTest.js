@@ -45,9 +45,13 @@ var response = {};
 		    	+"&isactive=true");
     }
 
-   response.AllInstructors= function(){
-    	return $http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors");
+   response.AllStudents= function(){
+    	return $http.get("http://localhost/coursemanagementsystem/rest/student/getAllStudents");
     }
+   
+   response.AllInstructors= function(){
+	   return $http.get("http://localhost/coursemanagementsystem/rest/instructor/getAllInstructors");
+   }
 
 	response.AllTags= function(){
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/tag/getAllTags");
@@ -68,12 +72,21 @@ var response = {};
 		return 	$http.get("http://localhost/coursemanagementsystem/rest/courseInstructor/getInstructorCourse?"
 				+"courseId="+courseid + "&instructorId="+userId);
 	}
+	
+	response.editStudent = function (userId) {
+		return $http.get("localhost/coursemanagementsystem/rest/student/updateStudent?id="+userId
+				+"&firstname="+student_name
+				+"&lastname="+student_last_name
+				+"&email="+student_email
+				+"&phone="+student_phone)
+	}
+	
 	response.editInstructore = function (userId) {
 		return $http.get("localhost/coursemanagementsystem/rest/instructor/updateInstructor?id="+userId
-				+"&firstname="+$scope.instructor_name
-				+"&lastname="+$scope.instructor_last_name
-				+"&email="+$scope.instructor_email
-				+"&phone="+$scope.instructor_phone)
+				+"&firstname="+instructor_name
+				+"&lastname="+instructor_last_name
+				+"&email="+instructor_email
+				+"&phone="+instructor_phone)
 	}
 	
 	return response;

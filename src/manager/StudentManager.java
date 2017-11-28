@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import org.apache.openjpa.persistence.EntityManagerImpl;
 
+import entity.Instructor;
 import entity.Student;
 import entity.User;
 
@@ -112,7 +113,26 @@ public class StudentManager {
 			return r;
 		}
 	}
- 
-	
+
+	public Reply updateStudent(int id, String firstname, String lastname, String email, String phone) {
+		Student student = getStudentById(id);
+		student.setFirstname(firstname);
+		student.setLastname(lastname);
+		student.setEmail(email);
+		student.setPhone(phone);
+		
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.merge(student);
+			entityManager.getTransaction().commit();
+			
+			return new Reply();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 }
