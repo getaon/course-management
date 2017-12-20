@@ -1,7 +1,4 @@
 
-	<a class="btn btn-info btn-lg addbtn" style="float: left;" data-ng-click="popUp()">
-         <span class="glyphicon glyphicon-plus"></span> add 
-     </a>
 	<div style="display: none" id="courseTitle">
 		<form>
 			<a>Course Name : </a>
@@ -15,7 +12,17 @@
 	</div>
 	<div id="course_list" class="wrapper">
 		 
- 		<div data-ng-repeat="course in Courses | filter : test 
+	 	<a class="btn btn-info btn-lg addbtn" style="float: left; margin-left: 50px;" data-ng-click="popUp()">
+	         <span class="glyphicon glyphicon-plus"></span> add 
+	     </a>
+		 <form>
+	 		<div class="input-group col-xs-2">
+	    		<input type="text" class="form-control" placeholder="Search" data-ng-model="test" style="margin-left: 50px;">
+	  		</div>
+	  		
+		</form><br>
+	
+ 		<div id="courses" data-ng-repeat="course in Courses | filter : test" 
 		 		class="student" id="#div-{{x.id}}">
 		 		
 		 		<div dir="rtl" style="float: right;">
@@ -31,9 +38,26 @@
 			 			 data-ng-click="courseInfo($index)"></button>
 			
 		 </div>
+		 
+		 <div id="myCourse" style="display: none;" data-ng-repeat="course in myCourses  | filter : test" 
+		 		class="student" id="#div-{{x.id}}">
+		 		
+		 		<div dir="rtl" style="float: right;">
+ 					  <span class="glyphicon glyphicon-pencil" data-ng-click="courseEdit($index)"></span><br>
+					  <span class="glyphicon glyphicon-trash" data-ng-click="remove($index)"></span>
+				 </div>
+			 
+		 		course-{{course.courseid.name}}<br><br>
+			    instructor:{{course.instructorid.firstname}}&nbsp;
+			    {{course.instructorid.lastname}}<br>
+			    
+			 <button id="logBtn"  class="glyphicon glyphicon-log-in"
+			 			 data-ng-click="courseInfo($index)"></button>
+			
+		 </div>
 	
 	</div>
-	<!-- <div> <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class=" previous round">&#8249;
+	<div> <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class=" previous round">&#8249;
       
     </button>
-			<button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1" class=" previous round">&#8250;</button></div> -->
+			<button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1" class=" previous round">&#8250;</button></div> 

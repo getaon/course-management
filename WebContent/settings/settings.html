@@ -83,37 +83,43 @@
 	<div id="Student_settingse">
 	  <h2>student</h2>
 	  <p>Insert new student here: </p>
-	  
-	  	<table style="width: 50% ;float: left;>
+	  <form name="studentForm">
+	  	<table style="width: 50% ;float: left;">
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">First Name :</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_name" required></td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">First Name :</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_name" name="student_name" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="studentForm.student_name.$touched && studentForm.student_name.$invalid">this field is required.</span></td></tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">Last Name :</td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">Last Name :</td>
 	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_last_name" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="studentForm.student_last_name.$touched && studentForm.student_last_name.$invalid">this field is required.</span></td></tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">email :</td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">email :</td>
 	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_email" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="studentForm.student_email.$touched && studentForm.student_email.$invalid">this field is required.</span></td></tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">phone :</td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">phone :</td>
 	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_phone" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="studentForm.student_phone.$touched && studentForm.student_phone.$invalid">this field is required.</span></td></tr>
 	  		
 	  		<tr style="margin-top: 50px;">
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">user name :</td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">user name :</td>
 	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_user_name" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="studentForm.student_user_name.$touched && studentForm.student_user_name.$invalid">this field is required.</span></td></tr>
 	  		
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">password :</td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">password :</td>
 	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="student_password" required></td>
 	  		</tr>
-	  		<tr><td><button data-ng-click="addStudent()">Add</button></td></tr>
+	  		<tr><td><span style="color: red" data-ng-show="studentForm.student_password.$touched && studentForm.student_password.$invalid">this field is required.</span></td></tr>
+	  		<tr><td><input type="submit" data-ng-click="addStudent()">Add</td></tr>
 	  	</table>
-	  	
+	  	</form>
 	  	<table style="width: 50% ; border: 1; float: right;">
 	  		<thead>
 		  		<tr>
@@ -140,37 +146,44 @@
 	<div id="Instrustor_settingse">
 	  <h2>Instructor</h2>
 	  <p>Insert new student here:</p>
+	  <form name="instructorForm">
 	  	<table style="width: 50% ;float: left;">
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">First Name:</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_name" required></td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">First Name:</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_name" name="instructor_name" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="instructorForm.instructor_name.$touched && instructorForm.instructor_name.$invalid">this field is required.</span></td></tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">Last Name:</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_last_name" required></td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">Last Name:</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_last_name" name="instructor_last_name" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="instructorForm.instructor_last_name.$touched && instructorForm.instructor_last_name.$invalid">this field is required.</span></td></tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">email</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_email" required></td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">email</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_email" name="instructor_email" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="instructorForm.instructor_email.$touched && instructorForm.instructor_email.$invalid">this field is required.</span></td></tr>
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">phone</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_phone" required></td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">phone</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_phone" name="instructor_phone" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="instructorForm.instructor_phone.$touched && instructorForm.instructor_phone.$invalid">this field is required.</span></td></tr>
 	  		
 	  		<tr style="margin-top: 50px;">
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">user name:</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_user_name" required></td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">user name:</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_user_name" name="instructor_user_name" required></td>
 	  		</tr>
+	  		<tr><td><span style="color: red" data-ng-show="instructorForm.instructor_user_name.$touched && instructorForm.instructor_user_name.$invalid">this field is required.</span></td></tr>
 	  		
 	  		<tr>
-	  			<td style="padding-right: 200px; margin-bottom: 10px;">password</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_password" required></td>
+	  			<td style="padding-right: 20px; margin-bottom: 10px;">password</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="instructor_password" name="instructor_password" required></td>
 	  		</tr>
-	  		<tr><td><button data-ng-click="addInstructor()">Add</button></td></tr>
+	  		<tr><td><span style="color: red" data-ng-show="instructorForm.instructor_password.$touched && instructorForm.instructor_password.$invalid">this field is required.</span></td></tr>
+	  		<tr><td><input type="submit" data-ng-click="addInstructor()">Add</td></tr>
 	  		
 	  	</table>
-	  	
+	  	</form>
 	  	<table style="width: 50% ; border: 1; float: right;">
 	  		<thead>
 		  		<tr>
@@ -199,13 +212,16 @@
 	  <h2>Category</h2>
 	  <p>Insert category here:</p>
 	  
+	  <form name="categoryForm">
 	  <table style="width: 50% ;float: left;">
 	  		<tr>
-	  			<td style="padding-right: 200px;"> Name:</td>
-	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="category_name" required></td>
-	  			<td><button data-ng-click="addCategory()">Add</button></td>
+	  			<td style="padding-right: 20px;"> Name:</td>
+	  			<td><input style="margin-bottom: 10px" type="text" data-ng-model="category_name" name="category_name" required></td>
 	  		</tr>
+	  		<tr><td><span style="color:red"  data-ng-show="categoryForm.category_name.$touched && categoryForm.category_name.$invalid">this field is required.</span></td></tr>
+	  		<td><button data-ng-click="addCategory()">Add</button></td>
 	  	</table>
+	  	</form>
 	  	
 	  	<table style="width: 50% ; border: 1; float: right;">
 	  		<tr>

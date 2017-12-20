@@ -5,12 +5,6 @@ var app = angular.module("myApp", ["ngRoute"]);
 	app.controller("myCtrl",
 		function($http,$scope,$location,$interval,$anchorScroll,$rootScope,repeatServices){
 
-		$rootScope.general =true;
-		$rootScope.Agenda =true;
-		$rootScope.timeSchedule =true;
-		$rootScope.articles =true;
-		$rootScope.description =true;
-		
 		$rootScope.gotoGeneral = function(){
 			  $location.hash('CourseDetail');
 			  $("#CourseDetail").css("style","margin-top: 100px;")
@@ -29,11 +23,6 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 		$rootScope.gotoPresentations = function(){
 			$location.hash('syllabus');
-			$rootScope.general =false;
-			$rootScope.Agenda =false;
-			$rootScope.timeSchedule =false;
-			$rootScope.articles =false;
-			$rootScope.description =false;
 		      $anchorScroll();
 		}
 
@@ -59,15 +48,16 @@ var app = angular.module("myApp", ["ngRoute"]);
 		 })
 		
 		$scope.myCourses = function(){
-			
+			$("#myCourses").show();
+			$("#Courses").hide();
 			if(usertype == "student"){
 				repeatServices.getMyCoursesStudent(userId).then(function(response){
-					$rootScope.Courses = response.data;
+					$rootScope.myCourses = response.data;
 				})
 				
 			}else if(usertype == "instructor"){
 				repeatServices.getMyCoursesInstructor(userId).then(function(response){
-					$rootScope.Courses = response.data;
+					$rootScope.myCourses  = response.data;
 				})
 				
 			}
@@ -120,7 +110,8 @@ var app = angular.module("myApp", ["ngRoute"]);
 		
 	  
 	    $scope.chooseTag = function(index){
-	    	
+			$("#myCourses").hide();
+			$("#Courses").show();
 	    	repeatServices.getCoursesByTag($scope.tags[index].id)
 	    			.then(function(response){
 				$rootScope.Courses = response.data;
@@ -137,7 +128,8 @@ var app = angular.module("myApp", ["ngRoute"]);
 	   }
 	  
 	  $scope.homeButton = function (){
-
+			$("#myCourses").hide();
+			$("#Courses").show();
 		  if(usertype == "student"){
 			  
 			  repeatServices.AllCourses().then(function(response){

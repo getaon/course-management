@@ -1,51 +1,27 @@
 <!-------------------- this div show me the course list in student main page ---------------------------->
 			
 		<div id="coursemaker">
-		
 			    <div class="CourseDetail" >
 			    
 			      <div id="general">
 			      	<table id="courseTable">    
 		      			<tr class="course">
-		      				<td>
-		      					<h1>{{courseTitle.name}}</h1>
-		      				</td>
-		      				<td>
-		      				</td>
-							<td>
-								<button class="publish" data-ng-click="create()" data-ng-click="add()">publish</button>
-							</td>
+		      				<td><h1>{{courseTitle.name}}</h1></td>
+								<td>
+									<button class="publish" data-ng-click="create()" data-ng-click="add()">publish</button>
+								</td>
 						</tr>
 						<tr>
-							<td><h4>{{courseTitle.instructor.firstname}} {{courseTitle.instructor.lastname}}</h4></td>
+							<td><h3>{{courseTitle.instructor.firstname}} {{courseTitle.instructor.lastname}}</h4></td>
 							<td colspan="2"></td>
 						</tr>
-						<tr class="Attendants">
-							<td>
-								Attendants :
-							</td>
-							<td>
-								<select data-ng-model="student" multiple="multiple">
-									<option data-ng-repeat="student in allstudents">{{student.firstname}} {{student.lastname}}</option>
-								</select>
-							</td>
-							<td></td>
+						<tr>
+							<td>Location :</td>
+							<td><input data-ng-model="location" type="text"></td>
 						</tr>
 						<tr>
-							<td>
-								Location :
-							</td>
-							<td>
-								<input data-ng-model="location" type="text">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Date :
-							</td>
-							<td>
-								<input data-ng-model="date" type="date" id="datepicker">
-							</td>
+							<td>Date :</td>
+							<td><input data-ng-model="date" type="date" id="datepicker"></td>
 						</tr>
 						<tr>
 							<td colspan="3">Description :</td>
@@ -56,33 +32,19 @@
 							</td>
 						</tr>
 						<tr class="tagAdmin">
-							<td>
-								Tag :
-							</td>
+							<td>Tag :</td>
 							<td>
 								<select data-ng-model="tag">
 									<option value="{{tag.id}}" data-ng-repeat="tag in alltags">{{tag.name}}</option>
 								</select>
 							</td>
-							<td></td>
 						</tr>
-						<tr class="articleAdmin">
-							<td>	
-								Article :
-							</td>
-							<td colspan="8">
-								<div>
-									<input type="file" id="file" name="file"/>
-								</div>
-							</td>
-							<td></td>
-						</tr>	
 					</table>
 			      </div>
 			      
 			      <div id="syllabus"> 
 		       		<div class="adminSyllabus">
-						<p>Syllabus</p>
+						<h1>Syllabus</h1>
 						<table>
 							<tr>
 								<td>
@@ -90,8 +52,8 @@
 								</td>
 							</tr>
 						</table>
-				    </div>
-			      </div>       
+			      </div>        
+		      </div>       
 			       
 			      <div id="schedule">         
 			        <div id="strudentScheduale">
@@ -104,20 +66,6 @@
 															 <strong>Start Hour : </strong>{{schedule.starthour}}
 														     <strong>End Hour : </strong>{{schedule.endhour}}</p>
 					<button data-ng-click="createSchedule()">Add Schedule</button>
-			      </div>
-			      <div id="presentations">         
-			        	<div id="studentPresentation">
-							 <h1>Presentations</h1>
-								<h1>{{courseSelected.name}}</h1>
-								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-							
-								
-								<object width="200px" height="200px"></object>
-							
-						</div>
-			      </div>      
-			      <div id="message">         
-			        <p>Massage Board</p>
 			      </div>
 			  </div>
 			</div>

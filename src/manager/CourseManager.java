@@ -112,14 +112,13 @@ public class CourseManager {
 	 * @return
 	 */
 	public List<CourseInstructor> getMyCoursesInstructor(int user){
-			String s= "";
-			s ="select * from coursemanagementsystem.instructor where user="+user;
-			Instructor instrustorid = (Instructor)entityManager.createNativeQuery(s,Instructor.class).getSingleResult();
+			String s="select * from coursemanagementsystem.instructor where user="+user;
+			Instructor instrustor = (Instructor)entityManager.createNativeQuery(s,Instructor.class).getSingleResult();
 			
 			String sql = "SELECT * FROM coursemanagementsystem.courseinstructor ci"+
 					" inner join coursemanagementsystem.course c on ci.courseid = c.id"+
 					" inner join coursemanagementsystem.instructor i on ci.instructorid= i.id"+
-					" where ci.instructorid="+instrustorid.getId()+" and c.isactive = 1";
+					" where ci.instructorid="+instrustor.getId()+" and c.isactive = 1";
 			 
 			 return (List<CourseInstructor>)entityManager.createNativeQuery(sql,CourseInstructor.class).getResultList();
 	}
@@ -236,10 +235,9 @@ public class CourseManager {
 	 */
 	public Course addCourse(int courseId, String description,String date,String location,
 			int tagid,String syllabus,boolean isactive){
-		
+		try{
 			Tag tag = ManagerHelper.getTagManager().getTagById(tagid);
 					
-		try{
 			Course course = new Course(description, date , location, tag, syllabus , isactive);
 			course.setId(courseId);
 			update(course);

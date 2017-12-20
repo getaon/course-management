@@ -22,7 +22,7 @@
 			      </div>
 			      <div id="syllabus"> 
 			       		<div>
-							<h2>Syllabus</h2>
+							<h1>Syllabus</h1>
 							<p>{{courseSelected.syllabus}}</p>
 						</div>
 			      </div>        
@@ -31,18 +31,6 @@
 							<h1>Schedule</h1>
 							<p data-ng-repeat="schedule in schedules"><strong>Date : </strong>{{schedule.date}}  <strong>Start Hour : </strong>{{schedule.starthour}}  <strong>End Hour : </strong>{{schedule.endhour}}</p>
 					</div>
-			      </div>
-			      <div id="presentations">         
-			        	<div id="studentPresentation">
-							 <h1>Presentations</h1>
-								<h1>{{courseSelected.name}}</h1>
-								<h4>By: {{courseSelected.instructor.firstname+" "+courseSelected.instructor.lastname}}</h4>
-								<object  data="C:/dev/gitWork/course-management/WebContent/presentationJava.pdf"></object>
-									
-						</div>
-			      </div>      
-			      <div id="message" style="height: 500px;">         
-			        <p>Massage Board</p>
 			      </div>
 			    </div>
 			  </div>

@@ -1,6 +1,11 @@
 		
 <!--------------------------------  student course options ---------------------------->
-					
+	 <form>
+ 		<div class="input-group col-xs-2">
+    		<input type="text" class="form-control" placeholder="Search" data-ng-model="test" style="margin-left: 50px;">
+  		</div>
+  		
+	</form>			
 	<div id="course_list" class="wrapper">
 		 
 		 <div data-ng-repeat="course in Courses | filter : test" 

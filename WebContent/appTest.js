@@ -150,6 +150,19 @@ var response = {};
 			+course_tag+"&articles=test&isactive=true")
 	}
 	
+	response.addCourse = function(course_id,course_description,course_date,
+										course_location,course_tag,syllabus){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/addCourse?" 
+				+"courseId="+course_id
+				+"&description="+course_description
+				+"&date="+course_date
+				+"&location="+course_location
+				+"&tag="+course_tag
+				+"&syllabus="+syllabus
+				+"&isactive=true")
+	}
+	
+	
 	response.getById = function(fullUserId){
 		return $http.get("http://localhost/coursemanagementsystem/rest/instructor/getById?"
 			 +"id="+fullUserId)

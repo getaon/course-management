@@ -7,5 +7,7 @@ angular.module("myApp").controller("studentMode",function($http,$scope,$location
 
 	$('#header').show();
 	$('#scroller').hide();
+	
+	$('#setting').hide();
 
 });

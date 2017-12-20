@@ -40,14 +40,7 @@ angular.module('myApp').controller("adminMode",
 				$rootScope.dateExpretion = $scope.courseEdit.startdate;
 				$rootScope.alltags = $scope.courseEdit.tag.id;
 				$rootScope.article = $scope.courseEdit.article;
-				
-				console.log("name--->"+$scope.name);
-				console.log("instructor--->"+$scope.allinstructors);
-				console.log("location--->"+$scope.location);
-				console.log("description--->"+$scope.description);
-				console.log("date--->"+$scope.date);
-				console.log("tag--->"+$scope.alltags);
-				console.log("article--->"+$scope.article);
+	
 			});
 			
 			$location.path('/CourseEdit');
@@ -57,19 +50,19 @@ angular.module('myApp').controller("adminMode",
 			  repeatServices.createCourse($scope.name,$scope.instructor).then(function(response){
 				  $rootScope.courseTitle = response.data;
 			  })
+			  
 			  $('#courseTitle').dialog("destroy");
 			$location.path('/createCourse');
 		}
-		/*	
 		$scope.currentPage = 0;
-		    $scope.pageSize = 6;
+		    $scope.pageSize = 9;
 		   
 		    $scope.numberOfPages=function(){
 		    	 repeatServices.AllCourses().then(function(response){
-		   		  $scope.allCourse  = response.data;		   		  
+		   		  $scope.Courses  = response.data;		   		  
 		    	});
-		    		return Math.ceil($scope.allCourse.length/$scope.pageSize); 
-		    }*/
+		    		return Math.ceil($scope.Courses.length/$scope.pageSize); 
+		    }
 		$scope.remove = function(index){
 			var confirm1 =confirm('Are you sure?');
 			
