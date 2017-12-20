@@ -26,6 +26,16 @@ var response = {};
 				+"&isactive=true");
     }
     
+    response.updateCourse = function(course_id,course_name,course_instructor,course_description,course_date,course_location,course_tag){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/updateCourse?id="
+			+course_id+"&name="+course_name
+			+"&instructorid="+course_instructor+
+			"&description="+course_description
+			+"&date="+course_date+"&location="
+			+course_location+"&tag="
+			+course_tag+"&articles=test&isactive=true")
+	}
+	
     response.addStudent = function(student_name,student_last_name,  
     					student_email, student_phone, student_user_name,
     					student_password){
@@ -140,15 +150,6 @@ var response = {};
 		return $http.get("http://localhost/coursemanagementsystem/rest/article/getAllArticles")
 	}
 	
-	response.updateCourse = function(course_id,course_name,course_instructor,course_description,course_date,course_location,course_tag){
-		return $http.get("http://localhost/coursemanagementsystem/rest/course/updateCourse?id="
-			+course_id+"&name="+course_name
-			+"&instructorid="+course_instructor+
-			"&description="+course_description
-			+"&date="+course_date+"&location="
-			+course_location+"&tag="
-			+course_tag+"&articles=test&isactive=true")
-	}
 	
 	response.addCourse = function(course_id,course_description,course_date,
 										course_location,course_tag,syllabus){

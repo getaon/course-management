@@ -1,11 +1,6 @@
 angular.module('myApp').controller("settingsCtrl",
 			function($scope,$location,$anchorScroll,repeatServices,$rootScope){
 
-	$('#sideNav').hide();
-	$('#scrollerNav').hide();
-	$('#header').hide();
-	$('#scroller').hide();
-	
 	repeatServices.courseArchive().then(function(response){
 		$scope.courseArchive = response.data;
 	})	

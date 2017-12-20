@@ -1,4 +1,37 @@
 
+
+<div id="title_front" style="position: absolute;">
+	<div class="w3-top" id="layout">
+		 <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);"  data-ng-click="openNav()"><i class="fa fa-bars"></i></a>
+			<a class="w3-bar-item w3-button w3-padding-large w3-theme-d4 w3-padding-large w3-hover-blue"  title="home" data-ng-click="homeButton()"><i class="fa fa-home w3-margin-right"></i></a>
+			<a class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-blue"  data-ng-click="logout()"></i><i title="Logout"  class="fa fa-power-off" aria-hidden="true"></i></a>
+			<a class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-blue"  data-ng-click="setting()" id="setting"><i class="fa fa-cog" title="settings" aria-hidden="true"></i></a>
+	
+			  <div id="sideNav">
+				  <i data-ng-click="myCourses()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue"> my Courses</i> 
+				  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue" data-ng-repeat="tag in tags" 
+								data-ng-click="chooseTag($index)"
+									style="display: inline-block;">{{tag.name}}</i>
+			  </div>
+	
+		 </div>
+	</div>
+	
+	<!-- Navbar on small screens -->
+	<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+		  <a class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home w3-margin-right" data-ng-click="homeButton()"></i>HOME</a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="myCourses()"> my Courses</i></a>
+		  <a><i class="w3-bar-item w3-button w3-padding-large" data-ng-repeat="tag in tags" 
+							data-ng-click="chooseTag($index)"
+								style="display: block; color: white;">{{tag.name}}</i></a>
+
+	  <a class="w3-bar-item w3-button w3-padding-large" data-ng-click="logout()" id="logout"><i class="fa fa-power-off" >Logout</i></a>
+	</div>
+	
+</div>		
+
+
 	<div style="display: none" id="courseTitle">
 		<form>
 			<a>Course Name : </a>
@@ -10,6 +43,7 @@
 			<button data-ng-click="createCourse()">Add</button>
 		</form>
 	</div>
+	
 	<div id="course_list" class="wrapper">
 		 
 	 	<a class="btn btn-info btn-lg addbtn" style="float: left; margin-left: 50px;" data-ng-click="popUp()">
@@ -57,6 +91,8 @@
 		 </div>
 	
 	</div>
+	
+	
 	<div> <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class=" previous round">&#8249;
       
     </button>

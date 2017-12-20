@@ -1,47 +1,13 @@
-#layout{
-	display: none;
-	width: 100%;
-}
 
-#sideNav {
-	display: none;
-}
 #header{
 	width: 50%;
 	position: fixed;
 }
 
-#scroller{
-	width: 50%;
-	position: fixed;
+#view {
+	margin-top: 5%;	
 }
 
-#view{
-	width: 100%;
-	margin-top: 100px;
-}
-
-#scroller{
-	display: none;
-}
-
-#scrollerNav{
-	display: none;
-}
-.CourseDetail{
-	width: 100%;
-	position: absolute;
-}
-#courseTable{
-	width: 100%;
-}
-
-#courseTable > .course,.instructor,.Attendants,
-		.descriptionAdmin, .tagAdmin,.articleAdmin{
-	
-	margin: 10px;		
-		
-}
 .fa{
 	margin-right: 5px;
 }

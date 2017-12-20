@@ -23,11 +23,5 @@
     border-bottom: 6px solid white;
     width: 100%;
 }
-.student > a{
-	
-}
-#logBtn{color:black; margin-left: 50px;margin-top:50px;}
 
-.courseUpdate{
-	display: none;
-}
+#logBtn{color:black; margin-left: 50px;margin-top:50px;}
