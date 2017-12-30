@@ -13,7 +13,7 @@ angular.module('myApp').config(function($routeProvider) {
 	    })
 
 		.when("/studentCourseInfo", {
-	    	templateUrl : "studentCourseInfo/courseinfo.html",
+	    	templateUrl : "studentMode/indexmode.html",
 	        controller : "CourseInfo"
 	    })
 		

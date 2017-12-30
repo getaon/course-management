@@ -1,13 +1,9 @@
-.registertion{
-	display: block;
-}
 
 #general,#syllabus,#schedule,#schedule,#presentations,#message{
  	border: 2px solid black;
     border-radius: 12px;
   	margin: 10px;	
   	font-weight: 100;
-  	width: 80%;
   	min-height: 300px;
   	background-color: #ffffff;
     opacity: 0.6;
@@ -15,6 +11,7 @@
     padding-left: 50px;
 }
 
-#general{
-	padding-right: 30%;
+.CourseDetail {
+	width: 80%;
+	margin: 0 auto;
 }

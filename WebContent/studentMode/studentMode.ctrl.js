@@ -3,7 +3,6 @@ angular.module("myApp").controller("studentMode",function($http,$scope,$location
 	
 	$scope.courseInfo =function(index){
 		
-		if(usertype == "student"){
 			repeatServices.getSelectedCource($scope.Courses[index].id)
 					.then(function(response){
 				$rootScope.studentSelection =  response.data;
@@ -14,11 +13,27 @@ angular.module("myApp").controller("studentMode",function($http,$scope,$location
 					$rootScope.scheduleSelected = response.data;
 				});	
 			
-				$location.path('/studentCourseInfo');
 			});
 			
-		}else if(usertype == "instructor"){
-			repeatServices.getSelectedCource($scope.Courses[index].id)
+	
+	  $location.path('/studentCourseInfo');
+	  
+	}
+	
+	$scope.myCourses = function (){
+		repeatServices.getMyCoursesStudent(userId)
+				.then(function(response){
+					
+					$scope.studentCourses = response.data;
+					console.log(response.data);
+					
+					$rootScope.Courses = $scope.studentCourses.courseid;
+				})
+	}
+		
+	
+
+	/*	repeatServices.getSelectedCource($scope.Courses[index].id)
 			.then(function(response){
 				$rootScope.courseSelected = response.data;
 		
@@ -27,17 +42,14 @@ angular.module("myApp").controller("studentMode",function($http,$scope,$location
 							$rootScope.presentationCourse = response.data;
 				})
 				
-					console.log("$scope.courseSelected.id--->"+$scope.courseSelected.id);
 				repeatServices.getScheduleByCourseId($scope.courseSelected.id)
 						.then(function(response) {
 								console.log(response.data);
 							$rootScope.schedules = response.data;
 				});	
 
-			});	
-				$location.path('/CourseInfo');
-			}
-		}
+			});	*/
+		
 	
 
 });

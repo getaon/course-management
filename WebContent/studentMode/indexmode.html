@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+	
+	
+	<header class="header">
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);"  data-ng-click="openNav()"><i class="fa fa-bars"></i></a>
+			<a class="w3-bar-item w3-button w3-padding-large w3-theme-d4 w3-padding-large w3-hover-blue"  title="home" data-ng-click="homeButton()"><i class="fa fa-home w3-margin-right"></i></a>
+				 <nav class="nav">
+				 	<ul>
+				 		<li data-ng-click="gotoGeneral()">General</li>
+				 		<li data-ng-click="gotoSyllabus()">Syllabus</li>
+				 		<li data-ng-click="gotoSchedule()">Schedule</li>
+				 		<li data-ng-click="gotoPresentations()">Presentations</li>
+				 		<li data-ng-click="gotoMessage()">Message Board</li>
+				 	</ul>
+				 </nav>
+			<a class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-blue"  data-ng-click="logout()"></i><i title="Logout"  class="fa fa-power-off" aria-hidden="true"></i></a>
+		
+	</header>
+	
+	<div class="CourseDetail">
+			      
+		      <div id="general">    
+				 <h1>{{studentSelection.name}}</h1>
+				
+				 <h3>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h3>
+		         
+		         <h3>{{studentSelection.startdate}}</h3>
+		       
+					<p>{{studentSelection.description}}</p>
+		      </div>
+		      
+		      
+		      <div id="syllabus"> 
+					<h2>Syllabus</h2>
+					<p>{{studentSelection.syllabus}}</p>
+	    	  </div> 
+		      
+		             
+		      <div id="schedule">         
+					<h1>Schedule</h1>
+					<p data-ng-repeat="schedule in schedules"><strong>Date : </strong>{{schedule.date}}  <strong>Start Hour : </strong>{{schedule.starthour}}  <strong>End Hour : </strong>{{schedule.endhour}}</p>
+				</div>
+				
+	          <div id="presentation"> 
+					<h2>Syllabus</h2>
+					<p>{{studentSelection.syllabus}}</p>
+	    	  </div> 
+			      
+	    </div>	
+	    
+	    <div class= "footer"></div>

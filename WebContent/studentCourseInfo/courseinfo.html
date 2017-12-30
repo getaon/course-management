@@ -1,12 +1,11 @@
  
  			<!--------------------------------  student Course Selected ---------------------------->
- 
+ <div>
 	 <div class="w3-top">
 		 <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);"  data-ng-click="openNav()"><i class="fa fa-bars"></i></a>
 			<a class="w3-bar-item w3-button w3-padding-large w3-theme-d4 w3-padding-large w3-hover-blue"  title="home" data-ng-click="homeButton()"><i class="fa fa-home w3-margin-right"></i></a>
 			<a class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-blue"  data-ng-click="logout()"></i><i title="Logout"  class="fa fa-power-off" aria-hidden="true"></i></a>
-			<a class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-blue"  data-ng-click="setting()" id="setting"><i class="fa fa-cog" title="settings" aria-hidden="true"></i></a>
 		
 			  <div>
 				   <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue"  data-ng-click="gotoGeneral()">General</i> 
@@ -16,50 +15,46 @@
 				  <i class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue" data-ng-click="gotoMessage()">Message Board</i>
 			  </div>
 		 </div>
-	</div>	 
-	
-	<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-		
-			  <a class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home w3-margin-right" data-ng-click="homeButton()"></i>HOME</a>
-			  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoGeneral()">General</i></a>
-			  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoSyllabus()">Syllabus</i></a>
-			  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoSchedule()">Schedule</i></a>
-			  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoPresentations()">Presentations</i></a>
-			  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoMessage()">Message Board</i></a>
-		  	  <a class="w3-bar-item w3-button w3-padding-large" data-ng-click="logout()" id="logout"><i class="fa fa-power-off" >Logout</i></a>
-	
 	</div>
 	
+	<div class="CourseDetail">
+			      
+		      <div id="general">    
+				 <h1>{{studentSelection.name}}</h1>
+				
+				 <h3>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h3>
+		         
+		         <h3>{{studentSelection.startdate}}</h3>
+		       
+					<p>{{studentSelection.description}}</p>
+		      </div>
+		      
+		      
+		      <div id="syllabus"> 
+					<h2>Syllabus</h2>
+					<p>{{studentSelection.syllabus}}</p>
+	    	  </div> 
+		      
+		             
+		      <div id="schedule">         
+					<h1>Schedule</h1>
+					<p data-ng-repeat="schedule in schedules"><strong>Date : </strong>{{schedule.date}}  <strong>Start Hour : </strong>{{schedule.starthour}}  <strong>End Hour : </strong>{{schedule.endhour}}</p>
+				</div>
+				
+	          <div id="presentation"> 
+					<h2>Syllabus</h2>
+					<p>{{studentSelection.syllabus}}</p>
+	    	  </div> 
+			      
+	    </div>	 
 	
-  <div id="studentCourse">
-			    
-			    <div class="CourseDetail">
-			      <div id="general">    
-			      		<div style="float:right">
-			      			<button>register</button>
-			      		</div>
-			       		<div id="studentDescription">
-								<h1>{{studentSelection.name}}</h1>
-								<h4>By: {{studentSelection.instructor.firstname+" "+studentSelection.instructor.lastname}}</h4>
-						         <h4>{{studentSelection.startdate}}</h4>
-						         <div>
-									<p>{{studentSelection.description}}</p>
-							
-							    </div>
-								
-						</div>
-			      </div>
-			      <div id="syllabus"> 
-			       		<div>
-							<h2>Syllabus</h2>
-							<p>{{studentSelection.syllabus}}</p>
-						</div>
-			      </div>        
-			      <div id="schedule">         
-			        <div id="strudentScheduale">
-							<h1>Schedule</h1>
-							<p data-ng-repeat="schedule in schedules"><strong>Date : </strong>{{schedule.date}}  <strong>Start Hour : </strong>{{schedule.starthour}}  <strong>End Hour : </strong>{{schedule.endhour}}</p>
-					</div>
-			      </div>
-			    </div>
-			  </div>
+	<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+		  <a class="w3-bar-item w3-button w3-padding-large"><i class="fa fa-home w3-margin-right" data-ng-click="homeButton()"></i>HOME</a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoGeneral()">General</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoSyllabus()">Syllabus</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoSchedule()">Schedule</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoPresentations()">Presentations</i></a>
+		  <a class="w3-bar-item w3-button w3-padding-large"><i data-ng-click="gotoMessage()">Message Board</i></a>
+	  	  <a class="w3-bar-item w3-button w3-padding-large" data-ng-click="logout()" id="logout"><i class="fa fa-power-off" >Logout</i></a>
+	</div>
+</div>

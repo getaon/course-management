@@ -5,20 +5,6 @@ var response = {};
     response.AllCourses = function(){
 			return $http.get("http://localhost/coursemanagementsystem/rest/course/getAllCourses");
 	}
-    response.removeCourse = function(courseid){
-    return $http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+courseid);
-    }
-    response.selectedCource = function(courseid){
-    return $http.get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
-			+"id="+courseid)
-    }
-    response.unArchiveCourse = function(index){
-		return $http.get("http://localhost/coursemanagementsystem/rest/course/unRemoveCourse?id="+index);
-    }
-
-    response.courseArchive = function(){
-		return $http.get("http://localhost/coursemanagementsystem/rest/course/getArchiveCourses");
-    }
     
     response.createCourse = function(name,instructor){
     	return $http.get("http://localhost/coursemanagementsystem/rest/course/addCourseTitle?name="+name
@@ -36,6 +22,22 @@ var response = {};
 			+course_tag+"&articles=test&isactive=true")
 	}
 	
+    response.removeCourse = function(courseid){
+    	return $http.get("http://localhost/coursemanagementsystem/rest/course/removeCourse?id="+courseid);
+    }
+    response.selectedCource = function(courseid){
+    	return $http.get("http://localhost/coursemanagementsystem/rest/course/getSelectedCource?"
+			+"id="+courseid)
+    }
+    response.unArchiveCourse = function(index){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/unRemoveCourse?id="+index);
+    }
+
+    response.courseArchive = function(){
+		return $http.get("http://localhost/coursemanagementsystem/rest/course/getArchiveCourses");
+    }
+    
+
     response.addStudent = function(student_name,student_last_name,  
     					student_email, student_phone, student_user_name,
     					student_password){
